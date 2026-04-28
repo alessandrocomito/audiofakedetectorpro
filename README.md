@@ -96,11 +96,3 @@ Technical Notes
 Download
 Google Drive AllInOne ZIP: Standard no-install and portable editions
 https://bit.ly/4eErFDC
-
-License Notice
-This software is freeware. It is provided "AS IS", without warranty of any kind. The
-source code is provided for reference purposes only.
-You are allowed to view and study the source code; however, you are NOT permitted to
-modify, redistribute, reuse, or create derivative works based on it, in whole or in part,
-without explicit written permission from the author.
-This notice applies to all versions of the software, including any previous releases.
