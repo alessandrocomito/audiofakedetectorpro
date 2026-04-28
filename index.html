@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Audio Fake Detector PRO v6.1.1</title>
+
+<meta name="description" content="Audio Fake Detector PRO is an audio analysis tool that detects lossy-to-lossless transcodes using spectral analysis, statistical verification, and wall-vote decision logic.">
+
+<meta name="robots" content="index,follow">
+
+<meta name="author" content="Alessandro Comito">
+
+<meta property="og:title" content="Audio Fake Detector PRO v6.1.1">
+<meta property="og:description" content="Audio analysis tool for detecting fake high-quality audio files and lossy-to-lossless transcodes.">
+<meta property="og:type" content="software">
+<meta property="og:site_name" content="Audio Fake Detector PRO">
+
+<meta name="theme-color" content="#0f172a">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #38bdf8;
+}
+
+h2 {
+    border-bottom: 1px solid #334155;
+    padding-bottom: 6px;
+    margin-top: 35px;
+}
+
+.box {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.code {
+    background: #0b1220;
+    padding: 15px;
+    border-left: 4px solid #38bdf8;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.btn {
+    display: inline-block;
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.small {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+ul {
+    padding-left: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Audio Fake Detector PRO</h1>
+    <p>Version 6.1.1 · Windows (x86 / x64)</p>
+    <p class="small">© 2026 Alessandro Comito</p>
+</header>
+
+<section class="box">
+    <h2>Overview</h2>
+    <p>
+        Audio Fake Detector PRO is an audio analysis tool designed to detect
+        lossy-to-lossless transcodes and artificially upscaled audio files that are commonly
+        mislabeled as high-quality sources.
+    </p>
+
+    <p>
+        The engine combines spectral analysis, statistical validation, and multi-segment voting logic
+        to reduce false negatives in mixed or partially clean audio material.
+    </p>
+</section>
+
+<section class="box">
+    <h2>Download</h2>
+
+    <p>
+        The download is provided via an external secure storage service.
+        The link will first open a preview page where you can verify file details before downloading.
+    </p>
+
+    <p>
+        The package is distributed as a <strong>.ZIP archive</strong> containing:
+    </p>
+
+    <ul>
+        <li>Standard (no-install) version</li>
+        <li>Portable version</li>
+    </ul>
+
+    <a class="btn" href="https://bit.ly/4eErFDC" target="_blank" rel="noopener">
+        Go to Download Page
+    </a>
+
+    <p class="medium">
+        Target: Secure cloud storage (Google Drive)
+    </p>
+</section>
+
+<section>
+    <h2>Supported Formats</h2>
+
+    <h3>Lossy</h3>
+    <ul>
+        <li>MP3</li>
+        <li>AAC / M4A (AAC)</li>
+        <li>OPUS</li>
+        <li>OGG Vorbis</li>
+        <li>WMA (lossy)</li>
+    </ul>
+
+    <h3>Lossless</h3>
+    <ul>
+        <li>FLAC</li>
+        <li>WAV</li>
+        <li>AIFF / AIF</li>
+        <li>APE (Monkey’s Audio)</li>
+        <li>WavPack (WV)</li>
+        <li>ALAC (M4A)</li>
+        <li>WMA Lossless</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Detection Engine</h2>
+
+    <p>
+        Each audio file is divided into multiple non-final segments.
+        The final segment is treated as a secondary indicator only and excluded from voting.
+    </p>
+
+    <div class="code">
+Half-or-Strict-Majority Wall Vote:
+
+A file is flagged as FAKE if:
+- ≥ 50% of segments (even N) OR
+- strict majority (odd N)
+
+show spectral wall ≤ 16.5 kHz
+
+Tie condition → default FAKE
+    </div>
+
+    <p>
+        Grey zone (16.5–18.5 kHz) is excluded from voting logic to reduce false positives
+        on high-bitrate encodes. In this case, classification becomes SUSPECT rather than FAKE.
+    </p>
+</section>
+
+<section>
+    <h2>Analysis Methods</h2>
+
+    <ul>
+        <li>Spectral cutoff detection</li>
+        <li>High-frequency drop near track end</li>
+        <li>Joint stereo anomaly detection</li>
+        <li>Multi-segment frequency consistency analysis</li>
+        <li>auCDtect statistical validation (lossless only)</li>
+        <li>3-step metadata fallback recovery</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Processing Pipeline</h2>
+
+    <ul>
+        <li>1. Format detection & decoding (ffmpeg / ffprobe)</li>
+        <li>2. Segmentation of audio stream</li>
+        <li>3. Spectral analysis per segment</li>
+        <li>4. Voting system aggregation</li>
+        <li>5. Final classification (CLEAN / SUSPECT / FAKE)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Output</h2>
+
+    <ul>
+        <li>Suspicious files moved to <code>~Fake</code> folder</li>
+        <li>Reports exported in LOG / CSV / HTML formats</li>
+        <li>Original folder structure preserved</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Technical Notes</h2>
+
+    <ul>
+        <li>Requires Windows 10/11 (32/64-bit)</li>
+        <li>PowerShell 5+</li>
+        <li>First-run dependency download required</li>
+        <li>Portable mode supported (zero system changes)</li>
+        <li>Resume scan after interruption supported</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Limitations</h2>
+
+    <ul>
+                <li> Speech or voice-only content.</li>
+                <li> Very old, degraded, or acoustic recordings with limited bandwidth.</li>
+                <li> Close-quality transcodes (e.g., MP3 192 kbps -> AAC 224 kbps).</li>
+                <li> High-bitrate AAC (320 kbps) -> FLAC, as modern AAC encodes preserve near full-band  spectral content without stable artifacts.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>License</h2>
+
+    <p>
+        This software is provided as freeware “AS IS”, without warranty.
+        Source code is provided for reference only.
+    </p>
+
+    <p>
+        Redistribution, modification, or derivative works are not permitted without
+        explicit written authorization from the author.
+    </p>
+</section>
+
+<footer class="small">
+    © 2026 Alessandro Comito · Audio Fake Detector PRO
+</footer>
+
+</div>
+
+</body>
+</html>
