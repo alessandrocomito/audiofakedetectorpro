@@ -1,265 +1,717 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Audio Fake Detector PRO v6.1.1</title>
-
-<meta name="description" content="Audio Fake Detector PRO is an audio analysis tool that detects lossy-to-lossless transcodes using spectral analysis, statistical verification, and wall-vote decision logic.">
-
-<meta name="robots" content="index,follow">
-
-<meta name="author" content="Alessandro Comito">
-
-<meta property="og:title" content="Audio Fake Detector PRO v6.1.1">
-<meta property="og:description" content="Audio analysis tool for detecting fake high-quality audio files and lossy-to-lossless transcodes.">
-<meta property="og:type" content="software">
-<meta property="og:site_name" content="Audio Fake Detector PRO">
-
-<meta name="theme-color" content="#0f172a">
-
+<title>Audio Fake Detector PRO v6.1 · Alessandro Comito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    line-height: 1.6;
-}
+  :root {
+    --bg:        #080b0f;
+    --bg2:       #0e1318;
+    --bg3:       #141c24;
+    --border:    #1e2d3a;
+    --amber:     #f5a623;
+    --amber-dim: #a06a0f;
+    --green:     #4caf7d;
+    --red:       #e05252;
+    --text:      #c8d8e4;
+    --text-dim:  #607080;
+    --mono:      'Share Tech Mono', monospace;
+    --sans:      'Barlow', sans-serif;
+    --cond:      'Barlow Condensed', sans-serif;
+  }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-h1 {
-    font-size: 28px;
-    color: #38bdf8;
-}
+  html { scroll-behavior: smooth; }
 
-h2 {
-    border-bottom: 1px solid #334155;
-    padding-bottom: 6px;
-    margin-top: 35px;
-}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-.box {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.code {
-    background: #0b1220;
-    padding: 15px;
-    border-left: 4px solid #38bdf8;
-    font-family: monospace;
-    white-space: pre-wrap;
-}
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
 
-.btn {
+  /* Animated spectrum bars behind hero */
+  .spectrum-bg {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding: 0 1rem;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .spectrum-bg span {
+    flex: 1;
+    background: var(--amber);
+    border-radius: 2px 2px 0 0;
+    animation: bar 2.4s ease-in-out infinite alternate;
+    transform-origin: bottom;
+  }
+  .spectrum-bg span:nth-child(odd)  { animation-duration: 1.9s; }
+  .spectrum-bg span:nth-child(3n)   { animation-duration: 2.8s; background: var(--green); }
+  .spectrum-bg span:nth-child(5n)   { animation-duration: 1.5s; }
+  @keyframes bar {
+    from { height: 10%; }
+    to   { height: 100%; }
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    animation: fadeup 0.6s ease both;
+  }
+
+  h1 {
+    font-family: var(--cond);
+    font-weight: 900;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: #fff;
+    animation: fadeup 0.7s 0.1s ease both;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  .hero-sub {
+    margin-top: 1.2rem;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeup 0.7s 0.2s ease both;
+  }
+
+  .hero-meta {
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--amber-dim);
+    animation: fadeup 0.7s 0.25s ease both;
+  }
+
+  .btn-download {
     display: inline-block;
-    background: #38bdf8;
-    color: #0f172a;
-    padding: 12px 18px;
+    margin-top: 2.2rem;
+    padding: 0.85rem 2.5rem;
+    background: var(--amber);
+    color: #080b0f;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    animation: fadeup 0.7s 0.35s ease both;
+  }
+  .btn-download:hover { background: #ffc04a; transform: translateY(-2px); }
+
+  .btn-note {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    animation: fadeup 0.7s 0.4s ease both;
+  }
+
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+
+  h2 {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+  }
+  h2 .h2-line {
+    display: inline-block;
+    width: 2rem;
+    height: 2px;
+    background: var(--amber);
+    vertical-align: middle;
+    margin-right: 0.7rem;
+    margin-bottom: 3px;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+    margin-top: 1.8rem;
+  }
+
+  p { margin-bottom: 0.9rem; color: var(--text); }
+
+  /* ── DETECTION BOX ── */
+  .vote-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    border-radius: 3px;
+    padding: 1.4rem 1.6rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--text);
+    margin: 1.4rem 0;
+  }
+  .vote-box .label { color: var(--amber); }
+  .vote-box .val   { color: #fff; }
+
+  /* ── VERDICTS ── */
+  .verdicts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.4rem;
+  }
+  .verdict {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+  }
+  .verdict .badge {
+    font-family: var(--mono);
+    font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 6px;
-}
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .verdict .desc { font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
+  .ok   .badge { color: var(--green); }
+  .susp .badge { color: var(--amber); }
+  .fake .badge { color: var(--red); }
 
-.small {
-    font-size: 12px;
-    color: #94a3b8;
-}
+  /* ── FORMAT GRID ── */
+  .format-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 540px) { .format-grid { grid-template-columns: 1fr; } }
 
-ul {
-    padding-left: 20px;
-}
+  .format-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.2rem 1.4rem;
+  }
+  .format-card h4 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.7rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.2rem 0.55rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text);
+  }
+
+  /* ── PIPELINE ── */
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1.2rem;
+    counter-reset: step;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    counter-increment: step;
+  }
+  .step:last-child { border-bottom: none; }
+  .step::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--amber-dim);
+    min-width: 2rem;
+    padding-top: 0.1rem;
+  }
+  .step-text { font-size: 0.92rem; }
+  .step-text strong { color: #fff; font-weight: 600; }
+  .step-text span   { color: var(--text-dim); font-size: 0.82rem; display: block; font-family: var(--mono); margin-top: 0.15rem; }
+
+  /* ── FEATURE LIST ── */
+  .features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .features li {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.65rem 1rem;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .features li::before {
+    content: '▸';
+    color: var(--amber);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* ── LIMITATIONS ── */
+  .limits {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  .limits li {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  .limits li:last-child { border-bottom: none; }
+  .limits li::before { content: '—'; color: var(--border); flex-shrink: 0; }
+
+  /* ── TECH GRID ── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .tech-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1rem 1.2rem;
+  }
+  .tech-item dt {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-dim);
+    margin-bottom: 0.3rem;
+  }
+  .tech-item dd { font-size: 0.88rem; color: var(--text); }
+
+  /* ── LICENSE ── */
+  .license-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.4rem 1.6rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,11,15,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 2rem;
+    overflow-x: auto;
+  }
+  nav a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 0.9rem 1rem;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  nav a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  nav .nav-logo {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+    letter-spacing: 0.05em;
+    margin-right: auto;
+    padding: 0.9rem 0;
+  }
 </style>
-
 </head>
-
 <body>
 
-<div class="container">
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">AFD <em style="color:var(--amber)">PRO</em></span>
+  <a href="#overview">Overview</a>
+  <a href="#formats">Formats</a>
+  <a href="#engine">Engine</a>
+  <a href="#pipeline">Pipeline</a>
+  <a href="#output">Output</a>
+  <a href="#tech">Technical</a>
+  <a href="#license">License</a>
+</nav>
 
-<header>
-    <h1>Audio Fake Detector PRO</h1>
-    <p>Version 6.1.1 · Windows (x86 / x64)</p>
-    <p class="small">© 2026 Alessandro Comito</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="spectrum-bg" aria-hidden="true">
+    <!-- 60 bars generated inline -->
+    <span style="height:45%"></span><span style="height:30%"></span><span style="height:62%"></span>
+    <span style="height:20%"></span><span style="height:80%"></span><span style="height:55%"></span>
+    <span style="height:38%"></span><span style="height:70%"></span><span style="height:25%"></span>
+    <span style="height:90%"></span><span style="height:42%"></span><span style="height:65%"></span>
+    <span style="height:33%"></span><span style="height:78%"></span><span style="height:50%"></span>
+    <span style="height:15%"></span><span style="height:85%"></span><span style="height:48%"></span>
+    <span style="height:60%"></span><span style="height:22%"></span><span style="height:75%"></span>
+    <span style="height:40%"></span><span style="height:95%"></span><span style="height:28%"></span>
+    <span style="height:55%"></span><span style="height:35%"></span><span style="height:68%"></span>
+    <span style="height:18%"></span><span style="height:82%"></span><span style="height:45%"></span>
+    <span style="height:58%"></span><span style="height:72%"></span><span style="height:32%"></span>
+    <span style="height:88%"></span><span style="height:24%"></span><span style="height:63%"></span>
+    <span style="height:47%"></span><span style="height:15%"></span><span style="height:77%"></span>
+    <span style="height:53%"></span><span style="height:92%"></span><span style="height:38%"></span>
+    <span style="height:67%"></span><span style="height:29%"></span><span style="height:84%"></span>
+    <span style="height:44%"></span><span style="height:56%"></span><span style="height:71%"></span>
+    <span style="height:19%"></span><span style="height:86%"></span><span style="height:36%"></span>
+    <span style="height:61%"></span><span style="height:41%"></span><span style="height:73%"></span>
+    <span style="height:27%"></span><span style="height:94%"></span><span style="height:49%"></span>
+    <span style="height:57%"></span><span style="height:31%"></span><span style="height:79%"></span>
+  </div>
+
+  <p class="hero-label">Audio Forensics Tool</p>
+  <h1>Audio Fake<br>Detector <em>PRO</em></h1>
+  <p class="hero-sub">
+    Detects lossy-to-lossless transcodes and artificially upscaled audio files
+    mislabeled as high-quality sources — using spectral analysis and
+    half-or-strict-majority wall voting across multiple segments.
+  </p>
+  <p class="hero-meta">v6.1 · Windows 10/11 (x86 / x64) · PowerShell 5+ · © 2026 Alessandro Comito</p>
+  <a class="btn-download" href="https://bit.ly/4eErFDC" target="_blank" rel="noopener">↓ Download</a>
+  <span class="btn-note">ZIP archive via Google Drive · Standard + Portable editions</span>
 </header>
 
-<section class="box">
-    <h2>Overview</h2>
+<main>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <h2><span class="h2-line"></span>Overview</h2>
     <p>
-        Audio Fake Detector PRO is an audio analysis tool designed to detect
-        lossy-to-lossless transcodes and artificially upscaled audio files that are commonly
-        mislabeled as high-quality sources.
+      Audio Fake Detector PRO analyses whether an audio file genuinely contains the
+      frequency content its container bitrate implies. It targets the common case of
+      lossy material (MP3, AAC) re-encoded into lossless containers (FLAC, WAV) or
+      inflated to a higher lossy bitrate to appear higher quality than it is.
     </p>
+    <p>
+      The engine processes each file by splitting it into multiple non-final segments
+      and one end segment. Each segment is analysed independently via spectrogram bitmap
+      inspection. A <strong style="color:#fff">half-or-strict-majority wall vote</strong>
+      then aggregates the per-segment findings into a single file-level verdict.
+    </p>
+    <p>
+      Lossless files are additionally validated through
+      <strong style="color:#fff">auCDtect</strong> statistical PCM analysis with a
+      3-step metadata fallback for files with unreadable headers.
+    </p>
+
+    <div class="verdicts">
+      <div class="verdict ok">
+        <span class="badge">[OK]</span>
+        <span class="desc">Full-band content consistent with the declared bitrate. No spectral wall detected.</span>
+      </div>
+      <div class="verdict susp">
+        <span class="badge">[SUSPECT]</span>
+        <span class="desc">Best segment falls in the 16.5–18.5 kHz grey zone. Possibly high-bitrate lossy; manual review advised.</span>
+      </div>
+      <div class="verdict fake">
+        <span class="badge">[FAKE]</span>
+        <span class="desc">Half or strict majority of non-final segments show a spectral wall ≤ 16.5 kHz. Declared bitrate is not representative.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section id="formats">
+    <h2><span class="h2-line"></span>Supported Formats</h2>
+    <div class="format-grid">
+      <div class="format-card">
+        <h4>Lossy</h4>
+        <div class="tags">
+          <span class="tag">MP3</span>
+          <span class="tag">AAC</span>
+          <span class="tag">M4A (AAC)</span>
+          <span class="tag">OGG Vorbis</span>
+          <span class="tag">OPUS</span>
+          <span class="tag">WMA</span>
+        </div>
+      </div>
+      <div class="format-card">
+        <h4>Lossless</h4>
+        <div class="tags">
+          <span class="tag">FLAC</span>
+          <span class="tag">WAV</span>
+          <span class="tag">AIFF</span>
+          <span class="tag">AIF</span>
+          <span class="tag">APE</span>
+          <span class="tag">WavPack (WV)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINE -->
+  <section id="engine">
+    <h2><span class="h2-line"></span>Detection Engine</h2>
 
     <p>
-        The engine combines spectral analysis, statistical validation, and multi-segment voting logic
-        to reduce false negatives in mixed or partially clean audio material.
-    </p>
-</section>
-
-<section class="box">
-    <h2>Download</h2>
-
-    <p>
-        The download is provided via an external secure storage service.
-        The link will first open a preview page where you can verify file details before downloading.
+      Each file is split into non-final segments (used for voting) plus one end segment
+      (secondary indicator only, excluded from the vote). Every non-final segment is
+      analysed via a GDI+ LockBits spectrogram for high-frequency cutoff behaviour.
     </p>
 
-    <p>
-        The package is distributed as a <strong>.ZIP archive</strong> containing:
-    </p>
-
-    <ul>
-        <li>Standard (no-install) version</li>
-        <li>Portable version</li>
-    </ul>
-
-    <a class="btn" href="https://bit.ly/4eErFDC" target="_blank" rel="noopener">
-        Go to Download Page
-    </a>
-
-    <p class="medium">
-        Target: Secure cloud storage (Google Drive)
-    </p>
-</section>
-
-<section>
-    <h2>Supported Formats</h2>
-
-    <h3>Lossy</h3>
-    <ul>
-        <li>MP3</li>
-        <li>AAC / M4A (AAC)</li>
-        <li>OPUS</li>
-        <li>OGG Vorbis</li>
-        <li>WMA (lossy)</li>
-    </ul>
-
-    <h3>Lossless</h3>
-    <ul>
-        <li>FLAC</li>
-        <li>WAV</li>
-        <li>AIFF / AIF</li>
-        <li>APE (Monkey’s Audio)</li>
-        <li>WavPack (WV)</li>
-        <li>ALAC (M4A)</li>
-        <li>WMA Lossless</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Detection Engine</h2>
-
-    <p>
-        Each audio file is divided into multiple non-final segments.
-        The final segment is treated as a secondary indicator only and excluded from voting.
-    </p>
-
-    <div class="code">
-Half-or-Strict-Majority Wall Vote:
-
-A file is flagged as FAKE if:
-- ≥ 50% of segments (even N) OR
-- strict majority (odd N)
-
-show spectral wall ≤ 16.5 kHz
-
-Tie condition → default FAKE
+    <div class="vote-box">
+      <span class="label">HALF-OR-STRICT-MAJORITY WALL VOTE</span><br><br>
+      <span class="label">Rule (N = non-final segments):</span><br>
+      &nbsp;&nbsp;<span class="val">N even</span> → FAKE if walled ≥ N/2 &nbsp;&nbsp;<span style="color:var(--text-dim)">(tie counts as FAKE)</span><br>
+      &nbsp;&nbsp;<span class="val">N odd</span>  → FAKE if walled &gt; N/2 &nbsp;&nbsp;<span style="color:var(--text-dim)">(strict majority)</span><br><br>
+      <span class="label">Spectral wall threshold:</span> <span class="val">≤ 16 500 Hz</span><br>
+      <span class="label">Grey zone (excluded from vote):</span> <span class="val">16 500 – 18 500 Hz → SUSPECT</span><br>
+      <span class="label">Typical N = 3:</span> <span class="val">2/3 walled → FAKE &nbsp;(66.7 %)</span><br>
+      <span class="label">Typical N = 4:</span> <span class="val">2/4 walled → FAKE &nbsp;(50 %, tie-break)</span>
     </div>
 
-    <p>
-        Grey zone (16.5–18.5 kHz) is excluded from voting logic to reduce false positives
-        on high-bitrate encodes. In this case, classification becomes SUSPECT rather than FAKE.
-    </p>
-</section>
-
-<section>
-    <h2>Analysis Methods</h2>
-
-    <ul>
-        <li>Spectral cutoff detection</li>
-        <li>High-frequency drop near track end</li>
-        <li>Joint stereo anomaly detection</li>
-        <li>Multi-segment frequency consistency analysis</li>
-        <li>auCDtect statistical validation (lossless only)</li>
-        <li>3-step metadata fallback recovery</li>
+    <h3>Analysis Methods</h3>
+    <ul class="features">
+      <li>Spectral cutoff detection per segment</li>
+      <li>High-frequency abrupt drop near track end</li>
+      <li>Joint stereo channel anomaly detection</li>
+      <li>Multi-segment frequency consistency analysis</li>
+      <li>Noise-reduction fingerprint detection (NR flag)</li>
+      <li>auCDtect statistical PCM validation (lossless)</li>
+      <li>3-step metadata fallback recovery</li>
+      <li>Intelligent segment selection (CPU optimised)</li>
     </ul>
-</section>
+  </section>
 
-<section>
-    <h2>Processing Pipeline</h2>
+  <!-- PIPELINE -->
+  <section id="pipeline">
+    <h2><span class="h2-line"></span>Processing Pipeline</h2>
+    <div class="pipeline">
+      <div class="step">
+        <div class="step-text">
+          <strong>Format detection &amp; decoding</strong>
+          <span>ffprobe / ffmpeg — 3-step metadata probe with size-based fallback for lossless</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-text">
+          <strong>Segment selection</strong>
+          <span>Non-final slots at fixed intervals + one random segment + one end segment</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-text">
+          <strong>Spectrogram extraction</strong>
+          <span>ffmpeg → bitmap · GDI+ LockBits pixel scan for cutoff, ratio, peak</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-text">
+          <strong>Per-segment analysis</strong>
+          <span>Wall detection · abrupt-end check · joint-stereo anomaly · NR flag</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-text">
+          <strong>Vote aggregation</strong>
+          <span>Half-or-strict-majority wall vote across non-final segments</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-text">
+          <strong>Final classification</strong>
+          <span>[OK] · [SUSPECT] · [FAKE] — with cutoff Hz and bitrate context in log</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <ul>
-        <li>1. Format detection & decoding (ffmpeg / ffprobe)</li>
-        <li>2. Segmentation of audio stream</li>
-        <li>3. Spectral analysis per segment</li>
-        <li>4. Voting system aggregation</li>
-        <li>5. Final classification (CLEAN / SUSPECT / FAKE)</li>
+  <!-- OUTPUT -->
+  <section id="output">
+    <h2><span class="h2-line"></span>Output</h2>
+    <ul class="features">
+      <li>Suspicious files moved to <code style="font-family:var(--mono);color:var(--amber);font-size:0.82rem">~Fake\</code> preserving original folder structure</li>
+      <li>Detailed per-file log in <code style="font-family:var(--mono);color:var(--amber);font-size:0.82rem">~Report\</code> — LOG, CSV and HTML formats</li>
+      <li>CSV: semicolon-delimited, UTF-8, ready for spreadsheet import</li>
+      <li>HTML: filterable report with verdict colour-coding</li>
+      <li>Session resume: interrupted scans can be continued from the last processed file</li>
     </ul>
-</section>
+  </section>
 
-<section>
-    <h2>Output</h2>
+  <!-- TECHNICAL -->
+  <section id="tech">
+    <h2><span class="h2-line"></span>Technical Notes</h2>
+    <dl class="tech-grid">
+      <div class="tech-item">
+        <dt>Platform</dt>
+        <dd>Windows 10 / 11 · 32-bit &amp; 64-bit</dd>
+      </div>
+      <div class="tech-item">
+        <dt>Runtime</dt>
+        <dd>PowerShell 5 or higher</dd>
+      </div>
+      <div class="tech-item">
+        <dt>Dependencies</dt>
+        <dd>ffmpeg · ffprobe · auCDtect — auto-downloaded on first run</dd>
+      </div>
+      <div class="tech-item">
+        <dt>Build</dt>
+        <dd>PS2EXE — high-performance PowerShell executable</dd>
+      </div>
+      <div class="tech-item">
+        <dt>Temp files (Standard)</dt>
+        <dd><code style="font-family:var(--mono);font-size:0.8rem">%LOCALAPPDATA%\AudioFakeDetector\</code></dd>
+      </div>
+      <div class="tech-item">
+        <dt>Temp files (Portable)</dt>
+        <dd><code style="font-family:var(--mono);font-size:0.8rem">.\Data\App\Temp\</code> — deleted after each run</dd>
+      </div>
+      <div class="tech-item">
+        <dt>Character support</dt>
+        <dd>Full Unicode — Japanese, symbols, hidden files</dd>
+      </div>
+      <div class="tech-item">
+        <dt>Portable edition</dt>
+        <dd>Zero footprint — no admin rights, no system-wide changes</dd>
+      </div>
+    </dl>
 
-    <ul>
-        <li>Suspicious files moved to <code>~Fake</code> folder</li>
-        <li>Reports exported in LOG / CSV / HTML formats</li>
-        <li>Original folder structure preserved</li>
+    <h3>Limitations</h3>
+    <ul class="limits">
+      <li>Speech and voice-only content — limited high-frequency energy makes wall detection unreliable</li>
+      <li>Very old, degraded, or acoustic recordings with inherently narrow bandwidth</li>
+      <li>Close-quality transcodes — e.g. MP3 192 kbps → AAC 224 kbps; artefacts are too similar to distinguish</li>
+      <li>High-bitrate AAC 320 kbps → FLAC — modern AAC preserves near-full-band content without a stable spectral wall</li>
     </ul>
-</section>
+  </section>
 
-<section>
-    <h2>Technical Notes</h2>
+  <!-- LICENSE -->
+  <section id="license">
+    <h2><span class="h2-line"></span>License</h2>
+    <div class="license-block">
+      <p>
+        This software is freeware. It is provided <strong>"AS IS"</strong>, without warranty of any kind.
+        The source code is provided for reference purposes only.
+      </p>
+      <p style="margin-bottom:0">
+        You are allowed to view and study the source code; however, you are <strong>not permitted</strong>
+        to modify, redistribute, reuse, or create derivative works based on it, in whole or in part,
+        without explicit written permission from the author.
+        This notice applies to all versions of the software, including any previous releases.
+      </p>
+    </div>
+  </section>
 
-    <ul>
-        <li>Requires Windows 10/11 (32/64-bit)</li>
-        <li>PowerShell 5+</li>
-        <li>First-run dependency download required</li>
-        <li>Portable mode supported (zero system changes)</li>
-        <li>Resume scan after interruption supported</li>
-    </ul>
-</section>
+</main>
 
-<section>
-    <h2>Limitations</h2>
-
-    <ul>
-                <li> Speech or voice-only content.</li>
-                <li> Very old, degraded, or acoustic recordings with limited bandwidth.</li>
-                <li> Close-quality transcodes (e.g., MP3 192 kbps -> AAC 224 kbps).</li>
-                <li> High-bitrate AAC (320 kbps) -> FLAC, as modern AAC encodes preserve near full-band  spectral content without stable artifacts.</li>
-    </ul>
-</section>
-
-<section>
-    <h2>License</h2>
-
-    <p>
-        This software is provided as freeware “AS IS”, without warranty.
-        Source code is provided for reference only.
-    </p>
-
-    <p>
-        Redistribution, modification, or derivative works are not permitted without
-        explicit written authorization from the author.
-    </p>
-</section>
-
-<footer class="small">
-    © 2026 Alessandro Comito · Audio Fake Detector PRO
+<footer>
+  Audio Fake Detector PRO v6.1 &nbsp;·&nbsp; © 2026 Alessandro Comito &nbsp;·&nbsp;
+  <a href="https://github.com/alessandrocomito" style="color:var(--amber-dim);text-decoration:none">github.com/alessandrocomito</a>
 </footer>
-
-</div>
 
 </body>
 </html>
