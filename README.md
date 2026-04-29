@@ -94,5 +94,6 @@ Technical Notes
 - Zero-Footprint (Portable): No admin rights required and no system-wide changes.
 
 Download
-Google Drive AllInOne ZIP: Standard no-install and portable editions
-https://bit.ly/4eErFDC
+Preview Download: Project site https://alessandrocomito.github.io/audiofakedetectorpro
+Direct Download: Standard (no-install) https://bit.ly/3QAinOY - Portable https://bit.ly/4tDVQiM
+ZIP archives via Google Drive
