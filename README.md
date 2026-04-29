@@ -3,9 +3,7 @@ Audio Fake Detector PRO v6.1.1
 
 
 Short Description
-
-Detects fake high-quality audio files by identifying lossy-to-lossless transcodes using
-spectral analysis and half-or-strict-majority wall vote.
+- Detects fake high-quality audio files by identifying lossy-to-lossless transcodes using spectral analysis and half-or-strict-majority wall vote.
 
 Tagline
 - Advanced audio authenticity checker for detecting upscaled lossy and lossless files.
