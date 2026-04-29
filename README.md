@@ -7,7 +7,8 @@ Detects fake high-quality audio files by identifying lossy-to-lossless transcode
 spectral analysis and half-or-strict-majority wall vote.
 
 Tagline
-Advanced audio authenticity checker for MP3, AAC, and lossless formats.
+Advanced audio authenticity checker for detecting upscaled lossy and lossless files.
+Identifies audio sourced from low-bitrate material (e.g. 128–160 kbps MP3) that has been transcoded or upscaled to higher formats.
 
 Description
 Audio Fake Detector PRO detects fake "high quality" audio files, including lossy sources
