@@ -84,8 +84,8 @@ Technical Notes
 - Session Resume Support: Detects interrupted scans and offers to resume from the last
   processed file.
 - Smart Temp Management:
-    Standard version: Temp files stored in %TEMP%\AudioFakeDetector\.
-    Portable version:  Temp files stored in .\Data\App\Temp\ (deleted after each run).
+   - Standard version: Temp files stored in %TEMP%\AudioFakeDetector\.
+   - Portable version:  Temp files stored in .\Data\App\Temp\ (deleted after each run).
 - Reliability: Fully supports Unicode/special characters (e.g., Japanese, symbols) and
   hidden files.
 - Optimized for local drives and mounted volumes (Windows 10/11).
@@ -93,8 +93,8 @@ Technical Notes
 
 Download
 - If not found locally, required tools will be downloaded automatically
-     Source: Google Drive -> auCDtect" -ForegroundColor Magenta
-     Source: Official developer site -> FFmpeg"
+   - Source: Google Drive -> auCDtect
+   - Source: Official developer site -> FFmpeg
 - Preview Download: Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download: Standard (no-install) https://bit.ly/3QAinOY - Portable https://bit.ly/4tDVQiM
 - ZIP archives via Google Drive
