@@ -92,7 +92,7 @@ Technical Notes
 - Zero-Footprint (Portable): No admin rights required and no system-wide changes.
 
 Download
-- If not found locally, required tools will be downloaded automatically
+- If not found locally, required tools will be downloaded automatically:
    - Source: Google Drive -> auCDtect
    - Source: Official developer site -> FFmpeg
 - Preview Download: Project site https://alessandrocomito.github.io/audiofakedetectorpro
