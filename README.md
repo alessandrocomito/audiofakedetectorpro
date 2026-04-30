@@ -92,6 +92,9 @@ Technical Notes
 - Zero-Footprint (Portable): No admin rights required and no system-wide changes.
 
 Download
+- If not found locally, required tools will be downloaded automatically
+     Source: Google Drive -> auCDtect" -ForegroundColor Magenta
+     Source: Official developer site -> FFmpeg"
 - Preview Download: Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download: Standard (no-install) https://bit.ly/3QAinOY - Portable https://bit.ly/4tDVQiM
 - ZIP archives via Google Drive
