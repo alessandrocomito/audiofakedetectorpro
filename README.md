@@ -1,4 +1,4 @@
-Audio Fake Detector PRO v6.1.2
+Audio Fake Detector PRO v6.2
 (c) 2026 Alessandro Comito
 
 
