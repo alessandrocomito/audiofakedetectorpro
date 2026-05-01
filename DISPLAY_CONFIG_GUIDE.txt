@@ -1,0 +1,68 @@
+DISPLAY CONFIGURATION GUIDE
+===========================
+
+This guide explains how to correctly configure the console window for optimal readability and proper text output.
+
+This is a one-time setup per executable.
+
+--------------------------------------------
+1. OPEN APPLICATION
+--------------------------------------------
+Double click the executable (.exe)
+
+--------------------------------------------
+2. OPEN CONSOLE PROPERTIES
+--------------------------------------------
+Right-click on the window title bar
+Select: Properties
+
+--------------------------------------------
+3. CHARACTER
+--------------------------------------------
+Select TAB: CHARACTER
+
+Font
+Font name : Consolas
+Size      : 20
+
+--------------------------------------------
+4. LAYOUT
+--------------------------------------------
+Select TAB: LAYOUT
+
+BUFFER SIZE
+Width  : 118
+Height : 3000
+
+WINDOW SIZE
+Width  : 118
+Height : 32
+
+Click OK to confirm
+
+--------------------------------------------
+IMPORTANT NOTES
+--------------------------------------------
+Only modify the settings shown above.
+Do not change other options.
+
+Settings are stored per executable in Windows.
+
+--------------------------------------------
+EXPECTED RESULT
+--------------------------------------------
+Clear text output
+No line wrapping issues
+Full log visibility
+Scrollback enabled
+
+--------------------------------------------
+QUICK SUMMARY
+--------------------------------------------
+Font         : Consolas 20
+Buffer Size  : 118 x 3000
+Window Size  : 118 x 32
+
+--------------------------------------------
+END OF GUIDE
+--------------------------------------------
