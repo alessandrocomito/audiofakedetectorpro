@@ -24,7 +24,7 @@ Select TAB: CHARACTER
 
 Font
 Font name : Lucida Console / Consolas
-Size      : 16 		          / 20
+Size      : 16 		        / 20
 
 -----------------------------------------------
 4. LAYOUT
@@ -33,7 +33,7 @@ Select TAB: LAYOUT
 
 WINDOW SIZE
 Width  : 118
-Height : 40		               / 32
+Height : 40		             / 32
 
 BUFFER SIZE
 Width  : 118
@@ -62,7 +62,7 @@ QUICK SUMMARY
 -----------------------------------------------
 Font         : Lucida Console 16 / Consolas 20
 Buffer Size  : 118 x 3000
-Window Size  : 118 x 40          / 32
+Window Size  : 118 x 40        / 32
 
 -----------------------------------------------
 END OF GUIDE
