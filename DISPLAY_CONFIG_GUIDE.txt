@@ -62,7 +62,7 @@ QUICK SUMMARY
 -----------------------------------------------
 Font         : Lucida Console 16 / Consolas 20
 Buffer Size  : 118 x 3000
-Window Size  : 118 x 40       / 32
+Window Size  : 118 x 40         / 32
 
 -----------------------------------------------
 END OF GUIDE
