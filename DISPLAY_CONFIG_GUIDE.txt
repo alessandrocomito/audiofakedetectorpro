@@ -31,13 +31,13 @@ Size      : 16 		   / 20
 -----------------------------------------------
 Select TAB: LAYOUT
 
-BUFFER SIZE
-Width  : 118
-Height : 3000
-
 WINDOW SIZE
 Width  : 118
 Height : 40		   / 32
+
+BUFFER SIZE
+Width  : 118
+Height : 3000
 
 Click OK to confirm
 
