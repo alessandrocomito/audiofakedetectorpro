@@ -25,7 +25,7 @@ This tool is an independent solution for users searching for alternatives to est
 - Automatic dependency management (FFmpeg, FFprobe)
 - High-performance spectrogram processing
 - Detailed reporting (LOG, CSV, HTML)
-- Folder-preserving quarantine system (~Fake)
+- Moves detected files to the ~Fake folder while preserving the original directory structure
 
 ---
 
@@ -47,7 +47,6 @@ This approach reduces false positives and improves detection reliability across 
 - Detecting fake FLAC / WAV conversions from lossy sources
 - Audio quality auditing for DJs, producers, and collectors
 - Library cleaning and archival verification
-- Forensic audio integrity analysis
 
 ---
 
@@ -100,7 +99,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 🧾 Keywords (SEO)
 
-fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, audio forensic tool, Fakin The Funk alternative
+fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, Fakin The Funk alternative
 
 ---
 
