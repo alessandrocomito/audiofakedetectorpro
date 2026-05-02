@@ -92,7 +92,9 @@ It can be used as an independent alternative for users familiar with tools such 
    - Source: Google Drive -> auCDtect
    - Source: Official developer site -> FFmpeg
 - Preview Download: Project site https://alessandrocomito.github.io/audiofakedetectorpro
-- Direct Download: Standard (no-install) https://bit.ly/3QAinOY - Portable https://bit.ly/4tDVQiM
+- Direct Download:
+   - Standard (no-install) https://bit.ly/3QAinOY
+   - Portable https://bit.ly/4tDVQiM
 - ZIP archives via Google Drive
 
 ---
