@@ -1,100 +1,110 @@
-Audio Fake Detector PRO v6.2
-(c) 2026 Alessandro Comito
+# Audio Fake Detector PRO
 
+Advanced audio authenticity checker for detecting fake high-quality audio files.
 
-Short Description
-- Detects fake 320 kbps MP3s and fake lossless files made from lower-quality sources using spectral analysis.
+Audio Fake Detector PRO is a high-performance tool designed to analyze and detect artificially upscaled audio files, including fake 320 kbps MP3s and fake lossless formats.
 
-Tagline
-- Advanced audio authenticity checker for detecting upscaled lossy and lossless files.
+## 🔍 Overview
 
-Description
-- Identifies audio sourced from low-bitrate material (e.g. 128–160 kbps MP3) that has been transcoded or upscaled to higher formats.
+Audio Fake Detector PRO identifies audio files that have been transcoded or upscaled from lower-quality sources (e.g. 128–160 kbps MP3) into seemingly high-quality formats such as 320 kbps MP3 or FLAC.
 
-It uses a hybrid analysis engine combining spectral analysis and statistical verification:
-- Lossy formats (MP3, AAC, M4A, etc.): Analyzed using spectrogram-based detection,
-  multi-segment frequency analysis, abrupt high-frequency drop detection near the track
-  end, and joint stereo channel anomaly detection.
-- Lossless formats (FLAC, WAV, APE, AIFF, AIF, WV): Verified using auCDtect statistical
-  analysis.
+It is designed for users who need reliable detection of audio authenticity using a combination of spectral and statistical analysis.
 
-Each file is split into multiple non-final segments (plus one end segment used as a
-secondary indicator only) and evaluated independently. A half-or-strict-majority wall vote
-determines the final verdict, eliminating false negatives caused by short clean sections
-or mixed content.
+This tool is an independent solution for users searching for alternatives to established tools such as Fakin' The Funk.
 
-Key Features
-- Detects lossy-to-lossless and lossy-to-lossy transcodes.
-- half-or-strict-majority wall vote (see Detection Logic below for exact threshold rules).
-- Spectral cutoff and compression artifact detection.
-- Abrupt high-frequency drop detection near the track end.
-- Joint stereo channel anomaly detection.
-- Automatic dependency management (ffmpeg, ffprobe, auCDtect).
-- Resilient metadata recovery via a 3-step fallback analysis.
-- Ultra-fast spectrogram processing (optimized GDI+ LockBits implementation).
-- Intelligent segment selection to reduce CPU load.
-- Generates comprehensive reports in LOG, CSV, and HTML formats.
-- Preserves folder structure when moving suspicious files to ~Fake.
+---
 
-Detection Logic (Simplified)
-- Audio is split into several segments. The final (end) segment is used only as a
-  secondary corroborating indicator and is excluded from the vote.
-- Each non-final segment is analyzed for high-frequency cutoff behavior.
-- Decision Rule -- Half-or-Strict-Majority Wall Vote:
-    The file is flagged as FAKE if half or more (N even) or a strict majority (N odd) of non-final segments show a spectral wall
-    at or below 16.5 kHz. In the event of an exact tie between walled and clean segments,
-    the verdict defaults to FAKE.
-    In practice, with the typical 3-segment analysis this requires at least 2 out of 3
-    segments to be walled (>= 66.7%). With an even number of segments, exactly 50% is
-    sufficient to trigger FAKE via the tie-break rule.
-- Grey Zone: The 16.5-18.5 kHz range is excluded from the half-or-strict-majority wall vote to prevent
-  false positives on high-quality 192 kbps encodes. Files whose best segment falls in
-  this range are classified as SUSPECT rather than FAKE.
-- Lossless Validation: Files are validated using auCDtect confidence scoring. If
-  auCDtect returns "Unknown", the tool falls back to spectral analysis.
-- Metadata Fallback: If headers are unreadable, a 3-step probe is used:
-  1. Format probe
-  2. Stream probe
-  3. Size-based duration estimation (lossless only).
+## ⚙️ Key Features
 
-Supported Formats
-- Lossy:    MP3, M4A, AAC, OGG, OPUS, WMA.
-- Lossless: FLAC, WAV, APE, AIFF, AIF, WV.
+- Detection of fake 320 kbps MP3 files
+- Detection of fake lossless audio (FLAC, WAV, APE, AIFF, WV)
+- Spectral cutoff and compression artifact detection
+- Multi-segment frequency analysis
+- Joint stereo anomaly detection
+- Statistical validation using auCDtect
+- Automatic dependency management (FFmpeg, FFprobe)
+- High-performance spectrogram processing
+- Detailed reporting (LOG, CSV, HTML)
+- Folder-preserving quarantine system (~Fake)
 
-Requirements
-- Windows 10/11 (32/64-bit).
-- PowerShell 5 or higher.
-- Internet connection (required only on first run to download dependencies).
+---
 
-Output
-- Suspicious files: Moved to ~Fake folder.
-- Reports: Detailed analysis saved in the ~Report folder.
-- Original directory structure is always preserved.
+## 🧠 Detection Technology
 
-Limitations
-Less reliable on:
-- Speech or voice-only content.
-- Very old, degraded, or acoustic recordings with limited bandwidth.
-- Close-quality transcodes (e.g., MP3 192 kbps -> AAC 224 kbps).
-- High-bitrate AAC (320 kbps) -> FLAC, as modern AAC encodes preserve near full-band
-  spectral content without stable artifacts.
+Audio Fake Detector PRO uses a hybrid analysis engine:
 
-Technical Notes
-- Built using PS2EXE: High-performance PowerShell executable.
-- Session Resume Support: Detects interrupted scans and offers to resume from the last
-  processed file.
-- Smart Temp Management:
-   - Standard version: Temp files stored in %TEMP%\AudioFakeDetector\.
-   - Portable version:  Temp files stored in .\Data\App\Temp\ (deleted after each run).
-- Reliability: Fully supports Unicode/special characters (e.g., Japanese, symbols) and
-  hidden files.
-- Optimized for local drives and mounted volumes (Windows 10/11).
-- Zero-Footprint (Portable): No admin rights required and no system-wide changes.
+- **Spectral Analysis**: detects frequency cutoffs, compression artifacts, and artificial bandwidth extension
+- **Statistical Validation**: verifies lossless authenticity using auCDtect scoring
+- **Segment-Based Voting System**: improves accuracy by analyzing multiple independent audio segments
 
-Download
+This approach reduces false positives and improves detection reliability across different audio formats.
+
+---
+
+## 🎯 Use Cases
+
+- Verifying authenticity of downloaded music files
+- Detecting fake FLAC / WAV conversions from lossy sources
+- Audio quality auditing for DJs, producers, and collectors
+- Library cleaning and archival verification
+- Forensic audio integrity analysis
+
+---
+
+## 📦 Supported Formats
+
+**Lossy:**
+MP3, AAC, M4A, OGG, OPUS, WMA
+
+**Lossless:**
+FLAC, WAV, APE, AIFF, AIF, WV
+
+---
+
+## 💡 Why Audio Fake Detector PRO?
+
+Many audio files distributed online are not truly high quality but have been upscaled from lower-bitrate sources.
+
+Audio Fake Detector PRO is designed to help users identify these cases with a modern, multi-layered detection approach.
+
+It can be used as an independent alternative for users familiar with tools such as Fakin' The Funk.
+
+---
+
+## 🖥 Requirements
+
+- Windows 10/11 (32-bit or 64-bit)
+- PowerShell 5+
+- Internet connection (first run only, for dependencies)
+
+---
+
+## 📊 Output
+
+- Suspicious files → moved to `~Fake`
+- Reports → saved in `~Report`
+- Full directory structure preserved
+
+---
+
+## 🚀 Download
+
 - If not found locally, required tools will be downloaded automatically:
    - Source: Google Drive -> auCDtect
    - Source: Official developer site -> FFmpeg
 - Preview Download: Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download: Standard (no-install) https://bit.ly/3QAinOY - Portable https://bit.ly/4tDVQiM
 - ZIP archives via Google Drive
+
+---
+
+## 🧾 Keywords (SEO)
+
+fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, audio forensic tool, Fakin The Funk alternative
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is independent and not affiliated with any other audio analysis software.
+All product names mentioned are used only for descriptive and compatibility reference purposes.
