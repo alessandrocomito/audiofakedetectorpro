@@ -80,7 +80,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 📊 Output
 
-- Suspicious files → moved to `~Fake`
+- Files rated as FAKE, or detected below 170 kbps, are moved to `~Fake`
 - Reports → saved in `~Report`
 - Full directory structure preserved
 
