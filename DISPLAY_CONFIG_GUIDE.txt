@@ -4,7 +4,7 @@ DISPLAY CONFIGURATION GUIDE
 This guide explains how to correctly configure the console window
  for optimal readability and proper text output.
 
-This is a one-time setup per executable.
+This is a one-time setup per executable or script.
 
 -----------------------------------------------
 1. OPEN APPLICATION
