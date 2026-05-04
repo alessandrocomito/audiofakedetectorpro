@@ -92,8 +92,8 @@ It can be used as an independent alternative for users familiar with tools such 
 ## 🚀 Download
 
 - If not found locally, required tools will be downloaded automatically:
-   - Source: Google Drive -> auCDtect
-   - Source: Official developer site -> FFmpeg
+   - Source: Google Drive -> auCDtect (~72 KB)
+   - Source: Official developer site -> FFmpeg (~210 MB)
 - Preview Download (~130 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download (~66 KB):
    - Standard (no-install) https://bit.ly/3QAinOY
