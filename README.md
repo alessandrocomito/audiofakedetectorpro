@@ -104,7 +104,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 🧾 Keywords (SEO)
 
-fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, Fakin The Funk alternative
+fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, Fakin' The Funk alternative
 
 ---
 
