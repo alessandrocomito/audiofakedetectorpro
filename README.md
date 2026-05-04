@@ -1,5 +1,9 @@
 # Audio Fake Detector PRO
+**Current version: 6.3**
 
+---
+
+Tool per il rilevamento di audio sintetico/fake tramite analisi del segnale.
 Advanced audio authenticity checker for detecting fake high-quality audio files.
 
 Audio Fake Detector PRO is a high-performance tool designed to analyze and detect artificially upscaled audio files, including fake 320 kbps MP3s and fake lossless formats.
