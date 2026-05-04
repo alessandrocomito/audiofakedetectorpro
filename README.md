@@ -94,7 +94,7 @@ It can be used as an independent alternative for users familiar with tools such 
 - If not found locally, required tools will be downloaded automatically:
    - Source: Google Drive -> auCDtect (~72 KB)
    - Source: BtbN/FFmpeg-Builds (GitHub) site -> FFmpeg (~210 MB)
-      To avoid the automatic download, you can install it manually beforehand via Command Prompt: winget install --id Gyan.FFmpeg (~104 MB)
+         To avoid the automatic download, you can install it manually beforehand via Command Prompt: winget install --id Gyan.FFmpeg (~104 MB)
 - Preview Download (~130 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download (~66 KB):
    - Standard (no-install) https://bit.ly/3QAinOY
