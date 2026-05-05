@@ -97,7 +97,7 @@ It can be used as an independent alternative for users familiar with tools such 
    - Source: SAC Slovak Antivirus Center -> auCDtect (~72 KB)
    - Source: gyan.dev (GitHub) -> FFmpeg (~104 MB)
    - To avoid the automatic download, you can install it manually beforehand via Command Prompt: winget install --id Gyan.FFmpeg (~104 MB)
-- Preview Download (~130 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
+- Preview Download AudioFakeDetector_v6.4.zip 05-05-2026 22:02 (~130 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download (~66 KB):
    - Standard (no-install) https://bit.ly/3QAinOY
    - Portable https://bit.ly/4tDVQiM
