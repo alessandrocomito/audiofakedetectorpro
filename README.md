@@ -48,7 +48,7 @@ This approach reduces false positives and improves detection reliability across 
 
 - Verifying authenticity of downloaded music files
 - Detecting fake FLAC / WAV conversions from lossy sources
-- Audio quality auditing for DJs, producers, and collectors
+- Audio authenticity analysis for DJs, producers, and collectors
 - Library cleaning and archival verification
 
 ---
