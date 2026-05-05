@@ -9,11 +9,13 @@ Audio Fake Detector PRO is a high-performance audio authenticity checker focused
 
 ## 🔍 Overview
 
-Audio Fake Detector PRO identifies audio files that have been transcoded or upscaled from lower-quality sources (e.g. 128–160 kbps MP3) into seemingly high-quality formats such as 320 kbps MP3 or FLAC.
+Audio Fake Detector PRO analyses whether an audio file genuinely contains the frequency content its container bitrate implies.
 
-It is designed for users who need reliable detection of audio authenticity using a combination of spectral and statistical analysis.
+Files are first processed using FFmpeg (decoding to standardized PCM) and ffprobe (metadata extraction such as codec, bitrate, and stream info).
 
-This tool is an independent solution for users searching for alternatives to established tools such as Fakin' The Funk.
+It is specifically designed to detect fake high-bitrate lossy files, such as MP3 audio upsampled or re-encoded to appear as 320 kbps, as well as lossy material (MP3) placed inside lossless containers (FLAC, WAV) to simulate higher quality.
+
+The engine splits each file into multiple non-final segments plus one end segment. Each non-final segment is analysed independently via spectrogram bitmap inspection. A half-or-strict-majority wall vote aggregates the per-segment findings into a single file-level verdict. Lossless files are additionally validated through auCDtect statistical PCM analysis.
 
 ---
 
