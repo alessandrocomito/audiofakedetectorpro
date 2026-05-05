@@ -11,7 +11,7 @@ Audio Fake Detector PRO is a high-performance audio authenticity checker focused
 
 Audio Fake Detector PRO analyses whether an audio file genuinely contains the frequency content its container bitrate implies.
 
-Files are first processed using FFmpeg (decoding to standardized PCM) and ffprobe (metadata extraction such as codec, bitrate, and stream info).
+Files are processed using FFmpeg (decoding to standardized PCM) and ffprobe (metadata extraction such as codec, bitrate, and stream info) as a preprocessing step.
 
 It is specifically designed to detect fake high-bitrate lossy files, such as MP3 audio upsampled or re-encoded to appear as 320 kbps, as well as lossy material (MP3) placed inside lossless containers (FLAC, WAV) to simulate higher quality.
 
