@@ -98,8 +98,8 @@ It can be used as an independent alternative for users familiar with tools such 
    - Source: gyan.dev (GitHub) -> FFmpeg (~104 MB). To avoid the automatic download, you can install it manually beforehand via Command Prompt: winget install --id Gyan.FFmpeg (to update: winget upgrade --id Gyan.FFmpeg)
 - Preview Download AudioFakeDetector_v6.4_All-in-One.zip (~130 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
 - Direct Download (~66 KB):
-   - Standard (no-install) https://bit.ly/3QAinOY
-   - Portable https://bit.ly/4tDVQiM
+   - AudioFakeDetector_v6.4_Standard.zip (no-install) https://bit.ly/3QAinOY
+   - AudioFakeDetector_v6.4_Portable.zip https://bit.ly/4tDVQiM
 - ZIP archives via Google Drive
 
 ---
