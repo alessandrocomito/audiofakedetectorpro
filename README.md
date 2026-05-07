@@ -1,5 +1,5 @@
 # Audio Fake Detector PRO
-**Current version: 6.4**
+**Current version: 6.5**
 
 ---
 
