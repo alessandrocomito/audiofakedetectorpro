@@ -1,5 +1,5 @@
 # Audio Fake Detector PRO
-**Truly Free**  
+**Truly Free Alternative**  
 **Current version: 6.6**
 
 ---
