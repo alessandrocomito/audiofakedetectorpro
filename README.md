@@ -28,7 +28,7 @@ The engine splits each file into multiple non-final segments plus one end segmen
 - Multi-segment frequency analysis
 - Joint stereo anomaly detection
 - Statistical validation using auCDtect
-- Automatic dependency management (FFmpeg, ffprobe)
+- Automatic dependency management (FFmpeg, FFprobe)
 - High-performance spectrogram processing
 - Detailed reporting (LOG, CSV, HTML)
 - Moves detected files to the ~Fake folder while preserving the original directory structure
