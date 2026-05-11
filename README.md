@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-**Current version: 6.7**
+**Current version: 6.8**
 
 ---
 
@@ -95,14 +95,14 @@ It can be used as an independent alternative for users familiar with tools such 
 ## 🚀 Download
 
 - If not found locally, required tools will be downloaded automatically:
-   - Source: SAC Slovak Antivirus Center → auCDtect (~72 KB)
+   - Source: SAC Slovak Antivirus Center → auCDtect (72 KB)
    - Source: gyan.dev (GitHub) → FFmpeg (~104 MB).
    - To avoid the automatic download, you can install it manually beforehand via Command Prompt: winget install --id Gyan.FFmpeg (to update: winget upgrade --id Gyan.FFmpeg)
-- Preview All-in-One (~160 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
-- Preview All-In-One no exe (~68 KB) https://bit.ly/4tvBk3h
-- Direct Download (~83 KB):
-   - Standard (no-install) https://bit.ly/3QAinOY
-   - Portable https://bit.ly/4tDVQiM
+- Preview All-in-One (161 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
+- Preview All-In-One no exe (68 KB) https://bit.ly/4tvBk3h
+- Direct Download:
+   - Standard no-install (82 KB) https://bit.ly/3QAinOY
+   - Portable (84 KB) https://bit.ly/4tDVQiM
 - ZIP archives via Google Drive
 
 ---
