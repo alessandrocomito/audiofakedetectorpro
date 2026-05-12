@@ -97,8 +97,8 @@ It can be used as an independent alternative for users familiar with tools such 
 ### ⚙️ Automatic Dependencies
 If required tools are not found locally, they will be downloaded automatically:
 
-- **auCDtect (72 KB)** — source: SAC Slovak Antivirus Center  
-- **FFmpeg (~105 MB)** — source: GitHub mirror / support repository: https://github.com/GyanD/codexffmpeg  
+- auCDtect (72 KB) — source: SAC Slovak Antivirus Center  
+- FFmpeg (~105 MB) — source: GitHub mirror / support repository: https://github.com/GyanD/codexffmpeg  
 
 To avoid automatic download, install manually via Command Prompt:
 
@@ -115,25 +115,25 @@ winget upgrade --id Gyan.FFmpeg
 ---
 
 ### 🌐 Preview
-- **All-in-One (Project Site — ≤ 200 KB)**  
+- All-in-One (Project Site — ≤ 200 KB)  
   https://alessandrocomito.github.io/audiofakedetectorpro  
 
-- **All-in-One (No EXE — ≤ 100 KB)**  
+- All-in-One (No EXE — ≤ 100 KB)  
   https://bit.ly/4tvBk3h  
 
 ---
 
 ### ⬇️ Direct Download
-- **Standard (No-install — ≤ 100 KB)**  
+- Standard (No-install — ≤ 100 KB)  
   https://bit.ly/3QAinOY  
 
-- **Portable (standalone — ≤ 100 KB)**  
+- Portable (standalone — ≤ 100 KB)  
   https://bit.ly/4tDVQiM  
 
 ---
 
 ### 📁 Archive
-- **ZIP packages (Google Drive)**  
+- ZIP packages (Google Drive)  
   Full releases, backups, and bundled builds
 
 ## 🧾 Keywords (SEO)
