@@ -98,7 +98,7 @@ It can be used as an independent alternative for users familiar with tools such 
 If required tools are not found locally, they will be downloaded automatically:
 
 - **auCDtect (72 KB)** — source: SAC Slovak Antivirus Center  
-- **FFmpeg (~104 MB)** — source: https://www.gyan.dev/ffmpeg/builds  
+- **FFmpeg (~105 MB)** — source: GitHub mirror / support repository: https://github.com/GyanD/codexffmpeg  
 
 To avoid automatic download, install manually via Command Prompt:
 
