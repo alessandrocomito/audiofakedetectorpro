@@ -94,16 +94,55 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 🚀 Download
 
-- If not found locally, required tools will be downloaded automatically:
-   - Source: SAC Slovak Antivirus Center → auCDtect (72 KB)
-   - Source: gyan.dev (GitHub) → FFmpeg (~104 MB).
-   - To avoid the automatic download, you can install it manually beforehand via Command Prompt: winget install --id Gyan.FFmpeg (to update: winget upgrade --id Gyan.FFmpeg)
-- Preview All-in-One (161 KB): Project site https://alessandrocomito.github.io/audiofakedetectorpro
-- Preview All-In-One no exe (68 KB) https://bit.ly/4tvBk3h
-- Direct Download:
-   - Standard no-install (82 KB) https://bit.ly/3QAinOY
-   - Portable (84 KB) https://bit.ly/4tDVQiM
-- ZIP archives via Google Drive
+### ⚙️ Automatic Dependencies
+If required tools are not found locally, they will be downloaded automatically:
+
+- **auCDtect (72 KB)** — source: SAC Slovak Antivirus Center  
+- **FFmpeg (~104 MB)** — source: https://www.gyan.dev/ffmpeg/builds  
+
+To avoid automatic download, install manually via Command Prompt:
+
+```bash
+winget install --id Gyan.FFmpeg
+```
+
+To update:
+
+```bash
+winget upgrade --id Gyan.FFmpeg
+```
+
+---
+
+### 🌐 Preview
+- **All-in-One (Project Site — ≤ 200 KB)**  
+  https://alessandrocomito.github.io/audiofakedetectorpro  
+
+- **All-in-One (No EXE — ≤ 100 KB)**  
+  https://bit.ly/4tvBk3h  
+
+---
+
+### ⬇️ Direct Download
+- **Standard (No-install — ≤ 100 KB)**  
+  https://bit.ly/3QAinOY  
+
+- **Portable (standalone — ≤ 100 KB)**  
+  https://bit.ly/4tDVQiM  
+
+---
+
+### 📁 Archive
+- **ZIP packages (Google Drive)**  
+  Full releases, backups, and bundled builds
+
+---
+
+## Note
+- All sizes are maximum guaranteed limits (upper bounds)  
+- FFmpeg is required for full functionality unless already installed  
+- Portable version does not require installation  
+- No-EXE version excludes executable components for safer preview/testing  
 
 ---
 
