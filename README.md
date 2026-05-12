@@ -118,7 +118,7 @@ winget upgrade --id Gyan.FFmpeg
 - All-in-One (Project Site — ≤ 200 KB)  
   https://alessandrocomito.github.io/audiofakedetectorpro  
 
-- All-in-One (No EXE — ≤ 100 KB)  
+- All-in-One (No EXE, CMD included — ≤ 100 KB)  
   https://bit.ly/4tvBk3h  
 
 ---
