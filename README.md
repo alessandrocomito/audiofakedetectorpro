@@ -100,7 +100,7 @@ If required tools are not found locally, they will be downloaded automatically:
 - auCDtect (72 KB) — source: SAC Slovak Antivirus Center  
 - FFmpeg (~105 MB) — source: GitHub mirror / support repository: https://github.com/GyanD/codexffmpeg  
 
-To avoid automatic download, install manually via Command Prompt:
+To avoid automatic download of FFmpeg, install manually via Command Prompt:
 
 ```bash
 winget install --id Gyan.FFmpeg
