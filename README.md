@@ -136,16 +136,6 @@ winget upgrade --id Gyan.FFmpeg
 - **ZIP packages (Google Drive)**  
   Full releases, backups, and bundled builds
 
----
-
-## Note
-- All sizes are maximum guaranteed limits (upper bounds)  
-- FFmpeg is required for full functionality unless already installed  
-- Portable version does not require installation  
-- No-EXE version excludes executable components for safer preview/testing  
-
----
-
 ## 🧾 Keywords (SEO)
 
 fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, Fakin' The Funk alternative
