@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-**Current version: 6.8 (2026-05-12)**  
+**Current version: 6.8 ![date](data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='30'><text x='0' y='20' fill='%23ff00ff' font-size='16'>(2026-05-12)</text></svg>)**  
 
 ---
 
