@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-**Current version: 6.8 **  <img src="date.svg" style="height: 1.6em; vertical-align: -0.3em;">
+Current version: 6.8  <img src="date.svg" style="height: 1.6em; vertical-align: -0.3em;">
 
 ---
 
