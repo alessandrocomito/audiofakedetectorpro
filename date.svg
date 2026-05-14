@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="30">
-  <text x="0" y="20" fill="#ff00ff" font-size="16">(2026-05-12)</text>
+<svg xmlns="http://www.w3.org/2000/svg" height="26">
+  <text x="0" y="19" fill="#ff00ff" font-size="18" font-family="sans-serif">
+    (2026-05-14)
+  </text>
 </svg>
