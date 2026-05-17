@@ -1,7 +1,7 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-Current version: 7.1  <img src="date.svg" style="height: 1em; vertical-align: -1em;">  
-Script.cmd: 2026-05-18
+Current version: 7.1  <img src="date.svg" style="height: 1em; vertical-align: -2em;">  
+Start_cript.cmd: 2026-05-18
 
 ---
 
