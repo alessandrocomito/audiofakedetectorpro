@@ -1,7 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-Current version: 7.1 updated <img src="date.svg" style="height: 1em; vertical-align: -3em;">  
-Start_script.cmd, DISPLAY_CONFIG_GUIDE.txt updated <img src="date2.svg" style="height: 1em; vertical-align: -3em;">  
+Current version: 7.1 updated <img src="date2.svg" style="height: 1em; vertical-align: -3em;">  
 
 ---
 
