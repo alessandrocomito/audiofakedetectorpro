@@ -1,7 +1,7 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
 Current version: 7.2 updated <img src="date2.svg" style="height: 1em; vertical-align: -3em;">  
-AudioFakeDetector_v7.2_All-in-One_noexe.zip updated <img src="date2.svg" style="height: 1em; vertical-align: -3em;">
+AudioFakeDetector_v7.2_All-in-One_noexe.zip updated <img src="date.svg" style="height: 1em; vertical-align: -3em;">
 
 ---
 
