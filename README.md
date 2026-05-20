@@ -121,7 +121,7 @@ winget upgrade --id Gyan.FFmpeg
 ---
 
 ### ⬇️ Direct Download
-- Standard (No-install — ≤ 100 KB) https://bit.ly/3QAinOY  
+- Standard (No-install — ≤ 100 KB)  https://bit.ly/3QAinOY  
 - Portable (standalone — ≤ 100 KB) https://bit.ly/4tDVQiM  
 
 ---
