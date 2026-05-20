@@ -97,10 +97,8 @@ It can be used as an independent alternative for users familiar with tools such 
 ### ⚙️ Automatic Dependencies
 If required tools are not found locally, they will be downloaded automatically:
 
-- auCDtect (72 KB) — source: SAC Slovak Antivirus Center
-  https://www.sac.sk/download/utildisk/aucdtect.zip
-- FFmpeg (~105 MB) — source: gyan.dev
-  https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip 
+- auCDtect (72 KB) — source: SAC Slovak Antivirus Center https://www.sac.sk/download/utildisk/aucdtect.zip
+- FFmpeg (~105 MB) — source: gyan.dev https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip 
 
 To avoid automatic download of FFmpeg, install manually via Command Prompt:
 
@@ -117,20 +115,16 @@ winget upgrade --id Gyan.FFmpeg
 ---
 
 ### 🌐 Preview
-- All-in-One (Project Site — ≤ 200 KB)  
-  https://alessandrocomito.github.io/audiofakedetectorpro  
+- All-in-One (Project Site — ≤ 200 KB) https://alessandrocomito.github.io/audiofakedetectorpro  
 
-- All-in-One CMD Edition (No EXE launcher — ≤ 100 KB)  
-  https://bit.ly/4tvBk3h  
+- All-in-One CMD Edition (No EXE launcher — ≤ 100 KB) https://bit.ly/4tvBk3h  
 
 ---
 
 ### ⬇️ Direct Download
-- Standard (No-install — ≤ 100 KB)  
-  https://bit.ly/3QAinOY  
+- Standard (No-install — ≤ 100 KB) https://bit.ly/3QAinOY  
 
-- Portable (standalone — ≤ 100 KB)  
-  https://bit.ly/4tDVQiM  
+- Portable (standalone — ≤ 100 KB) https://bit.ly/4tDVQiM  
 
 ---
 
