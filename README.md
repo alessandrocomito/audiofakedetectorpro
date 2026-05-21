@@ -110,7 +110,7 @@ Minimize the selection window. Right-click on the window title bar of the `.exe`
 ---
 
 ### 2B. Windows Terminal (Graphical Interface Method)
-Open Settings by clicking the down arrow in the tab bar and selecting **Settings** (or press `Ctrl + ,`).
+Minimize the selection window. Open Settings by clicking the down arrow in the tab bar and selecting **Settings** (or press `Ctrl + ,`).
 
 #### Font Profile Configuration
 1. In the left sidebar, under the "Profiles" section, click on **Windows PowerShell**.
