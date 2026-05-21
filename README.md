@@ -107,7 +107,7 @@ Minimize the selection window. Right-click on the window title bar of the `.exe`
 * **Window Size - Height:** `32` / `40`
 * Click **OK** to confirm.
 
-> ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Console Host stores settings per executable, while Windows Terminal stores settings per profile.
+> ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Console Host stores settings per executable.
 
 ---
 
@@ -128,7 +128,7 @@ Minimize the selection window. Open Settings by clicking the down arrow in the t
 4. Set **Launch rows** to `32` (or `40` if using Lucida Console).
 5. Click **Save** in the bottom right corner.
 
-> ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Console Host stores settings per executable, while Windows Terminal stores settings per profile.
+> ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Windows Terminal stores settings per profile.
 
 ---
 
