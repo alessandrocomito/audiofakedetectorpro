@@ -140,7 +140,7 @@ Open Settings by clicking the down arrow in the tab bar and selecting **Settings
 | Environment | Font Face | Font Size | Window Size |
 | :--- | :--- | :--- | :--- |
 | **Console Host** | Consolas <br> Lucida Console | 20 <br> 16 | 118 x 32 <br> 118 x 40 |
-| **Windows Terminal** | Consolas <br> Lucida Console <br> Cascadia Mono <br> Cascadia Code | 13 <br> 12 <br> 12 <br> 12 | 120 x 32 <br> 120 x 40 |
+| **Windows Terminal** | Consolas <br> Cascadia Mono <br> Cascadia Code <br><br> Lucida Console | 13 <br> 12 <br> 12 <br><br> 12 | 120 x 32 <br> 120 x 32 <br> 120 x 32 <br><br> 120 x 40 |
 
 ---
 
