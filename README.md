@@ -112,18 +112,18 @@ Minimize the selection window. Right-click on the window title bar of the `.exe`
 ### 2B. Windows Terminal (Graphical Interface Method)
 Minimize the selection window. Open Settings by clicking the down arrow in the tab bar and selecting **Settings** (or press `Ctrl + ,`).
 
-#### Font Profile Configuration
-1. In the left sidebar, under the "Profiles" section, click on **Windows PowerShell**.
-2. Select the **Appearance** tab.
-3. Locate the **Font face** option and select either `Consolas`, `Lucida Console`, `Cascadia Mono` or `Cascadia Code`.
-4. Set the **Font size** to `13` (for Consolas) or `12` (for Cascadia Mono/Code or Lucida Console).
-5. Click **Save** in the bottom right corner.
-
 #### Window Size Configuration
 1. In the left sidebar, click on the top option: **Startup**.
 2. Locate the **Launch columns** and **Launch rows** settings.
 3. Set **Launch columns** to `120`.
 4. Set **Launch rows** to `32` (or `40` if using Lucida Console).
+5. Click **Save** in the bottom right corner.
+
+#### Font Profile Configuration
+1. In the left sidebar, under the "Profiles" section, click on **Windows PowerShell**.
+2. Select the **Appearance** tab.
+3. Locate the **Font face** option and select either `Consolas`, `Lucida Console`, `Cascadia Mono` or `Cascadia Code`.
+4. Set the **Font size** to `13` (for Consolas) or `12` (for Cascadia Mono/Code or Lucida Console).
 5. Click **Save** in the bottom right corner.
 
 > ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Console Host stores settings per executable, while Windows Terminal stores settings per profile.
