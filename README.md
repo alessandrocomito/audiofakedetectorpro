@@ -76,7 +76,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ---
 
-## 📋 Requirements
+## 📌 Requirements
 
 - Windows 10/11 (32-bit or 64-bit)
 - PowerShell 5+
