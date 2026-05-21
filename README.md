@@ -107,6 +107,8 @@ Minimize the selection window. Right-click on the window title bar of the `.exe`
 * **Window Size - Height:** `32` / `40`
 * Click **OK** to confirm.
 
+> ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Console Host stores settings per executable, while Windows Terminal stores settings per profile.
+
 ---
 
 ### 2B. Windows Terminal (Graphical Interface Method)
