@@ -85,62 +85,62 @@ It can be used as an independent alternative for users familiar with tools such 
 ---
 
 ## 🖥️ Display Configuration Guide
-[cite_start]This guide explains how to correctly configure the console window for optimal readability and proper text output[cite: 1]. [cite_start]This is a one-time setup per executable or script[cite: 2].
+This guide explains how to correctly configure the console window for optimal readability and proper text output. This is a one-time setup per executable or script.
 
 ### 1. Open Application
-[cite_start]Double-click the executable (`.exe`) or double-click `Start_script.cmd` and select, if 2 scripts are in the current folder[cite: 2]:
-1. [cite_start]**Portable version** [cite: 2]
-2. [cite_start]**Standard version** [cite: 2]
+Double-click the executable (`.exe`) or double-click `Start_script.cmd` and select, if 2 scripts are in the current folder:
+1. **Portable version**
+2. **Standard version**
 
 ### 2A. Console Host (Classic Method)
-[cite_start]Minimize the selection window[cite: 3]. [cite_start]Right-click on the window title bar of the `.exe` or Windows PowerShell and select **Properties**[cite: 3, 4].
+Minimize the selection window. Right-click on the window title bar of the `.exe` or Windows PowerShell and select **Properties**.
 
 #### Font Settings
-* [cite_start]Select **TAB: Font** [cite: 4]
-* [cite_start]**Font name:** `Consolas` / `Lucida Console` [cite: 4]
-* [cite_start]**Size:** `20` / `16` [cite: 4]
+* Select **TAB: Font**
+* **Font name:** `Consolas` / `Lucida Console`
+* **Size:** `20` / `16`
 
 #### Layout Settings
-* [cite_start]Select **TAB: Layout** [cite: 4]
-* [cite_start]**Window Size - Width:** `118` / `118` [cite: 4]
-* [cite_start]**Window Size - Height:** `32` / `40` [cite: 4]
-* [cite_start]Click **OK** to confirm[cite: 4].
+* Select **TAB: Layout**
+* **Window Size - Width:** `118` / `118`
+* **Window Size - Height:** `32` / `40`
+* Click **OK** to confirm.
 
 ---
 
 ### 2B. Windows Terminal (Graphical Interface Method)
-[cite_start]Open Settings by clicking the down arrow in the tab bar and selecting **Settings** (or press `Ctrl + ,`)[cite: 5].
+Open Settings by clicking the down arrow in the tab bar and selecting **Settings** (or press `Ctrl + ,`).
 
 #### Font Profile Configuration
-1. [cite_start]In the left sidebar, under the "Profiles" section, click on **Windows PowerShell**[cite: 6].
-2. [cite_start]Select the **Appearance** tab[cite: 6].
-3. [cite_start]Locate the **Font face** option and select either `Consolas`, `Lucida Console`, `Cascadia Mono` or `Cascadia Code`[cite: 7].
-4. [cite_start]Set the **Font size** to `13` (for Consolas) or `12` (for Cascadia Mono/Code or Lucida Console)[cite: 8].
-5. [cite_start]Click **Save** in the bottom right corner[cite: 9].
+1. In the left sidebar, under the "Profiles" section, click on **Windows PowerShell**.
+2. Select the **Appearance** tab.
+3. Locate the **Font face** option and select either `Consolas`, `Lucida Console`, `Cascadia Mono` or `Cascadia Code`.
+4. Set the **Font size** to `13` (for Consolas) or `12` (for Cascadia Mono/Code or Lucida Console).
+5. Click **Save** in the bottom right corner.
 
 #### Window Size Configuration
-1. [cite_start]In the left sidebar, click on the top option: **Startup**[cite: 9].
-2. [cite_start]Locate the **Launch columns** and **Launch rows** settings[cite: 10].
-3. [cite_start]Set **Launch columns** to `120`[cite: 10].
-4. [cite_start]Set **Launch rows** to `32` (or `40` if using Lucida Console)[cite: 10].
-5. [cite_start]Click **Save** in the bottom right corner[cite: 11].
+1. In the left sidebar, click on the top option: **Startup**.
+2. Locate the **Launch columns** and **Launch rows** settings.
+3. Set **Launch columns** to `120`.
+4. Set **Launch rows** to `32` (or `40` if using Lucida Console).
+5. Click **Save** in the bottom right corner.
 
-> ⚠️ **Important Notes:** Only modify the settings shown above. [cite_start]Do not change other options[cite: 11]. [cite_start]Console Host stores settings per executable, while Windows Terminal stores settings per profile[cite: 12].
+> ⚠️ **Important Notes:** Only modify the settings shown above. Do not change other options. Console Host stores settings per executable, while Windows Terminal stores settings per profile.
 
 ---
 
 ### 📌 Expected Result
-* [cite_start]Clear text output [cite: 13]
-* [cite_start]No line wrapping issues [cite: 13]
-* [cite_start]Full log visibility [cite: 13]
-* [cite_start]Scrollback enabled [cite: 13]
+* Clear text output
+* No line wrapping issues
+* Full log visibility
+* Scrollback enabled
 
 #### Quick Summary Matrix
 
 | Environment | Font Face | Font Size | Window Size |
 | :--- | :--- | :--- | :--- |
-| **Console Host** | Consolas <br> Lucida Console | 20 <br> 16 | [cite_start]118 x 32 <br> 118 x 40 [cite: 13] |
-| **Windows Terminal** | Consolas <br> Lucida Console <br> Cascadia Mono <br> Cascadia Code | [cite_start]13 <br> 12 <br> 12 <br> 12 [cite: 13, 14] | [cite_start]120 x 32 <br> 120 x 40 [cite: 14] |
+| **Console Host** | Consolas <br> Lucida Console | 20 <br> 16 | 118 x 32 <br> 118 x 40 |
+| **Windows Terminal** | Consolas <br> Lucida Console <br> Cascadia Mono <br> Cascadia Code | 13 <br> 12 <br> 12 <br> 12 | 120 x 32 <br> 120 x 40 |
 
 ---
 
