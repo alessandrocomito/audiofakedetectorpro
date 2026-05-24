@@ -1,7 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
 Current version: 7.5 <img src="date2.svg" style="height: 1em; vertical-align: -3em;">  
-Start_script.cmd <img src="date3.svg" style="height: 1em; vertical-align: -3em;">  
 [Display Configuration Guide](#️-display-configuration-guide) <img src="date.svg" style="height: 1em; vertical-align: -3em;">
 
 ---
@@ -185,8 +184,8 @@ winget upgrade --id Gyan.FFmpeg
 ---
 
 ### ⬇️ Direct Download
-- Standard (No-install — ≤ 100 KB)  https://bit.ly/3QAinOY  
-- Portable (standalone — ≤ 100 KB) https://bit.ly/4tDVQiM  
+- Standard (No-install — ≤ 110 KB)  https://bit.ly/3QAinOY  
+- Portable (standalone — ≤ 110 KB) https://bit.ly/4tDVQiM  
 
 ---
 
