@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-[Current Version: 7.6](#-preview) <img src="date3.svg" style="height: 1em; vertical-align: -3em;">  
+[Current Version: 7.7](#-preview) <img src="date.svg" style="height: 1em; vertical-align: -3em;">  
 [Display Configuration Guide](#️-display-configuration-guide) <img src="date.svg" style="height: 1em; vertical-align: -3em;">
 
 ---
@@ -178,15 +178,10 @@ winget upgrade --id Gyan.FFmpeg
 ---
 
 ### 🌐 Preview
-- All-in-One (Project Site — ≤ 500 KB) https://alessandrocomito.github.io/audiofakedetectorpro
-- All-in-One v7.6 (mirror — ≤ 500 KB) https://bit.ly/3PvzH7Q
-- All-in-One 💡 CMD Edition (Double-click PS1 launcher, no EXE — ≤ 400 KB, reduces AV false positives) https://bit.ly/4tvBk3h
-
----
-
-### ⬇️ Direct Download
-- Standard (No-install — ≤ 200 KB)  https://bit.ly/3QAinOY  
-- Portable (standalone — ≤ 200 KB) https://bit.ly/4tDVQiM  
+- All-in-One (≤ 250 KB) https://bit.ly/4eErFDC
+- All-in-One 💡 CMD Edition https://bit.ly/43wIHga (Double-click Start_script.cmd PS1 launcher, no EXE — ≤ 100 KB, reduces AV false positives)
+- Standard (No-install — ≤ 150 KB) https://bit.ly/49uckCi
+- Portable (standalone — ≤ 150 KB) https://bit.ly/49ubB42
 
 ---
 
