@@ -179,7 +179,7 @@ winget upgrade --id Gyan.FFmpeg
 
 ### 🌐 Preview
 - All-in-One (≤ 250 KB) https://bit.ly/4eErFDC
-- All-in-One 💡 CMD Edition https://bit.ly/43wIHga (Double-click Start_script.cmd PS1 launcher, no EXE — ≤ 100 KB, reduces AV false positives)
+- All-in-One 💡 CMD Edition https://bit.ly/43wIHga (Double-click Start_script.cmd PS1 launcher, no EXE — ≤ 100 KB, **no** AV false positives)
 - Standard (No-install — ≤ 150 KB) https://bit.ly/49uckCi
 - Portable (standalone — ≤ 150 KB) https://bit.ly/49ubB42
 
