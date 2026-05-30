@@ -177,7 +177,7 @@ winget upgrade --id Gyan.FFmpeg
 ---
 
 ### 🌐 Preview
-- All-in-One ZIP package (Google Drive, ≤ 150 KB) https://bit.ly/4xgBhLV
+- All-in-One ZIP package (Google Drive, ≤ 110 KB) https://bit.ly/4xgBhLV
 
 ---
 
