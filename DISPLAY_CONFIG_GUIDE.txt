@@ -1,0 +1,110 @@
+DISPLAY CONFIGURATION GUIDE
+===========================
+
+This guide explains how to correctly configure the console window for optimal 
+readability and proper text output. This is a one-time setup per executable or script.
+
+----------------------------------------------------
+1. OPEN APPLICATION
+----------------------------------------------------
+Double-click the executable (.exe) or double-click Start_script.cmd and select, 
+if 2 scripts are in the current folder:
+1 - Portable version
+2 - Standard version
+
+The .exe is a C# launcher that opens a .cmd file, which in turn launches the
+PowerShell (.ps1) script. Console settings must be configured on the cmd/PowerShell
+window that appears, not on the .exe itself.
+
+----------------------------------------------------
+2A. CONSOLE HOST (Classic - Properties available)
+----------------------------------------------------
+Minimize the selection window.
+
+Right-click on the window title bar of the cmd/PowerShell console window.
+
+Select: Properties
+
+NOTE: Console Host stores settings per window title, not per executable.
+      If the title changes between runs, you may need to re-apply settings.
+
+----------------------------------------------------
+3. FONT (Console Host)
+----------------------------------------------------
+Select TAB: Font
+
+Font name : Consolas       / Lucida Console
+Size      : 20             / 16
+
+----------------------------------------------------
+4. LAYOUT (Console Host)
+----------------------------------------------------
+Select TAB: Layout
+
+WINDOW SIZE
+Width    : 118             / 118
+Height   : 32              / 40
+
+Click OK to confirm.
+
+----------------------------------------------------
+IMPORTANT NOTES
+----------------------------------------------------
+Only modify the settings shown above. Do not change other options.
+
+----------------------------------------------------
+2B. WINDOWS TERMINAL (Graphical Interface Method)
+----------------------------------------------------
+Minimize the selection window.
+
+Open Settings by clicking the down arrow in the tab bar and selecting Settings
+(or press "Ctrl + ,").
+
+FONT PROFILE CONFIGURATION:
+1. In the left sidebar, under the "Profiles" section, click on "Windows PowerShell"
+   or "Command Prompt" (depending on which profile opens when the .exe is launched).
+2. Select the "Appearance" tab.
+3. Locate the "Font face" option and select either "Consolas" or "Lucida Console" or
+   "Cascadia Mono" or "Cascadia Code".
+4. Set the "Font size" to "13" (for Consolas) or "12"
+   (for Cascadia Mono/Code or Lucida Console).
+5. Click "Save" in the bottom right corner.
+
+WINDOW SIZE CONFIGURATION:
+1. In the left sidebar, click on the top option: "Startup".
+2. Locate the "Launch columns" and "Launch rows" settings.
+3. Set "Launch columns" to 120.
+4. Set "Launch rows" to 32 (or 40 if using Lucida Console).
+5. Click "Save" in the bottom right corner.
+
+----------------------------------------------------
+IMPORTANT NOTES
+----------------------------------------------------
+Only modify the settings shown above. Do not change other options.
+
+Windows Terminal stores settings per profile.
+
+----------------------------------------------------
+EXPECTED RESULT
+----------------------------------------------------
+Clear text output
+No line wrapping issues
+Full log visibility
+Scrollback enabled
+
+----------------------------------------------------
+QUICK SUMMARY
+----------------------------------------------------
+CONSOLE HOST
+Font        : Consolas 20       / Lucida Console 16
+Window Size : 118 x 32          / 118 x 40
+
+WINDOWS TERMINAL
+Font        : Consolas 13       / Lucida Console 12
+              Cascadia Mono 12
+              Cascadia Code 12
+Window Size : 120 x 32          / 120 x 40
+
+----------------------------------------------------
+END OF GUIDE
+----------------------------------------------------
