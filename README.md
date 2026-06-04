@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-[Current Version: 7.7 (2026-06-04)](#-preview) ![date](https://img.shields.io/badge/release-2026--06--04-orange) 
+[Current Version: 7.7 (2026-06-04)](#-preview)
 
 ---
 
