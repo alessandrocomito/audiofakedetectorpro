@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-[Current Version: 7.7 (2026-06-07 - 18🕡)](#-preview)
+[Current Version: 7.7 (2026-06-07 - 18:30)](#-preview)
 
 ---
 
