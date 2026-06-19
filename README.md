@@ -89,8 +89,10 @@ It can be used as an independent alternative for users familiar with tools such 
 ### ⚙️ Automatic Dependencies
 If required tools are not found locally, they will be downloaded automatically:
 
-- auCDtect (72 KB) — source: SAC Slovak Antivirus Center https://www.sac.sk/download/utildisk/aucdtect.zip
-- FFmpeg (~105 MB) — source: gyan.dev https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip 
+- auCDtect (72 KB) - source: SAC Slovak Antivirus Center  
+  https://www.sac.sk/download/utildisk/aucdtect.zip
+- FFmpeg (~105 MB) - source: gyan.dev  
+  https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip 
 
 To avoid automatic download of FFmpeg, install manually via Command Prompt:
 
@@ -108,9 +110,9 @@ winget upgrade --id Gyan.FFmpeg
 
 ### 🌐 Preview
 - AudioFakeDetector_v7.7_All-In-One.zip (Portable+Standard editions)   
-  📁 Google Drive (117 KB (120.335 byte))  👁️ https://bit.ly/4xgBhLV   📥 https://bit.ly/4g0jlyA  
+ 👁️ https://bit.ly/4xgBhLV   📥 https://bit.ly/4g0jlyA  📁 Google Drive (117 KB (120.335 byte))   
   SHA256: ca727303d260a673574450dde3e43ac63ffda34989933ea5e2c6c1b5f519292e
- - Portable : delete AudioFakeDetector_v7.7.ps1 from zip
+- Portable delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
 
 ---
