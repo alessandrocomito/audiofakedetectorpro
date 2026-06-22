@@ -115,6 +115,10 @@ winget upgrade --id Gyan.FFmpeg
 - Portable delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
 
+### 💬 Support & Community
+Have questions, bug reports, or want to discuss features? Join the official thread on Audio Science Review:
+👉 [Audio Science Review - Audio Fake Detector PRO Forum Thread](https://www.audiosciencereview.com/forum/index.php?threads/audio-fake-detector-pro.71538/)
+
 ---
 
 ## 🧾 Keywords (SEO)
