@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-[Current Version: 7.7 (2026-06-21)](#-preview)
+[Current Version: 7.7 (2026-06-22)](#-preview)
 
 ---
 
@@ -110,8 +110,8 @@ winget upgrade --id Gyan.FFmpeg
 
 ### 🌐 Preview
 - AudioFakeDetector_v7.7_All-In-One.zip (Portable+Standard editions)   
- 👁️ https://bit.ly/4xgBhLV   📥 https://bit.ly/4g0jlyA  📁 Google Drive (121 KB (124.051 byte))   
-  SHA256: a6d587958219650f0b5771ed221badbba0ebf55382cd7a362c1ffc79aa1aa7a5
+ 👁️ https://bit.ly/4xgBhLV   📥 https://bit.ly/4g0jlyA  📁 Google Drive (118 KB (121.398 byte))   
+  SHA256: c8d8cb1ec1dea690b978f0bae2a642d24155e622037abb0d7ea4eccc076f9195
 - Portable delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
 
