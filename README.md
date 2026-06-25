@@ -108,11 +108,16 @@ winget upgrade --id Gyan.FFmpeg
 
 ## 🌐 Preview
 - AudioFakeDetector_v7.7_All-In-One.zip (Portable+Standard editions)  
-  👁️ https://bit.ly/4xgBhLV   📥 https://bit.ly/4g0jlyA  
+  👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA  
   📁 Google Drive (128 KB (131.675 byte))  
 SHA256: 3215173f633907a1dc4eb2301c674f714b1f4e28f462f0fb03684c7b43ed042e
 - Portable : delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
+- AudioFakeDetector_v7.7_Portable_Offline.7z    
+  👁️ https://bit.ly/4oNoKeV  📥 https://bit.ly/4oOsywh  
+  📁 Google Drive (53,0 MB (55.582.236 byte))  
+  SHA256: 7f3d0a87936f6f4804639d17f5674554ed92faf7468c38245c499d3c2d5f642b
+
 
 ---
 
