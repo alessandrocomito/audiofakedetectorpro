@@ -97,13 +97,13 @@ If required tools are not found locally, they will be downloaded automatically:
 To avoid automatic download of FFmpeg, install manually via Command Prompt:
 
 ```bash
-winget install --id Gyan.FFmpeg
+winget install --id Gyan.FFmpeg.Essentials
 ```
 
 To update:
 
 ```bash
-winget upgrade --id Gyan.FFmpeg
+winget upgrade --id Gyan.FFmpeg.Essentials
 ```
 
 ## 🌐 Preview
