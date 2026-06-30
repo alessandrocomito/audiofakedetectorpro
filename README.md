@@ -113,8 +113,7 @@ winget upgrade --id Gyan.FFmpeg.Essentials
 - Portable : delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
 - AudioFakeDetector_v7.7_Portable_Offline.7z   (Full offline, FFmpeg web update offered)  
-  👁️ https://bit.ly/4oNoKeV TXT https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh  
-  📁 Google Drive (28,4 MB (29.847.434 byte)) SHA256: bc6ace36f801cc96a0eb6e53ec21434fcde1301984eade34f146acb7bdc0e734
+  👁️ https://bit.ly/4oNoKeV TXT https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh  📁 Google Drive (28,4 MB (29.847.434 byte)) SHA256: bc6ace36f801cc96a0eb6e53ec21434fcde1301984eade34f146acb7bdc0e734
 
 ---
 
