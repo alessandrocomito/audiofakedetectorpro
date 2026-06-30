@@ -118,7 +118,7 @@ winget upgrade --id Gyan.FFmpeg.Essentials
 ---
 
 ## 💬 Support & Community
-Have questions, bug reports, or want to discuss features? Join the official thread on Audio Science Review: 
+Have questions, bug reports, or want to discuss features? Join the official thread on Audio Science Review:  
 👉 [Audio Science Review - Audio Fake Detector PRO Forum Thread](https://www.audiosciencereview.com/forum/index.php?threads/audio-fake-detector-pro.71538/)
 
 ---
