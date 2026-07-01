@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-[Current Version: 7.7 (2026-06-29)](#-preview)
+[Current Version: 7.7 (2026-07-01)](#-preview)
 
 ---
 
@@ -108,12 +108,12 @@ winget upgrade --id Gyan.FFmpeg.Essentials
 
 ## 🌐 Preview
 - AudioFakeDetector_v7.7_All-In-One.zip (Portable+Standard editions, web downloads)  
-  👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA 📁 Google Drive (136 KB (140.061 byte))  
- SHA256: 6ca9905c950833ac8e65608cb01d994449083cd7a7acd7011fe5aa2b444ae102
+  👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA 📁 Google Drive (141 KB (145.336 byte))  
+ SHA256: 1f586f2c8fc3d411368d0dd1290a46a54d53d38a99067c316109e0e95da0915d
 - Portable : delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
 - AudioFakeDetector_v7.7_Portable_Offline.7z   (Full offline, FFmpeg web update offered)  
-  👁️ https://bit.ly/4oNoKeV 📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh  📁 Google Drive (28,4 MB (29.847.434 byte)) SHA256: bc6ace36f801cc96a0eb6e53ec21434fcde1301984eade34f146acb7bdc0e734
+  👁️ https://bit.ly/4oNoKeV 📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh  📁 Google Drive (28,5 MB (29.905.957 byte)) SHA256: 5d0878a7cf6bb3daf85b33c05404d4db7d224f36702a933d6cfcd61592a33c6d
 
 ---
 
