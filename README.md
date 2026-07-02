@@ -31,7 +31,7 @@ The engine splits each file into multiple non-final segments plus one end segmen
 - Automatic dependency management (FFmpeg, FFprobe)
 - High-performance spectrogram processing
 - Detailed reporting: LOG - CSV  
-Click to cycle: [CSV ( )] → [CSV (,)] → [CSV (;)] → [CSV ( )])
+Click to cycle: [CSV ( )] → [CSV (,)] → [CSV (;)] → [CSV ( )]
 - Moves detected files to the ~Fake folder while preserving the original directory structure
 
 ---
