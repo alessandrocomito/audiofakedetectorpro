@@ -20,6 +20,16 @@ The engine splits each file into multiple non-final segments plus one end segmen
 
 ---
 
+## 📸 Screenshots
+
+![](Screenshot%201.png)
+
+![](Screenshot%202.png)
+
+![](Screenshot%203.png)
+
+---
+
 ## ⚙️ Key Features
 
 - Detection of fake 320 kbps MP3 files
