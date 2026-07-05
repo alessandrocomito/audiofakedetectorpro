@@ -13,7 +13,7 @@ if 2 scripts are in the current folder:
 2 - Standard version
 
 The .exe is a C# launcher that opens a .cmd file, which in turn launches the
-PowerShell (.ps1) script. Console settings must be configured on the cmd/PowerShell
+PowerShell (.ps1) script. Console settings must be configured on the PowerShell
 window that appears, not on the .exe itself.
 
 ----------------------------------------------------
@@ -21,7 +21,7 @@ window that appears, not on the .exe itself.
 ----------------------------------------------------
 Minimize the selection window.
 
-Right-click on the window title bar of the cmd/PowerShell console window.
+Right-click on the window title bar of the PowerShell console window.
 
 Select: Properties
 
@@ -62,7 +62,6 @@ Open Settings by clicking the down arrow in the tab bar and selecting Settings
 
 FONT PROFILE CONFIGURATION:
 1. In the left sidebar, under the "Profiles" section, click on "Windows PowerShell"
-   or "Command Prompt" (depending on which profile opens when the .exe is launched).
 2. Select the "Appearance" tab.
 3. Locate the "Font face" option and select either "Consolas" or "Lucida Console" or
    "Cascadia Mono" or "Cascadia Code".
