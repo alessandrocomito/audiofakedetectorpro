@@ -1,6 +1,6 @@
 # Audio Fake Detector PRO
 **Truly Free Alternative**  
-[Current Version: 7.7_2026-07-04](#-preview)
+[Current Version: 7.7_2026-07-19](#-preview)
 
 ---
 
@@ -70,7 +70,7 @@ This approach reduces false positives and improves detection reliability across 
 ## 📦 Supported Formats
 
 **Lossy:**
-MP3, AAC, M4A, OGG, OPUS, WMA
+MP3, AAC, M4A, MP4, OGG, OPUS, WMA
 
 **Lossless:**
 FLAC, WAV, APE, AIFF, AIF, WV
@@ -101,9 +101,11 @@ It can be used as an independent alternative for users familiar with tools such 
 If required tools are not found locally, they will be downloaded automatically:
 
 - auCDtect (72 KB) - source: SAC Slovak Antivirus Center  
-  📥 https://www.sac.sk/download/utildisk/aucdtect.zip
+  📥 https://www.sac.sk/download/utildisk/aucdtect.zip  
+- Z-Zip console executable (588 KB) - sounrce: 7-Zip   
+  📥 https://github.com/ip7z/7zip/releases/download/26.02/7zr.exe
 - FFmpeg (~105 MB) - source: gyan.dev  
-  📥 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip 
+  📥 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip  
 
 To avoid automatic download of FFmpeg, install manually via Command Prompt:
 
@@ -120,14 +122,14 @@ winget upgrade --id Gyan.FFmpeg.Essentials
 ## 🌐 Preview
 - AudioFakeDetector_v7.7_All-In-One.zip (Portable+Standard editions, web downloads)  
   👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA  
-  📁 Google Drive (147 KB (151.013 byte))  
-  SHA256: 9d56e9cec66367ad6e8738ac6d6a47838803d38039b5bef4002cec7812b4949f
+  📁 Google Drive (170 KB (174.641 byte))  
+  SHA256: fa17a7c514a336961f838e8094fcc29624b511edeaf015300b691aaa1c61cb77  
 - Portable : delete AudioFakeDetector_v7.7.ps1 from zip
 - Standard: delete AudioFakeDetector_v7.7_Portable.ps1 from zip
 - AudioFakeDetector_v7.7_Portable_Offline.7z   (Full offline, FFmpeg web update offered)  
   📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh  
-  📁 Google Drive (28,5 MB (29.897.512 byte))  
-  SHA256: 7b968bc0c9be846e8d695bb4b0f133b272194f660591f3468c32a08a08a26b51
+  📁 Google Drive (28,7 MB (30.178.524 byte))  
+ SHA256: 1068bfef06a1139f8fc64e63dd80da76317a716b99135ec596e4739dba5b9f72
 
 ---
 
