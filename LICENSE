@@ -1,9 +1,43 @@
+===============================================================================
 Audio Fake Detector PRO v7.7
-(c) 2026 Alessandro Comito
+Copyright (c) 2026 Alessandro Comito. All rights reserved.
+===============================================================================
 
-License Notice
-This software is freeware. It is provided "AS IS", without warranty of any kind. The source code is provided for reference purposes only.
-You are allowed to view and study the source code; however, you are NOT permitted to modify, redistribute, reuse, or create derivative works based on it,
-in whole or in part, without explicit written permission from the author.
-This notice applies to all versions of the software, including any previous releases.
+1. APPLICATION LICENSE TERMS
+-------------------------------------------------------------------------------
+Audio Fake Detector PRO is provided as Freeware for personal and internal use.
+This software is provided "AS IS", without warranty of any kind, express or implied.
+
+The source code and scripts (including .ps1 PowerShell scripts and .cmd batch files)
+are included strictly as functional components necessary for execution and for
+reference/educational purposes.
+
+You are permitted to view and run the source code. However, you are NOT permitted
+to modify, redistribute, sublicense, reuse, or create derivative works from any part
+of this software, in whole or in part, without explicit written permission from the
+author (Alessandro Comito).
+
+This notice applies to Audio Fake Detector PRO v7.7 and all previous or future releases.
+
+
+2. THIRD-PARTY COMPONENTS & ACKNOWLEDGMENTS
+-------------------------------------------------------------------------------
+This software package includes standalone binary tools distributed alongside
+the main application. These tools remain the intellectual property of their
+respective authors and are governed by their own open-source licenses:
+
+a) FFmpeg (ffmpeg.exe)
+   - Copyright (c) Fabrice Bellard and the FFmpeg developers.
+   - Licensed under the GNU Lesser General Public License (LGPL) v2.1 or later.
+   - Audio Fake Detector PRO does not claim ownership of FFmpeg.
+   - FFmpeg source code and license details are available at: https://ffmpeg.org
+
+b) 7-Zip Command Line Executable (7za.exe / 7z.exe)
+   - Copyright (c) Igor Pavlov.
+   - Licensed under the GNU LGPL / BSD 3-Clause License.
+   - Source code and license details are available at: https://7-zip.org
+
+Audio Fake Detector PRO is an independent utility and is not affiliated with,
+endorsed by, or sponsored by the FFmpeg or 7-Zip projects.
+===============================================================================
 
