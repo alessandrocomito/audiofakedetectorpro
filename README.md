@@ -124,7 +124,7 @@ winget upgrade --id Gyan.FFmpeg.Essentials
 ```
 
 * .NET Desktop Runtime 8 (58 MB, web download and auto install offered) - source: dotnet.microsoft.com  
-📥 https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.29/windowsdesktop-runtime-8.0.29-win-x64.exe
+📥 https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.29/windowsdesktop-runtime-8.0.29-win-x64.exe  
 Or install manually via Command Prompt:
 
 ```bash
