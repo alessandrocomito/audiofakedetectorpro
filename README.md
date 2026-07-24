@@ -92,7 +92,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 📌 Requirements
 
-* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET Desktop Runtime 8
+* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Desktop Runtime
 * PowerShell 5+
 * Internet connection (first run only, for dependencies)
 
@@ -123,7 +123,7 @@ To update:
 winget upgrade --id Gyan.FFmpeg.Essentials
 ```
 
-* .NET Desktop Runtime 8 (58 MB, web download and auto install offered) - source: dotnet.microsoft.com  
+* .NET 8 Desktop Runtime (58 MB, web download and auto install offered) - source: dotnet.microsoft.com  
 📥 https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.29/windowsdesktop-runtime-8.0.29-win-x64.exe  
 Or install manually via Command Prompt:
 
@@ -139,7 +139,7 @@ winget install Microsoft.DotNet.DesktopRuntime.8
 * Standard: delete AudioFakeDetector\_v7.7\_Portable.ps1 from zip
 * AudioFakeDetector\_v7.7\_Portable\_Offline.7z   (Full offline, FFmpeg web update offered)  
 📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh    📁 Google Drive (28,7 MB)
-* AudioFakeDetector8.7z (Full offline, .NET Desktop Runtime 8 web download offered)  
+* AudioFakeDetector8.7z (Full offline, .NET 8 Desktop Runtime web download offered)  
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY   📁 Google Drive (33 MB)
 
 
