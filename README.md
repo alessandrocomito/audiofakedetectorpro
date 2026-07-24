@@ -31,7 +31,7 @@ The engine splits each file into multiple non-final segments plus one end segmen
 
 ![Screenshot 3](Screenshot%203.png)
 
---
+---
 
 ## ⚙️ Key Features
 
