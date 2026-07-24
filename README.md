@@ -5,7 +5,7 @@
 
 > 🚀 Audio Analyzer Update: Significantly reduced waiting times during analysis compared to v7.7 versions.
 
-\---
+---
 
 Advanced audio analysis tool designed to detect fake and artificially upscaled audio using signal processing techniques.
 
@@ -21,15 +21,15 @@ It is specifically designed to detect fake high-bitrate lossy files, such as MP3
 
 The engine splits each file into multiple non-final segments plus one end segment. Each non-final segment is analysed independently via spectrogram bitmap inspection. A half-or-strict-majority wall vote aggregates the per-segment findings into a single file-level verdict. Lossless files are additionally validated through auCDtect statistical PCM analysis.
 
-\---
+---
 
 ## 📸 Screenshots
 
-!\[](Screenshot%201.png)
+![Screenshot 1](Screenshot%201.png)
 
-!\[](Screenshot%202.png)
+![Screenshot 2](Screenshot%202.png)
 
-!\[](Screenshot%203.png)
+![Screenshot 3](Screenshot%203.png)
 
 
 
@@ -47,7 +47,7 @@ The engine splits each file into multiple non-final segments plus one end segmen
 On selection window, click to cycle: \[CSV ( )] → \[CSV (,)] → \[CSV (;)] → \[CSV ( )]
 * Moves detected files to the \~Fake folder while preserving the original directory structure
 
-\---
+---
 
 ## 🧠 Detection Technology
 
@@ -59,7 +59,7 @@ Audio Fake Detector PRO uses a hybrid analysis engine:
 
 This approach reduces false positives and improves detection reliability across different audio formats.
 
-\---
+---
 
 ## 🎯 Use Cases
 
@@ -68,7 +68,7 @@ This approach reduces false positives and improves detection reliability across 
 * Audio authenticity analysis for DJs, producers, and collectors
 * Library cleaning and archival verification
 
-\---
+---
 
 ## 📦 Supported Formats
 
@@ -78,7 +78,7 @@ MP3, AAC, M4A, OGG, OPUS, WMA
 **Lossless:**
 FLAC, WAV, APE, AIFF, AIF, WV
 
-\---
+---
 
 ## 💡 Why Audio Fake Detector PRO?
 
@@ -88,7 +88,7 @@ Audio Fake Detector PRO is designed to help users identify these cases with a mo
 
 It can be used as an independent alternative for users familiar with tools such as Fakin' The Funk.
 
-\---
+---
 
 ## 📌 Requirements
 
@@ -96,7 +96,7 @@ It can be used as an independent alternative for users familiar with tools such 
 * PowerShell 5+
 * Internet connection (first run only, for dependencies)
 
-\---
+---
 
 ## 🚀 Download
 
@@ -149,7 +149,7 @@ winget install Microsoft.DotNet.DesktopRuntime.8
 Have questions, bug reports, or want to discuss features? Join the official thread on Audio Science Review:  
 👉 [Audio Science Review - Audio Fake Detector PRO Forum Thread](https://www.audiosciencereview.com/forum/index.php?threads/audio-fake-detector-pro.71538/)
 
-\---
+---
 
 ## ℹ️ Technical Notes
 
@@ -163,13 +163,13 @@ If FFmpeg is already installed system-wide it is used as-is (v7.7)
 %LOCALAPPDATA%\\AudioFakeDetector\\ ← auCDtect, FFmpeg, state/stamp files  
 %TEMP%\\ ← spectrogram PNGs, WAV segments (deleted after each run)
 
-\---
+---
 
 ## 🧾 Keywords (SEO)
 
 fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, Fakin' The Funk alternative
 
-\---
+---
 
 ## ⚠️ Disclaimer
 
