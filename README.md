@@ -112,21 +112,16 @@ If required tools are not found locally, they will be downloaded automatically:
 📥 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip
 
 To avoid automatic download of FFmpeg from gyan.dev, install manually via Command Prompt:
-
 ```bash
 winget install --id Gyan.FFmpeg.Essentials
 ```
-
 To update:
-
 ```bash
 winget upgrade --id Gyan.FFmpeg.Essentials
 ```
-
-* .NET 8 Desktop Runtime (58 MB, web download and auto install offered) - source: dotnet.microsoft.com  
+- .NET 8 Desktop Runtime (58 MB, web download and auto install offered) - source: dotnet.microsoft.com  
 📥 https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.29/windowsdesktop-runtime-8.0.29-win-x64.exe  
 Or install manually via Command Prompt:
-
 ```bash
 winget install Microsoft.DotNet.DesktopRuntime.8
 ```
