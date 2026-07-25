@@ -92,7 +92,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 📌 Requirements
 
-* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Desktop Runtime
+* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Runtime
 * PowerShell 5+
 * Internet connection (first run only, for dependencies)
 
@@ -119,11 +119,11 @@ To update:
 ```bash
 winget upgrade --id Gyan.FFmpeg.Essentials
 ```
-- .NET 8 Desktop Runtime (58 MB, web download and auto install offered) - source: dotnet.microsoft.com  
-📥 https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.29/windowsdesktop-runtime-8.0.29-win-x64.exe  
+- .NET 8 Runtime (27.3 MB, web download and auto install offered) - source: dotnet.microsoft.com  
+📥 https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.29/dotnet-runtime-8.0.29-win-x64.exe    
 Or install manually via Command Prompt:
 ```bash
-winget install Microsoft.DotNet.DesktopRuntime.8
+winget install Microsoft.DotNet.Runtime.8
 ```
 
 ## 🌐 Preview
