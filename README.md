@@ -136,7 +136,7 @@ winget install Microsoft.DotNet.Runtime.8
 * AudioFakeDetector\_v7.7\_Portable\_Offline.7z   (Full offline, FFmpeg web update offered)  
 📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh    📁 Google Drive (28,7 MB)
 * AudioFakeDetector8.7z (Full offline, .NET 8 Runtime web download offered)  
-📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY   📁 Google Drive (33 MB)
+📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY   📁 Google Drive (32.8 MB)
 
 
 
