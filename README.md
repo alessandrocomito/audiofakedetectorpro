@@ -109,7 +109,7 @@ If required tools are not found locally, they will be downloaded automatically:
 
 - FFmpeg - source for v7.7 gyan.dev (~105 MB) / v8.1: BtbN (67.2 MB)  
 📥 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip  
-📥 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip
+📥 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip  
 
 To avoid automatic download of FFmpeg from gyan.dev, install manually via Command Prompt:
 ```bash
@@ -120,8 +120,9 @@ To update:
 winget upgrade --id Gyan.FFmpeg.Essentials
 ```
 - .NET 8 Runtime (27.3 MB, web download and auto install offered) - source: dotnet.microsoft.com  
-📥 https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.29/dotnet-runtime-8.0.29-win-x64.exe    
-Or install manually via Command Prompt:
+📥 https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.29/dotnet-runtime-8.0.29-win-x64.exe  
+
+To avoid automatic download of .NET 8 Rutime from dotnet.microsoft.com, install manually via Command Prompt:
 ```bash
 winget install Microsoft.DotNet.Runtime.8
 ```
