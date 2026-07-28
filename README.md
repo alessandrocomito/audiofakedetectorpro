@@ -1,7 +1,7 @@
 # Audio Fake Detector PRO
 
 **Truly Free Alternative**  
-[v7.7\_2026-07-21 (x86/x64) / v8.1 (x64) 2026-07-25](#-preview) → Recommended for faster analysis
+[v8.1 (x64) 2026-07-25](#-preview)
 
 > 🚀 Audio Analyzer Update: Significantly reduced waiting times during analysis compared to v7.7 versions - same detection precision.
 
@@ -129,14 +129,17 @@ winget install Microsoft.DotNet.Runtime.8
 
 ## 🌐 Preview
 
-* AudioFakeDetector\_v7.7\_All-In-One.zip (Portable+Standard editions, web downloads)  
-👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA    📁 Google Drive (172 KB)
-* Portable : delete AudioFakeDetector\_v7.7.ps1 from zip
-* Standard: delete AudioFakeDetector\_v7.7\_Portable.ps1 from zip
-* AudioFakeDetector\_v7.7\_Portable\_Offline.7z   (Full offline, FFmpeg web update offered)  
-📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh    📁 Google Drive (28,7 MB)
-* AudioFakeDetector8.7z (Full offline, .NET 8 Runtime web download offered)  
+* AudioFakeDetector8.7z → Recommended - Faster analysis (Full offline, .NET 8 Runtime web download offered)  
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY   📁 Google Drive (32.8 MB)
+
+v7.7_2026-07-21  
+* AudioFakeDetector\_v7.7\_All-In-One.zip (Portable+Standard editions, web downloads)  
+👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA    📁 Google Drive (172 KB)  
+  Portable : delete AudioFakeDetector\_v7.7.ps1 from zip  
+  Standard: delete AudioFakeDetector\_v7.7\_Portable.ps1 from zip  
+* AudioFakeDetector\_v7.7\_Portable\_Offline.7z   (Full offline, FFmpeg web update offered)    
+📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh    📁 Google Drive (28.7 MB)
+
 
 
 
