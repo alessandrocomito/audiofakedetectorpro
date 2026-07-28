@@ -107,7 +107,7 @@ If required tools are not found locally, they will be downloaded automatically:
 - auCDtect (72 KB) - source: SAC Slovak Antivirus Center  
 📥 https://www.sac.sk/download/utildisk/aucdtect.zip
 
-- FFmpeg - source for v7.7 gyan.dev (~105 MB) / v8.x: BtbN (67.2 MB)  
+- FFmpeg - source for v7.7: gyan.dev (~105 MB) / v8.x: BtbN (67.2 MB)  
 📥 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip  
 📥 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip  
 
