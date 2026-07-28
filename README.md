@@ -92,7 +92,7 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ## 📌 Requirements
 
-* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Runtime
+* v8.x: Windows 10/11 64-bit + .NET 8 Runtime / v7.7: Windows 10/11 (32-bit or 64-bit)
 * PowerShell 5+
 * Internet connection (first run only, for dependencies)
 
@@ -132,7 +132,7 @@ winget install Microsoft.DotNet.Runtime.8
 * AudioFakeDetector8.7z → Recommended - Faster analysis (Full offline, .NET 8 Runtime web download offered)  
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY   📁 Google Drive (32.8 MB)
 
-v7.7_2026-07-21 (x86/64)  
+v7.7_2026-07-21 (x86/x64)  
 * AudioFakeDetector\_v7.7\_All-In-One.zip (Portable+Standard editions, web downloads)  
 👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA    📁 Google Drive (172 KB)  
   Portable : delete AudioFakeDetector\_v7.7.ps1 from zip  
