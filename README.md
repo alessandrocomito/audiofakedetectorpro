@@ -129,7 +129,7 @@ winget install Microsoft.DotNet.Runtime.8
 
 ## 🌐 Preview
 
-* AudioFakeDetector8.7z → Recommended - Faster analysis (Full offline, .NET 8 Runtime web download offered)  
+* AudioFakeDetector8.7z (x64) → Recommended - Faster analysis (Full offline, .NET 8 Runtime web download offered)  
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY   📁 Google Drive (32.8 MB)
 
 v7.7_2026-07-21 (x86/x64)  
