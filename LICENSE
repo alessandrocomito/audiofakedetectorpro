@@ -32,7 +32,7 @@ a) FFmpeg (ffmpeg.exe)
    - Audio Fake Detector PRO does not claim ownership of FFmpeg.
    - FFmpeg source code and license details are available at: https://ffmpeg.org
 
-b) 7-Zip Command Line Executable (7za.exe / 7z.exe)
+b) 7-Zip Command Line Executable (7za.exe / 7z.exe) → used by versions v7.7
    - Copyright (c) Igor Pavlov.
    - Licensed under the GNU LGPL / BSD 3-Clause License.
    - Source code and license details are available at: https://7-zip.org
