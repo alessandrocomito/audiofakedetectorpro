@@ -7,6 +7,14 @@
 
 ---
 
+## 📌 Requirements
+
+* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Runtime (web download and auto install offered)
+* PowerShell 5.1 (already installed on Windows 10/1)
+* Internet connection (first run only, for dependencies)
+
+---
+
 Advanced audio analysis tool designed to detect fake and artificially upscaled audio using signal processing techniques.
 
 Audio Fake Detector PRO is a high-performance audio authenticity checker focused on identifying fake high-quality audio files, including 320 kbps MP3s and lossless formats.
@@ -90,14 +98,6 @@ It can be used as an independent alternative for users familiar with tools such 
 
 ---
 
-## 📌 Requirements
-
-* Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Runtime
-* PowerShell 5+
-* Internet connection (first run only, for dependencies)
-
----
-
 ## 🚀 Download
 
 ### ⚙️ Automatic Dependencies
@@ -129,7 +129,7 @@ winget install Microsoft.DotNet.Runtime.8
 
 ## 🌐 Preview
 
-* AudioFakeDetector8.7z/zip (x64) → Recommended - Faster analysis (Full offline, .NET 8 Runtime web download offered)  
+* AudioFakeDetector8.7z/zip (x64) → Recommended - Faster analysis (Portable+Standard editions)  
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (32.8/57.6 MB)
 
 v7.7_2026-07-21 (x86/x64)  
