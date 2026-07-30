@@ -157,7 +157,7 @@ Smart Temp Management
 * Portable: all data is stored locally next to the script - no AppData / Temp touched:  
 .\\Data\\App\\ ← auCDtect, FFmpeg, state/stamp files  
 .\\Data\\App\\Temp\\ ← spectrogram PNGs, WAV segments (deleted after each run)  
-If FFmpeg is already installed system-wide it is used as-is (v7.7)
+If FFmpeg is already installed system-wide it is used as-is
 * Standard: tools and state files are stored in:  
 %LOCALAPPDATA%\\AudioFakeDetector\\ ← auCDtect, FFmpeg, state/stamp files  
 %TEMP%\\ ← spectrogram PNGs, WAV segments (deleted after each run)
