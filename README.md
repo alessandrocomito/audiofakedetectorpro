@@ -10,7 +10,7 @@
 ## 📌 Requirements
 
 * Windows 10/11 (32-bit or 64-bit) / v8.x: Windows 10/11 64-bit + .NET 8 Runtime (web download and auto install offered)
-* PowerShell 5.1 (already installed on Windows 10/1)
+* PowerShell 5.1 (already installed on Windows 10/11)
 * Internet connection (first run only, for dependencies)
 
 ---
