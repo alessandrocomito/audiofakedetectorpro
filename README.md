@@ -133,16 +133,16 @@ winget install Microsoft.DotNet.Runtime.8
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (32.8 MB / 57.6 MB)  
 * AudioFakeDetector8_slim.zip (x64) (Portable+Standard editions, web downloads)  
 👁️ https://bit.ly/4fQq38N  📥 https://bit.ly/3RGAALQ 📁 Google Drive (543 KB)  
-- Portable : delete AudioFakeDetector\_v8.x.ps1 from zip  
-- Standard: delete AudioFakeDetector\_v8.x\_Portable.ps1 from zip
+- Portable : delete AudioFakeDetector\_v8.x.ps1 from archive  
+- Standard: delete AudioFakeDetector\_v8.x\_Portable.ps1 from archive
 
 v7.7_2026-07-21 (x86/x64)  
 * AudioFakeDetector\_v7.7.7z (Portable+Standard editions, FFmpeg web update offered)  
 📄 https://bit.ly/4uYeh1O  📥 https://bit.ly/4oOsywh    📁 Google Drive (28.7 MB)  
 * AudioFakeDetector\_v7.7\_slim.zip (Portable+Standard editions, web downloads)  
 👁️ https://bit.ly/4xgBhLV  📥 https://bit.ly/4g0jlyA    📁 Google Drive (172 KB)  
-- Portable : delete AudioFakeDetector\_v7.7.ps1 from zip  
-- Standard: delete AudioFakeDetector\_v7.7\_Portable.ps1 from zip
+- Portable : delete AudioFakeDetector\_v7.7.ps1 from archive  
+- Standard: delete AudioFakeDetector\_v7.7\_Portable.ps1 from archive
 
 ## 💬 Support \& Community
 
