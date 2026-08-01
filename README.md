@@ -1,7 +1,7 @@
 # Audio Fake Detector PRO
 
 **Truly Free Alternative**  
-[v8.2 (x64) 2026-07-29](#-preview)
+[v8.3 (x64) 2026-08-01](#-preview)
 
 > 🚀 Audio Analyzer Update: Significantly reduced waiting times during analysis compared to v7.7 versions - same detection precision.
 
