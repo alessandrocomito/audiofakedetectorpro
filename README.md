@@ -107,7 +107,7 @@ If required tools are not found locally, they will be downloaded automatically:
 - auCDtect (72 KB) - source: SAC Slovak Antivirus Center  
 📥 https://www.sac.sk/download/utildisk/aucdtect.zip
 
-- FFmpeg - source for v7.7: gyan.dev (~105 MB) / v8.x: BtbN (67.2 MB)  
+- FFmpeg - source for v7.7: gyan.dev (104 MB) / v8.x: BtbN (67.2 MB)  
 📥 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip  
 📥 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip  
 
@@ -130,7 +130,7 @@ winget install Microsoft.DotNet.Runtime.8
 ## 🌐 Preview
 
 * AudioFakeDetector8.7z/zip (x64) (Portable+Standard editions, FFmpeg web update offered)  
-📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (32.8 MB / 57.6 MB)  
+📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (32.9 MB / 57.6 MB)  
 * AudioFakeDetector8_slim.zip (x64) (Portable+Standard editions, web downloads)  
 👁️ https://bit.ly/4fQq38N  📥 https://bit.ly/3RGAALQ 📁 Google Drive (543 KB)  
 - Portable : delete AudioFakeDetector\_v8.x.ps1 from archive  
