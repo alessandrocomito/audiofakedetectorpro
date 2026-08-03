@@ -1,9 +1,10 @@
 # Audio Fake Detector PRO
 
 **Truly Free Alternative**  
-[v8.3 (x64) 2026-08-02](#-preview)
+[v8.4 (x64) 2026-08-03](#-preview)
 
-> 🚀 Audio Analyzer Update: Significantly reduced waiting times during analysis compared to v7.7 versions - same detection precision.
+> 🚀 Audio Analyzer Update: Significantly reduced waiting times during analysis compared to v7.7 versions - same detection precision.  
+> 🎧 v8.4: Native DSD support (.dsf / .dff) and full Hi-Res / Ultra-Hi-Res coverage up to 384 kHz and beyond, including SACD/DSD-to-PCM noise-shaping detection.
 
 ---
 
@@ -17,7 +18,7 @@
 
 Advanced audio analysis tool designed to detect fake and artificially upscaled audio using signal processing techniques.
 
-Audio Fake Detector PRO is a high-performance audio authenticity checker focused on identifying fake high-quality audio files, including 320 kbps MP3s and lossless formats.
+Audio Fake Detector PRO is a high-performance audio authenticity checker focused on identifying fake high-quality audio files, including 320 kbps MP3s, lossless formats, Hi-Res/Ultra-Hi-Res PCM, and native DSD (SACD-derived .dsf / .dff).
 
 ## 🔍 Overview
 
@@ -25,7 +26,7 @@ Audio Fake Detector PRO analyses whether an audio file genuinely contains the fr
 
 Files are processed using FFmpeg (decoding to standardized PCM) and ffprobe (metadata extraction such as codec, bitrate, and stream info) as a preprocessing step.
 
-It is specifically designed to detect fake high-bitrate lossy files, such as MP3 audio upsampled or re-encoded to appear as 320 kbps, as well as lossy material (MP3) placed inside lossless containers (FLAC, WAV) to simulate higher quality.
+It is specifically designed to detect fake high-bitrate lossy files, such as MP3 audio upsampled or re-encoded to appear as 320 kbps, as well as lossy material (MP3) placed inside lossless containers (FLAC, WAV) to simulate higher quality. The same detection extends to Hi-Res and Ultra-Hi-Res PCM (up to 384 kHz and beyond) and to native DSD (.dsf / .dff), recognising the DSD-to-PCM noise-shaping signature so genuine SACD/DSD-derived content is not flagged as fake.
 
 The engine splits each file into multiple non-final segments plus one end segment. Each non-final segment is analysed independently via spectrogram bitmap inspection. A half-or-strict-majority wall vote aggregates the per-segment findings into a single file-level verdict. Lossless files are additionally validated through auCDtect statistical PCM analysis.
 
@@ -45,6 +46,7 @@ The engine splits each file into multiple non-final segments plus one end segmen
 
 * Detection of fake 320 kbps MP3 files
 * Detection of fake lossless audio (FLAC, WAV, APE, AIFF, WV)
+* Hi-Res / Ultra-Hi-Res PCM analysis (up to 384 kHz and beyond) and native DSD support (.dsf, .dff), with DSD-to-PCM noise-shaping recognition to avoid false positives on genuine SACD/DSD-derived content
 * Spectral cutoff and compression artifact detection
 * Multi-segment frequency analysis
 * Joint stereo anomaly detection
@@ -65,7 +67,7 @@ Audio Fake Detector PRO uses a hybrid analysis engine:
 * **Statistical Validation**: verifies lossless authenticity using auCDtect scoring
 * **Segment-Based Voting System**: improves accuracy by analyzing multiple independent audio segments
 
-This approach reduces false positives and improves detection reliability across different audio formats.
+This approach reduces false positives and improves detection reliability across different audio formats, including Hi-Res/Ultra-Hi-Res PCM and native DSD, where a dedicated noise-shaping signature check tells a genuine SACD/DSD-derived source apart from an upsampled fake.
 
 ---
 
@@ -73,6 +75,7 @@ This approach reduces false positives and improves detection reliability across 
 
 * Verifying authenticity of downloaded music files
 * Detecting fake FLAC / WAV conversions from lossy sources
+* Verifying genuine SACD/DSD rips and Hi-Res PCM releases against upsampled fakes
 * Audio authenticity analysis for DJs, producers, and collectors
 * Library cleaning and archival verification
 
@@ -84,7 +87,10 @@ This approach reduces false positives and improves detection reliability across 
 MP3, AAC, M4A, OGG, OPUS, WMA
 
 **Lossless:**
-FLAC, WAV, APE, AIFF, AIF, WV
+FLAC, WAV, APE, AIFF, AIF, WV (up to Ultra-Hi-Res, e.g. 352.8/384 kHz and beyond)
+
+**Native DSD:**
+DSF, DFF (DSD64/128/256/512 - decimated to DXD 352.8 kHz/24-bit PCM for analysis; requires ffmpeg.exe/ffprobe.exe, always available with v8.x's bundled or auto-installed FFmpeg)
 
 ---
 
@@ -132,7 +138,7 @@ winget install Microsoft.DotNet.Runtime.8
 * AudioFakeDetector8.7z/zip (x64) (Portable+Standard editions, FFmpeg web update offered)  
 📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (32.9 MB / 57.6 MB)  
 * AudioFakeDetector8_slim.zip (x64) (Portable+Standard editions, web downloads)  
-👁️ https://bit.ly/4fQq38N  📥 https://bit.ly/3RGAALQ 📁 Google Drive (543 KB)  
+👁️ https://bit.ly/4fQq38N  📥 https://bit.ly/3RGAALQ 📁 Google Drive (552 KB)  
 - Portable : delete AudioFakeDetector\_v8.x.ps1 from archive  
 - Standard: delete AudioFakeDetector\_v8.x\_Portable.ps1 from archive
 
@@ -167,7 +173,7 @@ If FFmpeg is already installed system-wide it is used as-is
 
 ## 🧾 Keywords (SEO)
 
-fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, Fakin' The Funk alternative
+fake audio detector, fake mp3 detector, audio authenticity checker, fake flac detection, audio analysis tool, spectral analysis audio, lossless verification tool, mp3 upscaling detection, fake DSD detector, DSF DFF authenticity, SACD rip verification, Hi-Res audio verification, Fakin' The Funk alternative
 
 ---
 
