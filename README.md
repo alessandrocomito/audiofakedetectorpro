@@ -1,7 +1,7 @@
 # Audio Fake Detector PRO
 
 **Truly Free Alternative**  
-[v8.4 (x64) 2026-08-03](#-preview)
+[v8.4a (x64) 2026-08-06](#-preview)
 
 > 🚀 Audio Analyzer Update: Significantly reduced waiting times during analysis compared to v7.7 versions - same detection precision.  
 > 🎧 v8.4: Native DSD support (.dsf / .dff) and full Hi-Res / Ultra-Hi-Res coverage up to 384 kHz and beyond, including SACD/DSD-to-PCM noise-shaping detection.
@@ -113,7 +113,7 @@ If required tools are not found locally, they will be downloaded automatically:
 - auCDtect (72 KB) - source: SAC Slovak Antivirus Center  
 📥 https://www.sac.sk/download/utildisk/aucdtect.zip
 
-- FFmpeg - source for v7.7: gyan.dev (106 MB) / v8.x: BtbN (67.2 MB)  
+- FFmpeg - source for v7.7: gyan.dev (106 MB) / v8.x: BtbN (67.4 MB)  
 📥 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip  
 📥 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip  
 
@@ -136,9 +136,9 @@ winget install Microsoft.DotNet.Runtime.8
 ## 🌐 Preview
 
 * AudioFakeDetector8.7z/zip (x64) (Portable+Standard editions, FFmpeg web update offered)  
-📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (32.9/57.6 MB)  
+📄 https://bit.ly/4hu7ucW 📥 https://bit.ly/4fS44iY 📥 https://bit.ly/45oOWU9  📁 Google Drive (33 MB / 57.8 MB)  
 * AudioFakeDetector8_slim.zip (x64) (Portable+Standard editions, web downloads)  
-👁️ https://bit.ly/4fQq38N  📥 https://bit.ly/3RGAALQ 📁 Google Drive (552 KB)  
+👁️ https://bit.ly/4fQq38N  📥 https://bit.ly/3RGAALQ 📁 Google Drive (532 KB)  
 - Portable : delete AudioFakeDetector\_v8.x.ps1 from archive  
 - Standard: delete AudioFakeDetector\_v8.x\_Portable.ps1 from archive
 
