@@ -77,7 +77,6 @@ LAC + FLAD mode is selected by default, while FlacCompagnonCLI mode can be selec
 
 LAC + FLAD mode: Lossless audio is verified using Lossless Audio Checker (LAC 2.0.5) and FLAD (Fake Lossless Audio Detector).  
 LAC performs the primary command-line analysis, while FLAD runs in parallel as an independent second check. FLAD's opinion is taken into account only when LAC returns a conclusive "Clean" or "Suspect" result.
-
 If LAC identifies a file as "Fake", FLAD's second opinion is not required, as the LAC result is already conclusive.
 
 For slot analysis, FLAC files are temporarily converted to WAV segments (slots) for LAC. LAC and FLAD then analyse the same corresponding temporary WAV segment for each slot.  
