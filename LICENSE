@@ -1,43 +1,148 @@
 ===============================================================================
-Audio Fake Detector PRO v8.4a
+Audio Fake Detector PRO v8.5
 Copyright (c) 2026 Alessandro Comito. All rights reserved.
 ===============================================================================
 
+
 1. APPLICATION LICENSE TERMS
 -------------------------------------------------------------------------------
-Audio Fake Detector PRO is provided as Freeware for personal and internal use.
-This software is provided "AS IS", without warranty of any kind, express or implied.
 
-The source code and scripts (including .ps1 PowerShell scripts and .cmd batch files)
-are included strictly as functional components necessary for execution and for
-reference/educational purposes.
+Audio Fake Detector PRO is provided free of charge for personal and internal
+use.
 
-You are permitted to view and run the source code. However, you are NOT permitted
-to modify, redistribute, sublicense, reuse, or create derivative works from any part
-of this software, in whole or in part, without explicit written permission from the
-author (Alessandro Comito).
+This software is provided "AS IS", without warranty of any kind, express or
+implied, including but not limited to warranties of merchantability, fitness
+for a particular purpose, and non-infringement.
 
-This notice applies to Audio Fake Detector PRO v7.7 and all previous or future releases.
+The PowerShell scripts (.ps1), batch files (.cmd), executable files, and other
+files constituting Audio Fake Detector PRO are part of the software and are
+provided solely for the operation and use of the application.
+
+You are permitted to view and execute the included scripts and files for the
+permitted use described in this license.
+
+However, without prior explicit written permission from the author
+(Alessandro Comito), you are NOT permitted to:
+
+- modify the software or any of its scripts or files;
+- redistribute, republish, or sublicense the software;
+- incorporate any part of the software into another product or project;
+- reuse any part of the software, including its scripts or code;
+- create derivative works based on the software or any part thereof;
+- commercially exploit the software or any part thereof.
+
+All rights not expressly granted by this license are reserved by the author.
 
 
-2. THIRD-PARTY COMPONENTS & ACKNOWLEDGMENTS
+2. THIRD-PARTY SOFTWARE INCLUDED WITH THE APPLICATION
 -------------------------------------------------------------------------------
-This software package includes standalone binary tools distributed alongside
-the main application. These tools remain the intellectual property of their
-respective authors and are governed by their own open-source licenses:
 
-a) FFmpeg (ffmpeg.exe)
-   - Copyright (c) Fabrice Bellard and the FFmpeg developers.
-   - Licensed under the GNU Lesser General Public License (LGPL) v2.1 or later.
-   - Audio Fake Detector PRO does not claim ownership of FFmpeg.
-   - FFmpeg source code and license details are available at: https://ffmpeg.org
+Audio Fake Detector PRO includes the following standalone third-party
+software components.
 
-b) 7-Zip Command Line Executable (7za.exe / 7z.exe)
-   - Copyright (c) Igor Pavlov.
-   - Licensed under the GNU LGPL / BSD 3-Clause License.
-   - Source code and license details are available at: https://7-zip.org
+These components are not part of the Audio Fake Detector PRO source code and
+remain the property of their respective copyright holders. They are
+distributed with Audio Fake Detector PRO under their respective licenses.
 
-Audio Fake Detector PRO is an independent utility and is not affiliated with,
-endorsed by, or sponsored by the FFmpeg or 7-Zip projects.
-===============================================================================
+The applicable license texts and copyright notices for the included
+third-party software are provided in the Data\Doc\ directory.
 
+a) FFmpeg (ffmpeg.exe | ffprobe.exe and related FFmpeg libraries)
+   - Copyright (c) Fabrice Bellard and the FFmpeg developers
+   - Licensed under the GNU Lesser General Public License, version 2.1 or later
+   - License text: Data\Doc\LICENSE_FFMPEG.txt
+   - LGPL text: Data\Doc\COPYING.LGPLv2.1.txt
+   - Official website: https://ffmpeg.org
+
+b) 7-Zip Command Line Executable (7zr.exe)
+   - 7-Zip version 26.02
+   - Copyright (c) Igor Pavlov
+   - Licensed under the GNU LGPL
+   - License text: Data\Doc\LICENSE_7-ZIP.txt
+   - Official website: https://7-zip.org
+
+c) Lossless Audio Checker Command Line Executable (lac.exe)
+   - Copyright (c) Julien Lacroix and Yann Prime
+   - Licensed under the GNU GPL v2.0
+   - License text: Data\Doc\LICENSE_LAC.txt
+   
+d) FlacCompagnonCLI.exe
+   - Custom command-line frontend based on the open-source FlacCompagnon project
+   - The FlacCompagnon source project is licensed under the MIT License
+   - License text for the original FlacCompagnon project:
+     Data\Doc\LICENSE_FlacCompagnon.txt
+   - Source project: https://github.com/craft-and-code/FlacCompagnon
+     
+Audio Fake Detector PRO does not claim ownership of any of the above
+third-party software. Their respective copyrights and license terms remain
+applicable.
+
+
+3. THIRD-PARTY SOFTWARE DOWNLOADED AT RUNTIME
+-------------------------------------------------------------------------------
+
+Audio Fake Detector PRO downloads certain third-party software at runtime
+in order to provide its functionality.
+
+Such software is NOT included in the Audio Fake Detector PRO distribution
+package. It is downloaded separately by the application from the respective
+official source after the user has given consent to the download.
+
+The downloaded software remains the property of its respective copyright
+holder and is subject to any applicable license terms, copyright notices,
+and other conditions established by that copyright holder.
+
+
+a) FLAD (flad_cli.exe)
+   - Copyright (c) Sg4Dylan
+   - Downloaded at runtime from the author's official GitHub repository
+   - The v0.2 release is described by the author as a "shared program"
+     and the author states that there are currently no plans to open-source it
+   - Official repository:
+     https://github.com/Sg4Dylan/FLAD
+   - Official v0.2 release:
+     https://github.com/Sg4Dylan/FLAD/releases/tag/v0.2
+
+Audio Fake Detector PRO does not claim ownership of FLAD.
+
+No open-source license is asserted for the FLAD v0.2 release by
+Audio Fake Detector PRO. Users should refer to the author's official
+repository and release documentation for the terms applicable to FLAD.
+
+
+4. DISCLAIMER AND LIMITATION OF LIABILITY
+-------------------------------------------------------------------------------
+
+Audio Fake Detector PRO is provided "AS IS", without warranty of any kind,
+express or implied.
+
+The author makes no warranties regarding the accuracy, reliability,
+availability, suitability, or fitness of the software for any particular
+purpose.
+
+The author does not guarantee that the software will be free from errors,
+interruptions, or defects, or that any results produced by the software
+will be accurate or complete.
+
+To the maximum extent permitted by applicable law, the author shall not be
+liable for any direct, indirect, incidental, special, consequential, or
+other damages arising out of or in connection with the use of, inability
+to use, or reliance upon the software.
+
+This limitation applies to Audio Fake Detector PRO itself and does not
+modify, replace, or limit the separate license terms or liability provisions
+applicable to third-party software.
+
+
+5. COPYRIGHT AND RESERVATION OF RIGHTS
+-------------------------------------------------------------------------------
+
+Audio Fake Detector PRO and its original source code, scripts, documentation,
+and other original materials are the property of the author, Alessandro Comito,
+except for third-party software and materials expressly identified in this
+license.
+
+All rights not expressly granted under this license are reserved.
+
+Third-party software remains subject to the copyrights and licenses of its
+respective authors and copyright holders.
