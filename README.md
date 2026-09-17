@@ -6,6 +6,8 @@
   <img src="https://img.shields.io/badge/Preview%20%26%20Download%20v8.5%20(x64)-0088cc" alt="Preview & Download v8.5 (x64)" />
 </a>
 
+(2026-09-17)
+
 Advanced audio analysis tool designed to detect fake and artificially upscaled audio using signal processing techniques.
 
 Audio Fake Detector PRO is a high-performance audio authenticity checker focused on identifying fake high-quality audio files, including 320 kbps MP3s, lossless formats, Hi-Res/Ultra-Hi-Res PCM, and native DSD (SACD-derived .dsf / .dff).
