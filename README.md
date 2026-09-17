@@ -1,6 +1,7 @@
 # Audio Fake Detector PRO
 
 **Truly Free Alternative**  
+
 <a href="https://github.com/alessandrocomito/audiofakedetectorpro/blob/main/README.md#-preview">
   <img src="https://img.shields.io/badge/Preview%20%26%20Download%20v8.5%20(x64)-0088cc" alt="Preview & Download v8.5 (x64)" />
 </a>
