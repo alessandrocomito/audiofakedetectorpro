@@ -7,12 +7,11 @@ Copyright (c) 2026 Alessandro Comito. All rights reserved.
 1. APPLICATION LICENSE TERMS
 -------------------------------------------------------------------------------
 
-Audio Fake Detector PRO is provided free of charge for personal and internal
-use.
+Audio Fake Detector PRO is freeware: it is provided free of charge for
+personal and internal use.
 
-This software is provided "AS IS", without warranty of any kind, express or
-implied, including but not limited to warranties of merchantability, fitness
-for a particular purpose, and non-infringement.
+This software is provided "AS IS", without warranty of any kind (see
+Section 4, Disclaimer and Limitation of Liability, for the full terms).
 
 The PowerShell scripts (.ps1), batch files (.cmd), executable files, and other
 files constituting Audio Fake Detector PRO are part of the software and are
