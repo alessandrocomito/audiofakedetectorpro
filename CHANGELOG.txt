@@ -1,0 +1,539 @@
+CHANGELOG V8.5 2026-09-18
+  [fix] Lossless Audio Checker (LAC) 2.0.5 + FLAD: each of the 3 parallel
+        analysis slots now runs against its own physical copy of
+        ForceRedirect.exe, the active lossless engine (lac.exe or
+        FlacCompagnonCLI.exe), flad_cli.exe, and FLAD's model folder,
+        instead of all 3 slots sharing the same executables. On every
+        startup, each file in slot2/slot3 is checked against its source
+        by file size and re-copied if missing or a different size, so a
+        stale, partial, or corrupted per-slot copy is automatically
+        repaired rather than only being created once. ForceRedirect.exe
+        remains Normal priority; the analysis engines remain
+        BelowNormal. Applies to both variants.
+  [fix] Full-track analysis: FLAD now runs against slot2's own physical
+        copy of flad_cli.exe/ForceRedirect.exe instead of sharing LAC's
+        copy, without adding a third on-disk copy - full-track and the
+        3-slot pipeline never run at the same time, so slot2 is safely
+        reused. Slot2/slot3 integrity (by file size) is now re-checked
+        before every full-track file, not just once at startup, so a
+        file removed or corrupted mid-session is repaired automatically.
+        Applies to both variants.
+  [fix] FLAD's temporary spectrogram-image folder is now cleaned up for
+        all 3 per-slot copies, not just the original one. Applies to
+        both variants.
+  [imp] Changed the "Full FLAC/WAV" toggle button label from ( ) / (v)
+        to the clearer [ ] / [x]. Applies to both variants.
+
+CHANGELOG V8.5 2026-09-16
+  [new] Added two selectable lossless analysis engines in the CMD
+        launcher menu: Lossless Audio Checker (LAC) 2.0.5 + FLAD
+        (Fake Lossless Audio Detector), or FlacCompagnonCLI based on
+        the FlacCompagnon project.
+        Engine and workflow details are documented in README.md.
+  [new] Added the ability to choose the audio slot length in the
+        file-selection window, from 10 to 160 seconds, with 40 seconds
+        as the default. A slot is an audio segment extracted from the
+        original file for analysis.
+  [new] Added an option in the file-selection window to analyse the
+        entire FLAC/WAV track instead of using slots.
+  [imp] Lossless Audio Checker (LAC) 2.0.5 + FLAD uses three parallel
+        analysis slots for lossless files. In slot analysis, the original
+        FLAC is temporarily converted to WAV segments for LAC, and both
+        LAC and FLAD analyse the same corresponding temporary WAV segment
+        for each slot.
+  [imp] In full-track analysis with the LAC + FLAD engine, the original
+        FLAC is temporarily converted to a full-track WAV for LAC, while
+        FLAD analyses the original FLAC file directly. The temporary
+        FLAC-to-WAV conversion is therefore required only for the LAC
+        analysis path.
+  [imp] FlacCompagnonCLI operates as a standalone lossless analysis
+        engine without LAC or FLAD. No FLAC-to-WAV conversion is performed
+        in either slot or full-track analysis: FlacCompagnonCLI analyses
+        the original FLAC file directly.
+  [new] Added Matroska (.mkv, .mka, .mks, .mk3d) support (not tested).
+
+CHANGELOG V8.4a_2026-08-06
+  [fix] 48 kHz files (and other sample rates up to 88199 Hz): some fake
+        files upsampled from a lossy source (MP3, AAC, etc.) using default
+        conversion settings could slip through as CLEAN. Detection for this
+        case is now aligned with the higher-resolution formats (96 kHz and
+        above), which already caught it. Applies to both variants.
+
+CHANGELOG V8.4_2026-08-03
+  [new] Added support for native DSD audio files (.dsf, .dff). Applies to
+        both variants.
+ [note] DSD detection thresholds are provisional, pending review against
+        more real-world files.
+  [fix] 192 kHz files: fixed a case where genuine mastering/analogue
+        roll-off in a specific frequency range could be wrongly flagged
+        SUSPECT instead of OK.
+  [fix] Corrected a fake-reason message that showed the wrong frequency
+        range in some Hi-Res cases; the verdict itself was unaffected.
+  [fix] Corrected the in-app description of how lossless files are routed
+        for analysis.
+
+CHANGELOG V8.3_2026-08-02
+  [fix] Portable variant only: fixed the automatic FFmpeg update check,
+        which was silently failing and never actually running.
+
+CHANGELOG V8.3_2026-08-01
+  [new] Added a one-time warning when the selected files span more than
+        one folder, since reports and results get merged into a shared
+        location in that case. Applies to both variants.
+  [fix] FFmpeg is now downloaded from a stable, versioned release instead
+        of an unversioned daily build. Applies to both variants.
+
+CHANGELOG V8.2_2026-07-29
+  [fix] Fixed a bug that skipped a more thorough check for some 44.1 kHz
+        lossless files, letting a few fake files through as CLEAN.
+        Applies to both variants.
+  [new] Added a new detection rule that combines evidence across several
+        slots to catch upsampled files that other rules were missing.
+        Applies to both variants.
+  [fix] Fixed a crash that could stop a scan partway through for some
+        files. Applies to both variants.
+  [fix] Fixed a routing bug where a single successfully-read segment could
+        close out a 44.1 kHz file without a proper second check.
+  [new] Relaxed the SUSPECT threshold for AAC files around 192 kbps,
+        since genuine files in that range were often flagged unnecessarily.
+  [imp] Simplified a log message shown for 44.1 kHz files sent for a
+        second check; no effect on results.
+  [new] Slot extraction and analysis for 44.1 kHz lossless files now
+        overlap instead of running one after another, for smoother
+        performance on slower drives.
+  [new] Reworked how 44.1 kHz lossless files are routed for a second
+        check, for more consistent verdicts.
+  [fix] Fixed a rare issue on some external/mechanical drives where
+        temporary file cleanup could interfere with an in-progress scan.
+
+CHANGELOG V8.1_2026-07-25
+  [fix] Corrected which .NET component the installer downloads (smaller,
+        correct download; the tool worked either way). Applies to both
+        variants.
+  [imp] Sped up 44.1 kHz lossless scanning while keeping the same
+        analysis accuracy.
+  [new] Internal identification string updated.
+  [fix] Fixed a rare case where "no new files found" could appear
+        incorrectly when analysing a specific file selection rather than
+        a whole folder.
+
+CHANGELOG V8.0_2026-07-24
+ [note] Adjusted scan sampling on very long tracks (30+ minutes) to
+        reduce slowdowns on external/mechanical drives.
+ [note] All sample rates between 48 kHz and 88 kHz are now analysed with
+        the more reliable spectrogram method instead of the older one.
+  [fix] Critical: fixed a bug that broke results for every analysis slot
+        except the first one, which could wrongly report slots as
+        unreadable. Applies to both variants.
+  [fix] Fixed the automatic FFmpeg update check, which never detected
+        available updates due to a version-comparison bug. Applies to
+        both variants.
+
+CHANGELOG V7.7_2026-07-21
+  [fix] Clarified wording in some verdict messages; no change to results.
+  [fix] Removed an outdated exception rule that was no longer needed.
+
+CHANGELOG V7.7_2026-07-20
+  [fix] Critical: fixed incorrect results for non-44.1 kHz lossy files
+        caused by an internal parameter not being passed correctly.
+        Applies to both variants.
+
+CHANGELOG V7.7_2026-07-19
+ [note] Removed a couple of internal log lines that added noise without
+        being useful.
+  [fix] Critical: fixed a crash affecting most files during analysis.
+        Applies to both variants.
+  [fix] Restored a progress message that had gone missing from a
+        scanning phase.
+  [fix] Removed a redundant internal step, shaving a few seconds off
+        each verdict.
+  [imp] Fixed the auCDtect version display for some builds that don't
+        report a version normally.
+ [note] A couple of minor internal clarifications with no user-facing
+        effect.
+
+CHANGELOG V7.7_2026-07-17
+  [fix] Fixed a resume bug that could wrongly re-queue already-processed
+        fake files as if they were new. Applies to both variants.
+  [imp] Sped up an internal position-selection phase that could otherwise
+        look like a stall on long tracks; also added a progress message
+        so it is never silent. Applies to both variants.
+  [imp] Clarified the dependency information shown in the app.
+
+CHANGELOG V7.7_2026-07-16
+  [new] Added support for .mp4 files with AAC audio.
+  [fix] Fixed a false positive on genuine 88.2 kHz DSD-derived files.
+  [new] Verdict label changed from "OK" to "CLEAN" in the log/console for
+        clarity; internal handling is unchanged.
+  [new] Added extra columns to the CSV report.
+  [new] Added a second, more detailed CSV report with one row per
+        analysed segment.
+  [new] Segments within each track are now analysed in parallel instead
+        of one after another, for a meaningful speed increase. Applies
+        to both variants.
+  [fix] Portable variant: removed a couple of harmless leftover duplicate
+        lines with no effect on results.
+  [imp] Simplified the internal code that builds each result; no
+        behaviour change.
+  [fix] Fixed possible garbled text in auCDtect's log output on
+        non-English Windows systems.
+  [fix] Fixed rare hangs during parallel analysis.
+ [note] Renamed "seg" to "slot" in log output for consistency.
+
+CHANGELOG V7.7_2026-07-04
+  [new] Added an exception for a specific modern AAC encoder that
+        naturally produces a clean cutoff, so it is no longer misread as
+        a lower-bitrate source relabelled at a higher bitrate.
+
+CHANGELOG V7.7_2026-07-02
+ [note] Documentation clarification only; no code change.
+
+CHANGELOG V7.7_2026-07-01
+  [fix] Fixed the CSV report missing rows for files skipped by quick
+        pre-checks (file missing, unreadable, too short, bitrate too
+        low). Applies to both variants.
+  [new] Added a full file path and a readable duration column to the
+        CSV report.
+  [new] Added an optional CSV report, toggled from a button in the
+        file-picker window. Applies to both variants.
+  [fix] Fixed a case where a stable low cutoff across several segments
+        was under-flagged as SUSPECT instead of FAKE.
+  [fix] Fixed paths with spaces being split incorrectly when typed
+        without quotes in the file-picker window.
+  [msg] Standardized the version string format shown in the app.
+  [fix] Fixed text left in the input box being lost if Start was clicked
+        without confirming it first.
+  [fix] Fixed 88.2 kHz lossless files being routed to the wrong analysis
+        engine. Applies to both variants.
+  [fix] Reduced false positives for 88.2 kHz files in a specific
+        analysis zone. Applies to both variants.
+
+CHANGELOG V7.7 (2026-06-29)
+  [fix] Fixed a crash when the target folder name contains square
+        brackets. Applies to both variants.
+  [new] Fine-tuned 96 kHz detection thresholds using a large batch of
+        real test files (vinyl rips, genuine masters, confirmed fakes).
+
+CHANGELOG V7.7 (2026-06-28)
+  [new] Added a new spectral measurement ("slope") to Hi-Res analysis,
+        logged alongside the other per-segment values.
+  [new] Used the new measurement to reduce false positives on genuine
+        vinyl rips at 96 kHz. Thresholds are provisional and will be
+        refined with more data.
+
+CHANGELOG V7.7 (2026-06-27)
+  [fix] Fixed false positives on 96 kHz vinyl rips with high analogue
+        noise.
+  [fix] Fixed false positives on DSD-to-PCM files at 176.4/192 kHz.
+  [fix] Updated the 32-bit FFmpeg download link.
+  [new] The update check now offers to switch a 32-bit FFmpeg install to
+        64-bit before checking for a newer version.
+  [fix] Fixed an incorrect architecture label and a version-parsing bug
+        in the FFmpeg version check. Applies to both variants.
+
+CHANGELOG V7.7 (2026-06-26)
+  [fix] Fixed a false positive (with a misleading explanation) on Hi-Res
+        files around 40 kHz cutoff - a legitimate signature of vinyl
+        rips and DSD-to-PCM conversions. Anyone who got a FAKE verdict
+        on such files before this update should re-scan them.
+  [fix] Fixed a boundary bug that misrouted some 96 kHz files into the
+        192 kHz analysis path. Applies to both variants.
+  [fix] Fixed a resume bug that could pick up unrelated files instead of
+        respecting the original selection. Applies to both variants.
+  [msg] Clarified a misleading resume message.
+  [msg] Added a note before the resume prompt when the current selection
+        differs from the previously saved session.
+
+CHANGELOG V7.7 (2026-06-25)
+  [new] Extended detection to 192 kHz files, catching upsamples from
+        96 kHz sources that previously passed as OK. Applies to both
+        variants.
+  [fix] Fixed a boundary bug at exactly 96000 Hz cutoff on 192 kHz
+        files. Applies to both variants.
+
+CHANGELOG V7.7 (2026-06-24)
+  [new] Added detection support for very high sample rates (176.4 kHz
+        and above - 192/352.8/384 kHz), which previously passed
+        unchecked above a fixed cutoff regardless of sample rate.
+        Applies to both variants.
+
+CHANGELOG V7.7 (2026-06-23)
+  [fix] Fixed a crash in orphan-folder cleanup mode. Applies to both
+        variants.
+  [fix] Fixed a potential crash when a lossy file gets a SUSPECT verdict
+        from auCDtect and is sent for a second check.
+
+CHANGELOG V7.7 (2026-06-22)
+  [fix] Refined a rule to avoid false positives on long files (30+ min)
+        with a single quiet passage.
+  [ui] Corrected in-app wording: only a log file is saved, not a full
+        report.
+  [fix] Removed a duplicate line from the final summary.
+  [ui] Rewrote the in-app limitations section for clarity and accuracy;
+        added a note about genres that are harder to verify.
+  [known-limitation] A lossy-to-lossy transcode to a higher bitrate can
+        sometimes leave no detectable trace, if the source already had
+        rich high-frequency content.
+  [investigated] A specific 48 kHz edge case was documented as a known
+        limitation rather than fixed with an unreliable rule change.
+  [ui] Standardized wording across all fake/suspect verdict messages in
+        the 48 kHz path.
+  [fix] Adjusted a lossless wall threshold so it scales correctly at
+        48 kHz instead of using a value tuned only for 44.1 kHz.
+  [fix] Removed a noisy, non-useful field from the per-slot log line.
+
+CHANGELOG V7.7 (2026-06-21)
+  [fix] Fixed a rule that could under-flag a genuinely fake slot as
+        merely SUSPECT based on volume alone, missing real evidence of
+        transcoding.
+
+CHANGELOG V7.7 (2026-06-20)
+  [fix] Fixed files being skipped when the folder name contained square
+        brackets, which gave a wrong total file count.
+  [fix] Fixed several resume bugs: files stuck as "done" incorrectly,
+        newly added files ignored, and manually restored files not
+        re-queued for analysis. Applies to both variants.
+  [ui] Clearer resume progress display.
+  [ui] Minor formatting fix in the app info page.
+  [ui] Clearer separators and terminology in resume/progress text.
+  [ui] Renamed a technical log label for clarity.
+  [fix] Removed misleading "CSV/HTML" lines from the summary, since
+        only a log file is actually produced.
+  [fix] Fixed a resume bug that could mix up two different multi-folder
+        sessions; the tool now warns instead of silently resuming the
+        wrong one.
+
+CHANGELOG V7.7 (2026-06-19)
+  [fix] Fixed a wrong progress counter after new files were found
+        partway through a scan.
+  [fix] Fixed a crash when launching from a folder path containing
+        square brackets.
+  [fix] Fixed report/fake folders being created in the wrong system
+        location when the path contained square brackets.
+  [fix] The launcher now pauses on error instead of closing immediately,
+        so error messages can actually be read.
+
+CHANGELOG V7.7 (2026-06-18)
+  [fix] Fixed dragged folder paths with square brackets being cut short,
+        which prevented those files from being processed.
+
+CHANGELOG V7.7 (2026-06-17)
+  [fix] Fixed resume state not being cleared when starting a fresh scan.
+  [fix] Fixed declining a resume not clearing the old file list, which
+        could hide newly added files from the new scan.
+
+CHANGELOG V7.7 (2026-06-16)
+  [imp] File-picker window now shows where tools and temporary files
+        are stored.
+  [fix] Fixed orphan-folder cleanup being skipped entirely when several
+        folders were dragged in together.
+
+CHANGELOG V7.7 (2026-06-15)
+  [imp] Program name and version are now shown at the top of the log.
+  [chg] Corrected a mislabeled log entry (a slot position was called
+        "random" even though it has always been fixed).
+  [fix] Fixed empty folders not being moved to the Fake folder after
+        cleanup, even when they should have been.
+  [imp] Clearer explanation shown when a Hi-Res file is flagged fake.
+  [fix] "File not found" no longer counts toward the error-skip limit,
+        so voluntarily removed files don't risk stopping a long scan.
+  [fix] Fixed mislabelled files (wrong file extension) being sent to
+        the wrong analysis engine after a hardware-error retry.
+  [fix] Fixed a related bug that could return an unclear verdict for
+        some mislabelled files.
+  [fix] Files are now checked by their actual audio format, not just
+        their extension, to correctly detect mislabelled files (e.g. a
+        FLAC saved with an .mp3 extension).
+  [new] Mislabelled files are now automatically renamed to the correct
+        extension at the end of a scan.
+  [imp] The info line now also shows the container format when useful.
+
+CHANGELOG V7.7 (2026-06-14)
+  [fix] Fixed an incorrect file count shown in the resume summary.
+  [imp] Info line now shows fuller technical details: codec, sample
+        rate, channels, bit depth, bitrate, duration.
+  [fix] Corrected the wording of one verdict message.
+  [fix] Critical: fixed an infinite loop in the folder rescan.
+  [imp] Split the log output into two clearer lines to avoid text
+        wrapping.
+  [new] Encoder tag is now always shown on the info line.
+  [imp] More detailed fake-reason messages describing the likely source
+        quality.
+  [new] Resume box redesigned with clearer borders.
+  [fix] Removed a redundant log line.
+  [fix] Fixed the "rescan complete" message not always appearing.
+  [fix] Fixed resume not doing a full fresh rescan when declined.
+  [fix] Fixed the file counter not resetting when resume was declined.
+  [fix] Fixed a PowerShell 5.1 compatibility issue affecting the resume
+        box display.
+  [chg] "No encoder tag" is now shown explicitly instead of being left
+        blank.
+  [chg] Minor wording adjustment in a verdict message.
+
+CHANGELOG V7.7 (2026-06-11)
+  [new] The tool now automatically rescans for files added mid-run and
+        analyses them too - no user action required.
+
+CHANGELOG V7.7 (2026-06-10)
+  [fix] Files that disappear from disk mid-scan are now handled
+        immediately instead of triggering unnecessary retries/prompts.
+
+CHANGELOG V7.7 (2026-06-09)
+  [fix] Fixed a rule that had silently stopped working.
+  [new] Added a case: a single walled quiet-passage slot with normal
+        audio energy is now flagged SUSPECT instead of passing silently.
+  [new] The disk-error prompt now shows whether the file still exists
+        and offers a "recheck" option.
+
+CHANGELOG V7.7 (2026-06-08 Updated)
+  [new] Added a rule: a single hard-walled slot at high bitrate with
+        real audio content present is now enough to flag a file as fake.
+
+CHANGELOG V7.7 (2026-06-08)
+  [new] Combined evidence from auCDtect and the spectrogram check to
+        catch more fakes when auCDtect itself already showed warning
+        signs.
+
+CHANGELOG V7.7 (2026-06-07 Night)
+  [new] 48 kHz lossless files are now analysed directly via spectrogram
+        instead of the less reliable method used before.
+  [new] Raised the bar across the board: a single anomalous slot alone
+        no longer flags a file - at least two are now required.
+
+CHANGELOG V7.7 (2026-06-07)
+  [fix] Fixed unreliable auto-resume after an automatic relaunch.
+  [fix] Fixed the resume counter sometimes showing before the file list
+        was ready.
+  [fix] Clearer wording in a resume-related log message.
+
+CHANGELOG V7.7 (2026-06-05)
+  [new] Added a rule to avoid flagging a genuine quiet passage or
+        breakdown as fake.
+
+CHANGELOG V7.7 (2026-06-04)
+  [new] Added a rule for long mixes: two independently low-bitrate-
+        walled slots are enough to flag a file as fake.
+
+CHANGELOG V7.7 (2026-06-03)
+  [new] A majority of slots showing a soft ceiling now flags fake
+        instead of just suspect.
+  [new] Added a dedicated, more accurate wall threshold for lossless
+        files.
+
+CHANGELOG V7.7 (2026-06-02)
+  [new] Added a rule to avoid flagging a single marginal quiet-passage
+        slot at high bitrate.
+  [fix] Fixed unreliable results when most auCDtect segments were
+        unreadable.
+  [fix] Fixed incorrect thresholds being used for 48 kHz files.
+  [fix] auCDtect-based verdicts now use the same full analysis logic as
+        the main engine, instead of relying on a single value.
+
+CHANGELOG V7.7 (2026-05-31)
+  [new] Hi-Res lossless files (96/192 kHz) are now analysed directly via
+        spectrogram instead of auCDtect, with dedicated frequency
+        thresholds.
+  [new] Session resume: progress is saved after every file. If
+        interrupted, the next run offers to continue where it left off.
+  [new] The FFmpeg update check now runs only once when FFmpeg is
+        managed externally by the user.
+  [fix] Fixed segment selection being effectively non-functional since
+        v7.4, which caused every segment to land on a fixed position.
+  [imp] Segment scan window now scales with track duration for better
+        detection on longer tracks.
+
+CHANGELOG V7.6 (2026-05-25)
+  [fix] Segment selection fix (same fix later included in the v7.7
+        base).
+  [imp] Adaptive scan window (same improvement later included in the
+        v7.7 base).
+
+CHANGELOG V7.5 (2026-05-23)
+  [fix] Fixed wall-vote results being discarded instead of used for
+        classification in a secondary check.
+  [fix] Files with fewer than 2 readable auCDtect segments are now
+        downgraded from FAKE to SUSPECT.
+  [fix] Bitrate-unreadable lossless files now show a clearer log
+        message.
+  [new] Added a rule: a single slot walled below 16 kHz on a high-
+        bitrate file (256 kbps+) triggers FAKE, except on long mixes.
+
+CHANGELOG V7.4 (2026-05-23)
+  [fix] Fixed full-band lossless files at exactly the Nyquist frequency
+        being wrongly classified SUSPECT.
+  [fix] Fixed the wall message not showing the correct frequency range
+        for a common upscale case.
+  [new] Restored a rule: any slot walled below 17.2 kHz on a high-
+        bitrate file is FAKE.
+  [imp] Restored full segment refinement for all analysis slots.
+  [fix] A single compressed track inside a long mix no longer triggers
+        FAKE for the whole file.
+  [fix] Fixed abrupt-end detection not being applied in a secondary
+        check.
+
+CHANGELOG V7.3 (2026-05-22)
+  [new] Added a high-bitrate anti-upscale rule.
+  [fix] Fixed clipboard paste in the file-picker window for files
+        copied directly from Explorer.
+  [fix] Fixed layout issues in the file-picker window.
+  [fix] Clarified the Enter-key behaviour in the file-picker window.
+  [fix] Added a retry-with-prompt flow for disk read errors instead of
+        silently skipping a file on the first failure.
+
+CHANGELOG V7.1 (2026-05-18)
+  [fix] Fixed the application icon not showing on the selection window.
+  [new] Redesigned the selection window with a full info panel.
+  [fix] File-read failures now retry a few times before skipping instead
+        of skipping immediately.
+  [fix] Resume now always restarts from the last fully completed file.
+  [imp] A fourth analysis slot is now guaranteed even on short tracks.
+  [imp] Verdict messages now show more detail (wall vote, average
+        cutoff, and exact frequencies) for easier manual verification.
+
+CHANGELOG V6.7
+  [imp] Improved detection of lossy files re-encoded to look like
+        higher-bitrate audio.
+
+CHANGELOG V6.6
+  [fix] Fixed only the first of several dragged folders being scanned.
+  [imp] Added the ability to paste paths from the clipboard.
+
+CHANGELOG V6.5
+  [imp] Each dragged folder is now processed independently with its own
+        report and results.
+  [fix] Fixed unnecessary admin-level prompts when FFmpeg is already
+        set up correctly.
+  [fix] Made the FFmpeg version check more reliable.
+
+CHANGELOG V6.4
+  [new] Required tools (auCDtect, FFmpeg) are now downloaded
+        automatically if not found locally.
+
+CHANGELOG V6.3
+  [fix] Fixed a few minor logging and detection edge cases.
+  [imp] Minimum track duration lowered from 60 to 30 seconds.
+  [imp] Reduced false alarms in abrupt-end detection.
+  [imp] Added an option to skip specific subfolders by name.
+
+CHANGELOG V6.2
+  [fix] Fixed the resume counter showing the wrong current/total file
+        index.
+
+CHANGELOG V6.1.2
+  [imp] Automatic-download information is now shown before starting a
+        scan.
+
+CHANGELOG V6.1.1
+  [fix] The report folder is now recreated automatically if it
+        disappears during a very long scan.
+  [fix] Added extra safety checks before exporting reports.
+
+CHANGELOG V6.1
+  [new] Added resume: progress is saved after every file, and an
+        interrupted session can be continued on next launch.
+
+CHANGELOG V6.0
+  [fix] Fixed a PowerShell 5.1 compatibility issue affecting resume
+        state.
+  [fix] Fixed a PowerShell 5.1 compatibility issue affecting report
+        output.
