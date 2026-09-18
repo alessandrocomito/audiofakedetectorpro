@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Preview%20%26%20Download%20v8.5%20(x64)-0088cc" alt="Preview & Download v8.5 (x64)" />
 </a>
 
-(2026-09-18)
+---
 
 Advanced audio analysis tool designed to detect fake and artificially upscaled audio using signal processing techniques.
 
