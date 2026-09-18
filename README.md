@@ -1,12 +1,12 @@
 # Audio Fake Detector PRO
 
-**Truly Free Alternative**  
+**Truly Free Alternative**
 
 <a href="https://github.com/alessandrocomito/audiofakedetectorpro/blob/main/README.md#-preview">
   <img src="https://img.shields.io/badge/Preview%20%26%20Download%20v8.5%20(x64)-0088cc" alt="Preview & Download v8.5 (x64)" />
 </a>
 
-(2026-09-17)
+(2026-09-18)
 
 Advanced audio analysis tool designed to detect fake and artificially upscaled audio using signal processing techniques.
 
@@ -79,8 +79,8 @@ At each startup, a console prompt allows the user to choose the lossless verific
 LAC + FLAD mode is selected by default, while FlacCompagnonCLI mode can be selected as an alternative.
 
 LAC + FLAD mode: Lossless audio is verified using Lossless Audio Checker (LAC 2.0.5) and FLAD (Fake Lossless Audio Detector).  
-LAC performs the primary command-line analysis, while FLAD runs in parallel as an independent second check. FLAD's opinion is taken into account only when LAC returns a conclusive "Clean" or "Suspect" result.
-If LAC identifies a file as "Fake", FLAD's second opinion is not required, as the LAC result is already conclusive.
+LAC performs the primary command-line analysis. FLAD is invoked only when LAC returns a conclusive "Clean" or "Suspect" result, providing an independent second check.  
+If LAC identifies a file as "Fake", FLAD's 2nd opinion is not required, as the result is already conclusive.
 
 For slot analysis, FLAC files are temporarily converted to WAV segments (slots) for LAC. LAC and FLAD then analyse the same corresponding temporary WAV segment for each slot.  
 For full-track analysis, LAC analyses the temporary full-track WAV converted from the original FLAC, while FLAD analyses the original FLAC file directly.  
@@ -204,9 +204,9 @@ winget install Microsoft.DotNet.Runtime.8
 Source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive
 
 * AudioFakeDetector8.7z/zip (x64) (PowerShell 5.1 scripts: Standard + Portable)  
-  📄 <a href="https://bit.ly/4hu7ucW">Preview</a> 📥 <a href="https://bit.ly/4fS44iY">7-Zip</a> (34.5 MB) 📥 <a href="https://bit.ly/45oOWU9">Zip</a> (59.9 MB)  
+  📄 <a href="https://bit.ly/4hu7ucW">Preview</a> 📥 <a href="https://bit.ly/4fS44iY">7-Zip</a> (34.4 MB) 📥 <a href="https://bit.ly/45oOWU9">Zip</a> (59.9 MB)  
 * AudioFakeDetector8_slim.zip (Portable+Standard editions, web downloads)  
-  👁️ <a href="https://bit.ly/4fQq38N">Preview</a> 📥 <a href="https://bit.ly/3RGAALQ">Zip</a> (2.19 MB)
+  👁️ <a href="https://bit.ly/4fQq38N">Preview</a> 📥 <a href="https://bit.ly/3RGAALQ">Zip</a> (2.17 MB)
   * **Note:**
     * Portable only: delete `AudioFakeDetector_v8.x.ps1` from archive  
     * Standard only: delete `AudioFakeDetector_v8.x_Portable.ps1` from archive
@@ -218,11 +218,15 @@ Source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_i
 Executables, DLL, JSON, state/stamp files  
 Standard: `%LOCALAPPDATA%\AudioFakeDetector\` | Portable: `.\Data\App\`
 
+For the 3-slot lossless analysis pipeline (LAC + FLAD or FlacCompagnonCLI), each of the 3 parallel slots runs against its own physical copy of ForceRedirect.exe, the active lossless engine, flad_cli.exe, and FLAD's model folder. Slot 1 uses the copy in the tool folder above; slots 2 and 3 use their own copies, verified and repaired (by file size) on startup and again before every full-track file:  
+Standard: `%LOCALAPPDATA%\AudioFakeDetector\slot2\`, `%LOCALAPPDATA%\AudioFakeDetector\slot3\` | Portable: `.\Data\App\slot2\`, `.\Data\App\slot3\`  
+Full-track analysis uses the tool folder's own copies for LAC; FLAD reuses slot2's copy instead of a third on-disk copy, since full-track and the 3-slot pipeline never run at the same time.
+
 Spectrogram PNGs, WAV segments, TXT logs (deleted after each track analysis)  
 Standard: `%TEMP%\` | Portable: `.\Data\App\Temp\`
 
-FLAD's own per-slot spectrogram PNGs (deleted after each track analysis)  
-Standard: `%LOCALAPPDATA%\AudioFakeDetector\Tmp\` | Portable: `.\Data\App\Tmp\`
+FLAD's own per-slot spectrogram PNGs (deleted after each track analysis, for all 3 per-slot copies)  
+Standard: `%LOCALAPPDATA%\AudioFakeDetector\Tmp\`, `...\slot2\Tmp\`, `...\slot3\Tmp\` | Portable: `.\Data\App\Tmp\`, `.\Data\App\slot2\Tmp\`, `.\Data\App\slot3\Tmp\`
 
 ---
 
