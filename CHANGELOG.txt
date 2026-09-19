@@ -1,3 +1,22 @@
+CHANGELOG V8.5 2026-09-19
+  [fix] Analysis slot placement: the first slot no longer always starts
+        at second 0. The starting position is now 3% of the track
+        duration, limited between 2 and 10 seconds, so the intro is
+        skipped. The remaining slots are spread evenly up to the end of
+        the track, so the second half is always analysed. Lossless,
+        Hi-Res and DSD use 3 slots of the length chosen in the
+        file-selection window; lossy files use 4 slots of that length
+        plus the fixed 10-second end slot, placed directly after the
+        4th slot with no overlap. Applies to both variants.
+  [fix] The same placement formula now applies to every track length;
+        the former separate handling of tracks under and over 12
+        minutes has been removed.
+  [fix] If the chosen slot length is longer than the track (or than the
+        audio available before the lossy end slot), it is shortened to
+        fit, so no slot extends past the end of the file. Applies to
+        both variants.
+ [note] Tracks shorter than 30 seconds are still skipped.
+
 CHANGELOG V8.5 2026-09-18
   [fix] Lossless Audio Checker (LAC) 2.0.5 + FLAD: each of the 3 parallel
         analysis slots now runs against its own physical copy of
