@@ -16,6 +16,29 @@ CHANGELOG V8.5 2026-09-19
         fit, so no slot extends past the end of the file. Applies to
         both variants.
  [note] Tracks shorter than 30 seconds are still skipped.
+  [fix] Per-slot analysis (LAC, FlacCompagnonCLI and FLAD) now has a
+        single hard ceiling of 15 minutes per slot. Previously LAC only
+        stopped a slot after 5 minutes without any observable progress,
+        and a process idling at 1% CPU counted as progress forever, so a
+        stuck slot could hang the analysis for hours. FLAD's former
+        10-minute cap only stopped ForceRedirect.exe and left its
+        flad_cli.exe child running. Full analysis is unchanged.
+  [fix] When a slot exceeds the ceiling the workers are stopped first, so
+        nothing can relaunch a killed process, and then every
+        ForceRedirect.exe and checker process of the slot is terminated
+        in repeated passes together with its child processes, instead
+        of a single kill of one process.
+  [new] After a per-slot timeout the analysis stops with a critical
+        message and asks whether to retry the track or exit. No slot is
+        skipped or excluded from the vote because of a timeout.
+  [fix] Per-slot analysis no longer retries: the 3 attempts of the LAC
+        and FLAD workers, the internal ForceRedirect relaunch and the
+        extra WAV re-extraction of a failed LAC slot have been removed.
+        Full analysis keeps its own behaviour.
+  [fix] FLAD's temporary spectrogram folders (Tmp) are now also cleared
+        after a per-slot LAC timeout, and the start-up sweep of leftover
+        PNG files now covers the slot2 and slot3 folders as well, not
+        only the base one. Applies to both variants.
 
 CHANGELOG V8.5 2026-09-18
   [fix] Lossless Audio Checker (LAC) 2.0.5 + FLAD: each of the 3 parallel
