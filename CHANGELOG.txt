@@ -10,6 +10,8 @@ CHANGELOG V8.5 2026-09-20
   [fix] A per-slot run with no output no longer stops the analysis with
         the ForceRedirect.exe system error; that message is now shown
         only when ForceRedirect.exe itself is missing.
+  [msg] The critical message shown after a per-slot timeout now names
+        only the engine that timed out, without a slot number.
 
 CHANGELOG V8.5 2026-09-19
   [fix] Analysis slot placement: the first slot no longer always starts
