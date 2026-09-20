@@ -1,3 +1,13 @@
+CHANGELOG V8.5 2026-09-20
+  [new] A slot whose ForceRedirect run ends within 5 seconds with no
+        output at all is relaunched every second, with no limit on the
+        number of attempts, until the slot's single 15 minute ceiling.
+        The ceiling starts once per slot and is not restarted by a
+        relaunch. Applies to LAC, FlacCompagnonCLI and FLAD.
+  [fix] A per-slot run with no output no longer stops the analysis with
+        the ForceRedirect.exe system error; that message is now shown
+        only when ForceRedirect.exe itself is missing.
+
 CHANGELOG V8.5 2026-09-19
   [fix] Analysis slot placement: the first slot no longer always starts
         at second 0. The starting position is now 3% of the track
