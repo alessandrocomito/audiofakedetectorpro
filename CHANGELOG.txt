@@ -12,6 +12,9 @@ CHANGELOG V8.5 2026-09-20
         only when ForceRedirect.exe itself is missing.
   [msg] The critical message shown after a per-slot timeout now names
         only the engine that timed out, without a slot number.
+  [msg] Choosing to exit after a per-slot timeout no longer states that
+        resume will pick the file up. The message now says the file will
+        be analysed again, and the window waits for Enter before closing.
 
 CHANGELOG V8.5 2026-09-19
   [fix] Analysis slot placement: the first slot no longer always starts
