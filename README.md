@@ -206,7 +206,7 @@ Source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_i
 * AudioFakeDetector8.7z/zip (x64) (PowerShell 5.1 scripts: Standard + Portable)  
   📄 <a href="https://bit.ly/4hu7ucW">Preview</a> 📥 <a href="https://bit.ly/4fS44iY">7-Zip</a> (34.4 MB) 📥 <a href="https://bit.ly/45oOWU9">Zip</a> (59.9 MB)  
 * AudioFakeDetector8_slim.zip (Portable+Standard editions, web downloads)  
-  👁️ <a href="https://bit.ly/4fQq38N">Preview</a> 📥 <a href="https://bit.ly/3RGAALQ">Zip</a> (2.17 MB)
+  👁️ <a href="https://bit.ly/4fQq38N">Preview</a> 📥 <a href="https://bit.ly/3RGAALQ">Zip</a> (2.18 MB)
   * **Note:**
     * Portable only: delete `AudioFakeDetector_v8.x.ps1` from archive  
     * Standard only: delete `AudioFakeDetector_v8.x_Portable.ps1` from archive
