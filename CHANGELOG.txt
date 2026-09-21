@@ -1,3 +1,7 @@
+CHANGELOG V8.5 2026-09-21
+  [fix] The version of FlacCompagnonCLI.exe is now shown at start-up,
+        read from the file's own properties like ForceRedirect.exe.
+
 CHANGELOG V8.5 2026-09-20
   [new] A slot whose ForceRedirect run ends with no output at all is
         relaunched every second, with no limit on the number of
