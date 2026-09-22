@@ -37,10 +37,11 @@ Start_script_no_move.cmd (Intel Core 2 Duo test)
 Performance note: Audio Fake Detector PRO prioritizes detection coverage and cross-verification over raw analysis speed.  
 Some lossless files require significantly more processing time, particularly when LAC and FLAD are both used for independent verification.  
 
-If you want to evaluate detection performance rather than speed alone, you can use the following known test file:  
-
-mp4 192kbps zansei.flac - a FLAC created from an AAC 192 kbps source.  
+If you want to evaluate detection performance rather than speed alone, you can use the following known test files:  
+mp4 192kbps zansei.flac - a FLAC created from an AAC 192 kbps source:  
 👁️ <a href="https://bit.ly/4zMVTww">mp4 192kbps zansei.flac</a>  <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive (101 MB)  
+Self explained:  
+👁️ <a href="https://bit.ly/3V7apiF">FAKE_LOSSLESS__MP3_294kbps__DSRE__96kHz_24bit.flac</a> <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive (170 MB)
 
 ---
 
