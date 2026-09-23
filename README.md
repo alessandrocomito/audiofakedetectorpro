@@ -34,7 +34,7 @@ Start_script_no_move.cmd (Intel Core 2 Duo test)
 
 ![Screenshot 4](Screenshot%204.png)
 
-![Screenshot 4](Screenshot%205.png)
+![Screenshot 5](Screenshot%205.png)
 
 Performance note: Audio Fake Detector PRO prioritizes detection coverage and cross-verification over raw analysis speed.  
 Some lossless files require significantly more processing time, particularly when LAC and FLAD are both used for independent verification.  
