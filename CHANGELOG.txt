@@ -1,3 +1,8 @@
+CHANGELOG V8.5 2026-09-23
+  [fix] Bumped bundled .NET runtime reference from 8.0.29 to 8.0.31
+        (download URL and local temp filename) in both Standard and
+        Portable builds.
+
 CHANGELOG V8.5 2026-09-21
   [fix] The version of FlacCompagnonCLI.exe is now shown at start-up,
         read from the file's own properties like ForceRedirect.exe.
