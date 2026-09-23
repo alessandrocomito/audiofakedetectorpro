@@ -188,7 +188,7 @@ If required tools are not found locally, they will be downloaded automatically w
 📥 <a href="https://github.com/Sg4Dylan/FLAD/releases/download/v0.2/FLAD-0.2-x86_64-windows.7z">7-Zip (GitHub)</a>
 
 - **.NET 8 Runtime** (27.3 MB, automated download and silent install provided) - source: dotnet.microsoft.com  
-📥 <a href="https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.29/dotnet-runtime-8.0.29-win-x64.exe">Direct EXE Installer</a>  
+📥 <a href="https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.31/dotnet-runtime-8.0.31-win-x64.exe">Direct EXE Installer</a>  
 
 To avoid automatic download of .NET 8 Runtime from dotnet.microsoft.com, install manually via Command Prompt:
    
