@@ -1,3 +1,24 @@
+CHANGELOG V8.5 2026-09-24
+  [fix] Full-track LAC/FlacCompagnonCLI: when the engine produces no
+        Result:/Detection: line at all in its output (crash, garbled or
+        empty run), the full-track verdict is no longer silently shown
+        and treated as SUSPECT. It is now reported as "check
+        unavailable" and the genuine FLAD verdict is used instead,
+        mirroring how an unavailable FLAD is already handled.
+ [note] Root cause: this only happens on the first file analysed right
+        after a resume that followed an abrupt session end (window
+        closed, killed, crash). The previous session's ForceRedirect.exe
+        was never stopped and kept running in the background,
+        contending with the new session's own first-file analysis.
+  [fix] At startup, right after the title banner and before any
+        dependency/version check, every running ForceRedirect.exe
+        process is now terminated via taskkill /T /F (closes its own
+        process tree, e.g. any checker child that briefly outlives it),
+        with one log line per process killed. Only ForceRedirect.exe is
+        targeted - it closes the checker child it spawned (lac.exe,
+        FlacCompagnonCLI.exe, flad_cli.exe) on its own when it exits, so
+        killing it is sufficient.
+
 CHANGELOG V8.5 2026-09-23
   [fix] Bumped bundled .NET runtime reference from 8.0.29 to 8.0.31
         (download URL and local temp filename) in both Standard and
