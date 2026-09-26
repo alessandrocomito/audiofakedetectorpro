@@ -1,11 +1,11 @@
 ===============================================================================
 Audio Fake Detector PRO v8.5
 Copyright (c) 2026 Alessandro Comito. All rights reserved.
-===============================================================================
-
+==========================================================
 
 1. APPLICATION LICENSE TERMS
--------------------------------------------------------------------------------
+
+---
 
 Audio Fake Detector PRO is freeware: it is provided free of charge for
 personal and internal use.
@@ -23,18 +23,18 @@ permitted use described in this license.
 However, without prior explicit written permission from the author
 (Alessandro Comito), you are NOT permitted to:
 
-- modify the software or any of its scripts or files;
-- redistribute, republish, or sublicense the software;
-- incorporate any part of the software into another product or project;
-- reuse any part of the software, including its scripts or code;
-- create derivative works based on the software or any part thereof;
-- commercially exploit the software or any part thereof.
+* modify the software or any of its scripts or files;
+* redistribute, republish, or sublicense the software;
+* incorporate any part of the software into another product or project;
+* reuse any part of the software, including its scripts or code;
+* create derivative works based on the software or any part thereof;
+* commercially exploit the software or any part thereof.
 
 All rights not expressly granted by this license are reserved by the author.
 
-
 2. THIRD-PARTY SOFTWARE INCLUDED WITH THE APPLICATION
--------------------------------------------------------------------------------
+
+---
 
 Audio Fake Detector PRO includes the following standalone third-party
 software components.
@@ -47,38 +47,43 @@ The applicable license texts and copyright notices for the included
 third-party software are provided in the Data\Doc\ directory.
 
 a) FFmpeg (ffmpeg.exe | ffprobe.exe and related FFmpeg libraries)
-   - Copyright (c) Fabrice Bellard and the FFmpeg developers
-   - Licensed under the GNU Lesser General Public License, version 2.1 or later
-   - License text: Data\Doc\LICENSE_FFMPEG.txt
-   - LGPL text: Data\Doc\COPYING.LGPLv2.1.txt
-   - Official website: https://ffmpeg.org
+
+* Copyright (c) Fabrice Bellard and the FFmpeg developers
+* Licensed under the GNU Lesser General Public License, version 2.1 or later
+* License text: Data\Doc\LICENSE_FFMPEG.txt
+* LGPL text: Data\Doc\COPYING.LGPLv2.1.txt
+* Official website: https://ffmpeg.org
 
 b) 7-Zip Command Line Executable (7zr.exe)
-   - 7-Zip version 26.02
-   - Copyright (c) Igor Pavlov
-   - Licensed under the GNU LGPL
-   - License text: Data\Doc\LICENSE_7-ZIP.txt
-   - Official website: https://7-zip.org
+
+* 7-Zip version 26.02
+* Copyright (c) Igor Pavlov
+* Licensed under the GNU LGPL
+* License text: Data\Doc\LICENSE_7-ZIP.txt
+* Official website: https://7-zip.org
 
 c) Lossless Audio Checker Command Line Executable (lac.exe)
-   - Copyright (c) Julien Lacroix and Yann Prime
-   - Licensed under the GNU GPL v2.0
-   - License text: Data\Doc\LICENSE_LAC.txt
-   
+
+* Copyright (c) Julien Lacroix and Yann Prime
+* Licensed under the GNU GPL v2.0
+* License text: Data\Doc\LICENSE_LAC.txt
+
 d) FlacCompagnonCLI.exe
-   - Custom command-line frontend based on the open-source FlacCompagnon project
-   - The FlacCompagnon source project is licensed under the MIT License
-   - License text for the original FlacCompagnon project:
-     Data\Doc\LICENSE_FlacCompagnon.txt
-   - Source project: https://github.com/craft-and-code/FlacCompagnon
-     
+
+* Custom command-line frontend based on the open-source FlacCompagnon
+  project
+* The FlacCompagnon source project is licensed under the MIT License
+* License text for the original FlacCompagnon project:
+  Data\Doc\LICENSE_FlacCompagnon.txt
+* Source project: https://github.com/craft-and-code/FlacCompagnon
+
 Audio Fake Detector PRO does not claim ownership of any of the above
 third-party software. Their respective copyrights and license terms remain
 applicable.
 
-
 3. THIRD-PARTY SOFTWARE DOWNLOADED AT RUNTIME
--------------------------------------------------------------------------------
+
+---
 
 Audio Fake Detector PRO downloads certain third-party software at runtime
 in order to provide its functionality.
@@ -91,16 +96,16 @@ The downloaded software remains the property of its respective copyright
 holder and is subject to any applicable license terms, copyright notices,
 and other conditions established by that copyright holder.
 
-
 a) FLAD (flad_cli.exe)
-   - Copyright (c) Sg4Dylan
-   - Downloaded at runtime from the author's official GitHub repository
-   - The v0.2 release is described by the author as a "shared program"
-     and the author states that there are currently no plans to open-source it
-   - Official repository:
-     https://github.com/Sg4Dylan/FLAD
-   - Official v0.2 release:
-     https://github.com/Sg4Dylan/FLAD/releases/tag/v0.2
+
+* Copyright (c) Sg4Dylan
+* Downloaded at runtime from the author's official GitHub repository
+* The v0.2 release is described by the author as a "shared program"
+  and the author states that there are currently no plans to open-source it
+* Official repository:
+  https://github.com/Sg4Dylan/FLAD
+* Official v0.2 release:
+  https://github.com/Sg4Dylan/FLAD/releases/tag/v0.2
 
 Audio Fake Detector PRO does not claim ownership of FLAD.
 
@@ -108,9 +113,35 @@ No open-source license is asserted for the FLAD v0.2 release by
 Audio Fake Detector PRO. Users should refer to the author's official
 repository and release documentation for the terms applicable to FLAD.
 
+b) AudioAuditorCLI (AudioAuditorCLI-win-x64.exe)
+
+* AudioAuditorCLI V2.0.0 for Windows x64
+* Developed by Angel2mp3
+* Downloaded at runtime from the author's official GitHub release when
+  the AudioAuditorCLI + FLAD engine is selected and the executable is not
+  already present
+* Licensed under the Apache License, Version 2.0
+* Official project:
+  https://github.com/Angel2mp3/AudioAuditor
+* Official V2.0.0 release:
+  https://github.com/Angel2mp3/AudioAuditor/releases/download/V2.0.0/AudioAuditorCLI-win-x64.exe
+* License:
+  https://github.com/Angel2mp3/AudioAuditor/blob/main/LICENSE
+
+Audio Fake Detector PRO does not claim ownership of AudioAuditorCLI.
+
+AudioAuditorCLI remains subject to the Apache License, Version 2.0, and to
+any other applicable copyright notices and conditions established by its
+author. Audio Fake Detector PRO does not modify or relicense AudioAuditorCLI.
+
+The AudioAuditor name, logo, website, domain, and associated brand assets
+are not part of the Apache License grant and remain the exclusive property
+of the AudioAuditor project owner. Audio Fake Detector PRO does not claim
+any ownership of, or trademark rights in, the AudioAuditor brand.
 
 4. DISCLAIMER AND LIMITATION OF LIABILITY
--------------------------------------------------------------------------------
+
+---
 
 Audio Fake Detector PRO is provided "AS IS", without warranty of any kind,
 express or implied.
@@ -132,9 +163,9 @@ This limitation applies to Audio Fake Detector PRO itself and does not
 modify, replace, or limit the separate license terms or liability provisions
 applicable to third-party software.
 
-
 5. COPYRIGHT AND RESERVATION OF RIGHTS
--------------------------------------------------------------------------------
+
+---
 
 Audio Fake Detector PRO and its original source code, scripts, documentation,
 and other original materials are the property of the author, Alessandro Comito,

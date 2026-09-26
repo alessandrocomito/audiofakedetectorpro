@@ -1,3 +1,90 @@
+CHANGELOG V8.5 2026-09-26
+  [fix] FLAD now runs at BelowNormal priority for full-track analysis on all PCs,
+        not only on low-core systems. FLAD slot workers were already forced to
+        BelowNormal; the full-track worker now uses the same priority rule.
+  [fix] Verified lossless engine priority handling: LAC, AudioAuditorCLI, and
+        FlacCompagnonCLI run at BelowNormal priority in both slot and full-track
+        analysis, while ForceRedirect and FFmpeg remain at their existing
+        priorities.
+  [fix] Updated FlacCompagnonCLI to version 0.9.5.
+  [new] Replaced the previous standalone FlacCompagnonCLI lossless mode
+        with FlacCompagnonCLI + FLAD as a dual-engine verification path.
+        FLAD now provides the independent second-opinion check for both
+        3-slot and full-track lossless PCM analysis.
+  [fix] FlacCompagnonCLI + FLAD analyses the original lossless source
+        natively in both slot and full-track modes; no FLAC-to-WAV
+        conversion is performed by either analyzer.
+  [fix] Restored AudioFakeDetectorRms.exe as the only analysis engine for
+        lossy audio and native DSD. FFmpeg is no longer used as a lossy/DSD
+        spectral-analysis fallback or as an RMS analysis engine.
+  [fix] Restored parallel AudioFakeDetectorRms.exe slot processing:
+        5 concurrent RmsEngine processes for lossy audio and 3 concurrent
+        processes for native DSD, with the RmsEngine processes running at
+        BelowNormal priority.
+  [fix] Lossless PCM analysis no longer falls back to AudioFakeDetectorRms.exe
+        or the spectrogram path when the selected lossless engine returns no
+        usable slot verdict; the result is reported as UNKNOWN instead.
+
+CHANGELOG V8.5 2026-09-25
+  [new] Added AudioAuditorCLI + FLAD as a selectable lossless analysis
+        engine in the CMD launcher, placed immediately before
+        FlacCompagnonCLI in the lossless-engine menu.
+  [new] AudioAuditorCLI V2.0.0 is downloaded automatically at runtime when
+        it is not already available locally. The client is obtained from
+        the official AudioAuditor GitHub release.
+  [new] AudioAuditorCLI is invoked with the required command syntax
+        "scan <audio-file> <output.txt>" through ForceRedirect.exe.
+  [new] Added AudioAuditorCLI + FLAD support to the same 3-slot lossless
+        processing workflow already used by LAC + FLAD, including
+        per-slot parallel execution and the existing timeout/process
+        handling.
+  [new] Added AudioAuditorCLI + FLAD full-track analysis, mirroring the
+        LAC + FLAD full-track workflow while preserving the required
+        AudioAuditorCLI "scan" argument.
+  [new] AudioAuditorCLI verdict parsing now recognizes [REAL], [FAKE] and
+        [UNKNOWN] from its output. These are mapped internally to CLEAN,
+        FAKE and SUSPECT/inconclusive respectively, while the original
+        AudioAuditorCLI result is retained for reporting.
+  [new] Added the AudioAuditorCLIResult column to both CSV report types.
+        The field remains empty whenever AudioAuditorCLI is not involved.
+  [new] AudioAuditorCLI + FLAD is now documented alongside the other
+        selectable lossless verification modes, including its dependency,
+        Apache-2.0 licensing information, runtime download source, and
+        slot/full-track workflow.
+
+CHANGELOG V8.5 2026-09-24
+  [fix] AudioAuditorCLI + FLAD: FLAC files are no longer converted to WAV
+        for either the 3-slot processing architecture or full-track analysis.
+        The 3-slot path now creates native-format slot inputs (FLAC remains
+        FLAC; WAV remains WAV), and both AudioAuditorCLI and FLAD analyse
+        the same corresponding native-format slot. Full-track analysis sends
+        the original source file directly to both analyzers.
+  [new] Added AudioAuditorCLI + FLAD as a selectable lossless analysis
+        engine in the CMD launcher, placed immediately before
+        FlacCompagnonCLI in the lossless-engine menu.
+  [new] AudioAuditorCLI V2.0.0 is downloaded automatically at runtime when
+        it is not already available locally. The client is obtained from
+        the official AudioAuditor GitHub release.
+  [new] AudioAuditorCLI is invoked with the required command syntax
+        "scan <audio-file> <output.txt>" through ForceRedirect.exe.
+  [new] Added AudioAuditorCLI + FLAD support to the same 3-slot lossless
+        processing workflow already used by LAC + FLAD, including
+        per-slot parallel execution and the existing timeout/process
+        handling.
+  [new] Added AudioAuditorCLI + FLAD full-track analysis, mirroring the
+        LAC + FLAD full-track workflow while preserving the required
+        AudioAuditorCLI "scan" argument.
+  [new] AudioAuditorCLI verdict parsing now recognizes [REAL], [FAKE] and
+        [UNKNOWN] from its output. These are mapped internally to CLEAN,
+        FAKE and SUSPECT/inconclusive respectively, while the original
+        AudioAuditorCLI result is retained for reporting.
+  [new] Added the AudioAuditorCLIResult column to both CSV report types.
+        The field remains empty whenever AudioAuditorCLI is not involved.
+  [new] AudioAuditorCLI + FLAD is now documented alongside the other
+        selectable lossless verification modes, including its dependency,
+        Apache-2.0 licensing information, runtime download source, and
+        slot/full-track workflow.
+
 CHANGELOG V8.5 2026-09-24
   [fix] Full-track LAC/FlacCompagnonCLI: when the engine produces no
         Result:/Detection: line at all in its output (crash, garbled or
@@ -115,8 +202,8 @@ CHANGELOG V8.5 2026-09-18
         file removed or corrupted mid-session is repaired automatically.
         Applies to both variants.
   [fix] FLAD's temporary spectrogram-image folder is now cleaned up for
-        all 3 per-slot copies, not just the original one. Applies to
-        both variants.
+        all 3 per-slot copies, not just the original one. Applies to both
+        variants.
   [imp] Changed the "Full FLAC/WAV" toggle button label from ( ) / (v)
         to the clearer [ ] / [x]. Applies to both variants.
 
@@ -329,9 +416,9 @@ CHANGELOG V7.7 (2026-06-27)
 
 CHANGELOG V7.7 (2026-06-26)
   [fix] Fixed a false positive (with a misleading explanation) on Hi-Res
-        files around 40 kHz cutoff - a legitimate signature of vinyl
-        rips and DSD-to-PCM conversions. Anyone who got a FAKE verdict
-        on such files before this update should re-scan them.
+        files around 40 kHz cutoff - a legitimate signature of vinyl rips
+        and DSD-to-PCM conversions. Anyone who got a FAKE verdict on such
+        files before this update should re-scan them.
   [fix] Fixed a boundary bug that misrouted some 96 kHz files into the
         192 kHz analysis path. Applies to both variants.
   [fix] Fixed a resume bug that could pick up unrelated files instead of
@@ -437,21 +524,20 @@ CHANGELOG V7.7 (2026-06-15)
         the wrong analysis engine after a hardware-error retry.
   [fix] Fixed a related bug that could return an unclear verdict for
         some mislabelled files.
-  [fix] Files are now checked by their actual audio format, not just
-        their extension, to correctly detect mislabelled files (e.g. a
-        FLAC saved with an .mp3 extension).
+  [fix] Files are now checked by their actual audio format, not just their
+        extension, to correctly detect mislabelled files (e.g. a FLAC saved
+        with an .mp3 extension).
   [new] Mislabelled files are now automatically renamed to the correct
         extension at the end of a scan.
   [imp] The info line now also shows the container format when useful.
 
 CHANGELOG V7.7 (2026-06-14)
   [fix] Fixed an incorrect file count shown in the resume summary.
-  [imp] Info line now shows fuller technical details: codec, sample
-        rate, channels, bit depth, bitrate, duration.
+  [imp] Info line now shows fuller technical details: codec, sample rate,
+        channels, bit depth, bitrate, duration.
   [fix] Corrected the wording of one verdict message.
   [fix] Critical: fixed an infinite loop in the folder rescan.
-  [imp] Split the log output into two clearer lines to avoid text
-        wrapping.
+  [imp] Split the log output into two clearer lines to avoid text wrapping.
   [new] Encoder tag is now always shown on the info line.
   [imp] More detailed fake-reason messages describing the likely source
         quality.
@@ -511,8 +597,8 @@ CHANGELOG V7.7 (2026-06-04)
         walled slots are enough to flag a file as fake.
 
 CHANGELOG V7.7 (2026-06-03)
-  [new] A majority of slots showing a soft ceiling now flags fake
-        instead of just suspect.
+  [new] A majority of slots showing a soft ceiling now flags fake instead
+        of just suspect.
   [new] Added a dedicated, more accurate wall threshold for lossless
         files.
 
@@ -551,16 +637,16 @@ CHANGELOG V7.5 (2026-05-23)
         downgraded from FAKE to SUSPECT.
   [fix] Bitrate-unreadable lossless files now show a clearer log
         message.
-  [new] Added a rule: a single slot walled below 16 kHz on a high-
-        bitrate file (256 kbps+) triggers FAKE, except on long mixes.
+  [new] Added a rule: a single slot walled below 16 kHz on a high-bitrate
+        file (256 kbps+) triggers FAKE, except on long mixes.
 
 CHANGELOG V7.4 (2026-05-23)
   [fix] Fixed full-band lossless files at exactly the Nyquist frequency
         being wrongly classified SUSPECT.
   [fix] Fixed the wall message not showing the correct frequency range
         for a common upscale case.
-  [new] Restored a rule: any slot walled below 17.2 kHz on a high-
-        bitrate file is FAKE.
+  [new] Restored a rule: any slot walled below 17.2 kHz on a high-bitrate
+        file is FAKE.
   [imp] Restored full segment refinement for all analysis slots.
   [fix] A single compressed track inside a long mix no longer triggers
         FAKE for the whole file.
@@ -583,8 +669,8 @@ CHANGELOG V7.1 (2026-05-18)
         of skipping immediately.
   [fix] Resume now always restarts from the last fully completed file.
   [imp] A fourth analysis slot is now guaranteed even on short tracks.
-  [imp] Verdict messages now show more detail (wall vote, average
-        cutoff, and exact frequencies) for easier manual verification.
+  [imp] Verdict messages now show more detail (wall vote, average cutoff,
+        and exact frequencies) for easier manual verification.
 
 CHANGELOG V6.7
   [imp] Improved detection of lossy files re-encoded to look like
@@ -599,7 +685,7 @@ CHANGELOG V6.5
         report and results.
   [fix] Fixed unnecessary admin-level prompts when FFmpeg is already
         set up correctly.
-  [fix] Made the FFmpeg version check more reliable.
+  [imp] Made the FFmpeg version check more reliable.
 
 CHANGELOG V6.4
   [new] Required tools (auCDtect, FFmpeg) are now downloaded
