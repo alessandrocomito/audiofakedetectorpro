@@ -1,4 +1,15 @@
+﻿CHANGELOG V8.5 2026-09-27
+  [fix] Corrected temporary session cleanup for Standard and Portable:
+        stale Session_<GUID> folders are now removed both at the start of a
+        new session and again at normal script termination, while an active
+        session of the same variant is protected by the session mutex.
+        Abandoned mutex state is also handled so orphaned session folders
+        can be cleaned on the next startup.
+
 CHANGELOG V8.5 2026-09-26
+  [fix] Normalized full-track REASON formatting: only the final verdict is
+        enclosed in brackets; primary-engine and FLAD second-opinion
+        verdicts are shown without duplicate [CLEAN]/[FAKE] brackets.
   [fix] FLAD now runs at BelowNormal priority for full-track analysis on all PCs,
         not only on low-core systems. FLAD slot workers were already forced to
         BelowNormal; the full-track worker now uses the same priority rule.
@@ -7,7 +18,7 @@ CHANGELOG V8.5 2026-09-26
         analysis, while ForceRedirect and FFmpeg remain at their existing
         priorities.
   [fix] Updated FlacCompagnonCLI to version 0.9.5.
-  [new] Replaced the previous standalone FlacCompagnonCLI lossless mode
+  [chg] Replaced the previous standalone FlacCompagnonCLI lossless mode
         with FlacCompagnonCLI + FLAD as a dual-engine verification path.
         FLAD now provides the independent second-opinion check for both
         3-slot and full-track lossless PCM analysis.
