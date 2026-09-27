@@ -5,6 +5,13 @@
         session of the same variant is protected by the session mutex.
         Abandoned mutex state is also handled so orphaned session folders
         can be cleaned on the next startup.
+  [fix] Temporary-session cleanup messages are now shown in DarkYellow whenever
+        a Session_<GUID> folder is actually removed, both at startup and at
+        normal script termination.
+  [fix] Final temporary-session cleanup messages are now displayed together
+        at the very end of a normal scan, immediately before the final
+        "Press Enter to close" prompt, instead of being interleaved with the
+        final summary output.
 
 CHANGELOG V8.5 2026-09-26
   [fix] Normalized full-track REASON formatting: only the final verdict is
