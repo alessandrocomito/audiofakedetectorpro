@@ -1,4 +1,52 @@
-﻿CHANGELOG V8.5 2026-09-27
+﻿CHANGELOG V8.5 2026-09-28
+  [new] FLAD is stopped immediately when the primary engine (LAC, FlacCompagnonCLI,
+        AudioAuditorCLI) already gave a conclusive FAKE, in both the per-slot and
+        the full-track analysis. Only the FLAD ForceRedirect/flad_cli.exe processes
+        of the running session are terminated (matched by the run's own temp WAV
+        path / GUID output file), so a parallel session is never touched. FLAD
+        columns in the CSV are empty for these tracks (no FLAD result exists).
+  [new] All Y/N, S/X/C, S/X and R/X prompts now react to a single key press: no
+        Enter needed. Other keys are ignored; keys typed earlier are discarded.
+        The "Press Enter to close/exit" pauses are unchanged.
+  [msg] One blank line removed between the RESUME box and the "Resume previous
+        analysis?" prompt.
+  [msg] Full-track engine output blocks: the "--- <engine> full output ---" and
+        "--- end <engine> output ---" delimiter lines are now White and the
+        engine output lines between them are Gray (previously the reverse), for
+        LAC, FlacCompagnonCLI, AudioAuditorCLI and FLAD.
+  [msg] Initial temp-session cleanup is now fully silent: stale Session_<GUID>
+        and leftover temp PNG removals are no longer printed after the title
+        banner (nor after a cancelled folder selection). The final cleanup
+        messages shown before the closing prompt are unchanged.
+  [fix] FLAD per-slot and full-track verdict is now decided by the final
+        "=== Final: ... ===" line alone: "Final: Lossless (DSEE)" is FAKE;
+        "Final: Lossless (DSEE) [UNCERTAIN]" and "Final: Lossless [UNCERTAIN]"
+        are SUSPECT. Previously any "(DSEE" token forced FAKE even with an
+        [UNCERTAIN] qualifier, turning a 0-3-0 SUSPECT slot vote into 0-2-1
+        FAKE while the primary engine reported CLEAN.
+  [fix] Reworked Session_<GUID> cleanup for Standard and Portable using a dedicated
+        per-session named mutex. Startup cleanup now removes only stale sessions
+        whose own session lock is no longer active; a session used by another
+        parallel Audio Fake Detector instance is never removed.
+  [fix] Any stale Session_<GUID> left behind at startup is retried during the final
+        cleanup after analysis workers are closed. The same per-session ownership
+        check is applied there, so active parallel sessions remain untouched.
+  [fix] Cleanup failures are no longer silently discarded: failed stale-session
+        removals are retained as DarkYellow cleanup messages and written to the
+        normal log output.
+  [fix] Added a legacy-session safety fallback: if another Audio Fake Detector
+        PowerShell instance is still running but a Session_<GUID> has no
+        per-session mutex from the new cleanup system, that folder is kept instead
+        of being deleted. It is retried once concurrent instances are gone.
+  [fix] Removed the duplicated timestamp from the intermediate scan line; the
+        line between the title and the scan message is now blank.
+  [fix] Reworked AudioFakeDetectorRms.exe process usage: lossy audio now runs
+        exactly 2 concurrent RmsEngine processes, with the first analysing slots
+        1-4 at the selected variable duration and the second analysing the fixed
+        10-second end slot. Native DSD now uses exactly 1 RmsEngine process for
+        its 3 variable-duration slots.
+
+CHANGELOG V8.5 2026-09-27
   [fix] Corrected temporary session cleanup for Standard and Portable:
         stale Session_<GUID> folders are now removed both at the start of a
         new session and again at normal script termination, while an active
@@ -25,7 +73,7 @@ CHANGELOG V8.5 2026-09-26
         analysis, while ForceRedirect and FFmpeg remain at their existing
         priorities.
   [fix] Updated FlacCompagnonCLI to version 0.9.5.
-  [chg] Replaced the previous standalone FlacCompagnonCLI lossless mode
+  [fix] Replaced the previous standalone FlacCompagnonCLI lossless mode
         with FlacCompagnonCLI + FLAD as a dual-engine verification path.
         FLAD now provides the independent second-opinion check for both
         3-slot and full-track lossless PCM analysis.
