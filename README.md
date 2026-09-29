@@ -243,26 +243,29 @@ Source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_i
 
 ### 📁 Files and Folders
 
-Executables, DLL, JSON, state/stamp files  
+Executables, DLL, JSON, state/stamp files
 Standard: `%LOCALAPPDATA%\AudioFakeDetector\` | Portable: `.\Data\App\`
 
-For the 3-slot lossless analysis pipeline (**LAC + FLAD**), each of the 3 parallel slots runs against its own physical copy of `ForceRedirect.exe`, `lac.exe`, `flad_cli.exe`, and FLAD's model folder. Slot 1 uses the copies in the main tool folder; slots 2 and 3 use their own copies, verified and repaired by file size on startup and again before every full-track file:  
-Standard: `%LOCALAPPDATA%\AudioFakeDetector\slot2\`, `%LOCALAPPDATA%\AudioFakeDetector\slot3\` | Portable: `.\Data\App\slot2\`, `.\Data\App\slot3\`  
+For the 3-slot lossless analysis pipeline (LAC + FLAD), each of the 3 parallel slots runs its own instance of `flad_cli.exe` against a physical per-slot copy of `ForceRedirect.exe`, `flad_cli.exe`, and FLAD's model folder. `lac.exe` itself is not duplicated per slot; all 3 slots share the single copy in the main tool folder. Slot 1 uses the main tool folder's FLAD copy directly; slots 2 and 3 use their own FLAD-related copies, verified and repaired by file size on startup and again before every full-track file:
+
+Standard: `%LOCALAPPDATA%\AudioFakeDetector\slot2\`, `%LOCALAPPDATA%\AudioFakeDetector\slot3\` | Portable: `.\Data\App\slot2\`, `.\Data\App\slot3\`
+
 Full-track analysis uses the main tool folder's `lac.exe`; FLAD reuses slot2's `flad_cli.exe` / `ForceRedirect.exe` and model folder instead of requiring a third on-disk FLAD copy, since full-track and the 3-slot pipeline never run at the same time.
 
-For the 3-slot lossless analysis pipeline (**AudioAuditorCLI + FLAD**), each slot uses its own physical copy of `ForceRedirect.exe`, `AudioAuditorCLI-win-x64.exe`, `flad_cli.exe`, and FLAD's model folder. The slot input remains in its original audio format: **AudioAuditorCLI does not require FLAC-to-WAV conversion**. The same slot2/slot3 copy verification and repair described above applies. Full-track analysis uses the main tool folder's `AudioAuditorCLI-win-x64.exe`, while FLAD reuses slot2's FLAD tool copy instead of requiring a third on-disk copy.
+For the 3-slot lossless analysis pipeline (AudioAuditorCLI + FLAD), each slot uses its own physical copy of `ForceRedirect.exe`, `flad_cli.exe`, and FLAD's model folder. `AudioAuditorCLI-win-x64.exe` itself is not duplicated per slot; all 3 slots share the single copy in the main tool folder. The slot input remains in its original audio format: AudioAuditorCLI does not require FLAC-to-WAV conversion. The same slot2/slot3 copy verification and repair described above applies. Full-track analysis uses the main tool folder's `AudioAuditorCLI-win-x64.exe`, while FLAD reuses slot2's FLAD tool copy instead of requiring a third on-disk copy.
 
-For **FlacCompagnonCLI + FLAD** mode, each slot uses its own physical copy of `ForceRedirect.exe`, `FlacCompagnonCLI.exe`, `flad_cli.exe`, and FLAD's model folder in the same slot-tool infrastructure. The slot input remains in its original audio format: **no FLAC-to-WAV conversion is performed**. Full-track analysis uses the original file directly; FLAD reuses slot2's FLAD tool copy instead of requiring a third on-disk FLAD copy.
+For FlacCompagnonCLI + FLAD mode, each slot uses its own physical copy of `ForceRedirect.exe`, `flad_cli.exe`, and FLAD's model folder in the same slot-tool infrastructure. `FlacCompagnonCLI.exe` itself is not duplicated per slot; all 3 slots share the single copy in the main tool folder. The slot input remains in its original audio format: no FLAC-to-WAV conversion is performed. Full-track analysis uses the original file directly; FLAD reuses slot2's FLAD tool copy instead of requiring a third on-disk FLAD copy.
 
-Temporary analysis files are stored in a **temporary working folder created automatically for each analysis session**. The folder name contains a unique identifier generated for that session; this identifier is only used to keep the temporary files of different sessions separate. The session folder is removed during cleanup when the corresponding analysis work is finished.  
-Standard: `%TEMP%\AudioFakeDetector\Session_<unique-ID>\`  
+Temporary analysis files are stored in a temporary working folder created automatically for each analysis session. The folder name contains a unique identifier generated for that session; this identifier is only used to keep the temporary files of different sessions separate. The session folder is removed during cleanup when the corresponding analysis work is finished.
+
+Standard: `%TEMP%\AudioFakeDetector\Session_<unique-ID>\`
 Portable: `.\Data\App\Temp\Session_<unique-ID>\`
 
-In **LAC + FLAD** mode, this session directory may contain spectrogram PNGs, temporary WAV segments/full-track WAV data required by the LAC path, and TXT logs.  
-In **AudioAuditorCLI + FLAD** mode, it contains native-format slot data, AudioAuditorCLI/FLAD TXT logs, and analysis intermediates; **no FLAC-to-WAV conversion is required by AudioAuditorCLI**.  
-In **FlacCompagnonCLI + FLAD** mode, it contains native-format slot data, FLAD TXT logs, and analysis intermediates; **no FLAC-to-WAV conversion is performed**.
+In LAC + FLAD mode, this session directory may contain spectrogram PNGs, temporary WAV segments/full-track WAV data required by the LAC path, and TXT logs.
+In AudioAuditorCLI + FLAD mode, it contains native-format slot data, AudioAuditorCLI/FLAD TXT logs, and analysis intermediates; no FLAC-to-WAV conversion is required by AudioAuditorCLI.
+In FlacCompagnonCLI + FLAD mode, it contains native-format slot data, FLAD TXT logs, and analysis intermediates; no FLAC-to-WAV conversion is performed.
 
-FLAD's own per-slot spectrogram PNGs are stored separately and deleted after each track's FLAD check. They are used only by modes that include FLAD:  
+FLAD's own per-slot spectrogram PNGs are stored separately and deleted after each track's FLAD check. They are used only by modes that include FLAD:
 Standard: `%LOCALAPPDATA%\AudioFakeDetector\tmp\`, `...\slot2\tmp\`, `...\slot3\tmp\` | Portable: `.\Data\App\tmp\`, `.\Data\App\slot2\tmp\`, `.\Data\App\slot3\tmp\`
 
 ---
