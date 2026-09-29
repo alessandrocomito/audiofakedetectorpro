@@ -1,4 +1,13 @@
-﻿CHANGELOG V8.5 2026-09-28
+﻿CHANGELOG V8.5 2026-09-29
+  [fix] Fixed a false-positive "another Standard/Portable session is still
+        active" warning at startup. The variant ownership mutex was checked
+        with a single zero-timeout WaitOne(0); any transient failure to
+        acquire it immediately (e.g. shortly after a reboot) was treated as
+        proof of a real other session, disabling startup worker cleanup even
+        with no other AFD process actually running. Now retries for up to 1
+        second before concluding another session holds the mutex.
+
+CHANGELOG V8.5 2026-09-28
   [new] FLAD is stopped immediately when the primary engine (LAC, FlacCompagnonCLI,
         AudioAuditorCLI) already gave a conclusive FAKE, in both the per-slot and
         the full-track analysis. Only the FLAD ForceRedirect/flad_cli.exe processes
