@@ -1,4 +1,14 @@
-﻿CHANGELOG V8.5 2026-09-29
+CHANGELOG V8.5 2026-09-30
+  [fix] The shared per-variant Tmp folders (main tool folder, slot2, slot3)
+        were only ever cleared of leftover PNGs, and only at startup; the
+        folders themselves, and any non-PNG leftovers, were never removed. Now,
+        whenever no other same-variant instance is active, these Tmp folders
+        are removed entirely (empty or not) both at startup and at exit.
+        Portable's Data\App\Temp root is also removed and recreated empty at
+        startup, and removed (not recreated) at exit; Standard's %TEMP%\Audio
+        FakeDetector root is unaffected, since it is not exclusive to this tool.
+
+CHANGELOG V8.5 2026-09-29
   [fix] Fixed a false-positive "another Standard/Portable session is still
         active" warning at startup. The variant ownership mutex was checked
         with a single zero-timeout WaitOne(0); any transient failure to
