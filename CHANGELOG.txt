@@ -1,4 +1,21 @@
 CHANGELOG V8.5 2026-09-30
+  [fix] A scan that finished normally (all files processed, SUMMARY printed)
+        never called the session cleanup function at all; only early-exit
+        paths (errors, [X], resume interruption) did. This made the
+        Tmp/slot2/slot3/Temp-root cleanup added earlier in this same block a
+        no-op on the most common exit path, and also meant analysis pools
+        and the variant mutex were never released explicitly on a normal
+        run. The final "Press Enter to close"
+        now goes through the same cleanup function (same visible prompt
+        behavior) so a normal run cleans up exactly like an early exit does.
+  [fix] Standard only: a stray "True" (or "False") line was printed to the
+        console right after every file's Final verdict line. The internal
+        Commit-LastCompletedIfFinalVerdict function returns $true/$false, and
+        4 of its call sites did not capture or discard that return value, so
+        PowerShell wrote it straight to the console. Now wrapped in [void](...)
+        at all 4 call sites; nothing else about the resume/last_completed
+        logic changes. Portable does not have this function and was
+        unaffected.
   [fix] The shared per-variant Tmp folders (main tool folder, slot2, slot3)
         were only ever cleared of leftover PNGs, and only at startup; the
         folders themselves, and any non-PNG leftovers, were never removed.
