@@ -197,7 +197,7 @@ Re-encoding a 192 kbps (or higher) lossy file into a higher-bitrate lossy format
 
 If required tools are not found locally, they will be downloaded automatically when Start is clicked in the window selection:
 
-- **FFmpeg** - source: BtbN/FFmpeg-Builds (76.4 MB) / Gyan (104 MB)  
+- **FFmpeg** - source: BtbN/FFmpeg-Builds (77 MB) / Gyan (104 MB)  
 📥 <a href="https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip">v8.1.2 LGPL Zip</a> / 📥 <a href="https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-8.1.2-essentials_build.zip">v8.1.2 Essentials Zip</a> 
 
 - **Lossless Audio Checker (LAC) 2.0.5** - source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub>
