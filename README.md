@@ -232,9 +232,9 @@ winget install Microsoft.DotNet.Runtime.8
 Source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive
 
 * AudioFakeDetector8.7z/zip (x64) (PowerShell 5.1 scripts: Standard + Portable)  
-  📄 <a href="https://bit.ly/4hu7ucW">Preview</a> 📥 <a href="https://bit.ly/4fS44iY">7-Zip</a> (34.5 MB) 📥 <a href="https://bit.ly/45oOWU9">Zip</a> (60.0 MB)  
+  📄 <a href="https://bit.ly/4hu7ucW">Preview</a> 📥 <a href="https://bit.ly/4fS44iY">7-Zip</a> (34.5 MB) 📥 <a href="https://bit.ly/45oOWU9">Zip</a> (59.9 MB)  
 * AudioFakeDetector8_slim.zip (Portable+Standard editions, web downloads)  
-  👁️ <a href="https://bit.ly/4fQq38N">Preview</a> 📥 <a href="https://bit.ly/3RGAALQ">Zip</a> (2.21 MB)
+  👁️ <a href="https://bit.ly/4fQq38N">Preview</a> 📥 <a href="https://bit.ly/3RGAALQ">Zip</a> (2.19 MB)
   * **Note:**
     * Portable only: delete `AudioFakeDetector_v8.x.ps1` from archive  
     * Standard only: delete `AudioFakeDetector_v8.x_Portable.ps1` from archive

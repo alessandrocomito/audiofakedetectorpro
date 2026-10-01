@@ -1,3 +1,17 @@
+﻿CHANGELOG V8.5 2026-10-01
+  [fix] A session started while another same-variant session was active
+        left an empty Temp root behind when it exited. It now removes the
+        Temp root at exit if it is completely empty.
+  [msg] The startup line for the .NET dependency now reads ".NET Runtime
+        8.x.y found" and no longer claims that in-process scanning is
+        active before any analysis has started.
+  [fix] Resume state files (resume_*.json and last_completed_*.txt) and
+        active session markers (resume_<hash>.active.<PID>.lock) are now
+        all stored under $ToolDir\Resume. Legacy files still located
+        directly under $ToolDir are migrated automatically at startup when
+        no same-variant session is active. The resume and concurrency
+        logic is otherwise unchanged.
+
 CHANGELOG V8.5 2026-09-30
   [fix] A scan that finished normally (all files processed, SUMMARY printed)
         never called the session cleanup function at all; only early-exit
