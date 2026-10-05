@@ -1,4 +1,7 @@
-﻿CHANGELOG V8.5 2026-10-01
+﻿CHANGELOG V8.5 2026-10-05
+  [new] Updated custom FlacCompagnonCLI to version 0.9.6.
+
+CHANGELOG V8.5 2026-10-01
   [fix] A session started while another same-variant session was active
         left an empty Temp root behind when it exited. It now removes the
         Temp root at exit if it is completely empty.
@@ -122,7 +125,7 @@ CHANGELOG V8.5 2026-09-26
         FlacCompagnonCLI run at BelowNormal priority in both slot and full-track
         analysis, while ForceRedirect and FFmpeg remain at their existing
         priorities.
-  [fix] Updated FlacCompagnonCLI to version 0.9.5.
+  [new] Updated custom FlacCompagnonCLI to version 0.9.5.
   [fix] Replaced the previous standalone FlacCompagnonCLI lossless mode
         with FlacCompagnonCLI + FLAD as a dual-engine verification path.
         FLAD now provides the independent second-opinion check for both
