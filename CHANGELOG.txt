@@ -1,4 +1,130 @@
-﻿CHANGELOG V8.5 2026-10-05
+﻿CHANGELOG V8.5 2026-10-12
+  [fix] The initial "Scanning N file(s)" count and the collection of files
+        from several selected folders ignored .dsf and .dff: the count was too
+        low (13 instead of 28 in a folder with 15 DSD files) and, when several
+        folders were selected together, their DSD files were left out of the
+        analysis. Both now use the same single list of supported lossy and
+        lossless extensions as the main scan.
+  [new] More audio formats are accepted by the scan, Add from clipboard, the
+        file selector and the final rescan: lossless TTA, TAK, CAF, AU and
+        SND; lossy MP2, M4B, M4R, 3GP, 3G2, Musepack (MPC, MP+), AC3 and WEBM.
+        The codec lists used to detect mislabelled files now know TAK and
+        Musepack as well. No pipeline change is needed for them: the new
+        lossless formats are cut as WAV slots by ffmpeg, like APE, WV and
+        AIFF, while the new lossy formats are read directly from the original
+        file by AudioFakeDetectorRms.exe, like the existing lossy formats.
+ [note] In the per-slot analysis the second engine is always FLAD, whose
+        supported input formats are not documented: slots stay in their native
+        format only for FLAC and WAV, and every other format, new ones
+        included, is cut as WAV. In the full-track analysis the selected
+        engine reads the file natively when it can (AudioAuditorCLI also reads
+        AU/SND), and FLAD analyses the same file the engine does.
+  [fix] Add from clipboard ignored Matroska audio files (.mkv, .mka, .mks,
+        .mk3d), which the scan does analyse. It now accepts exactly the
+        extensions the scan accepts, plus folders.
+  [fix] An ALAC file in .m4a or .mp4, the only valid containers for it, was
+        treated as a mislabelled file: it raised a false "extension but codec
+        is alac" warning and was queued for a rename that ended in "RENAME
+        SKIP (target exists)" or, in dry-run, in "Would rename ... to correct
+        .alac extension". ALAC is still routed to the lossless engine by its
+        codec, now silently and without any rename. ALAC is now listed among
+        the supported lossless formats in the README.
+
+CHANGELOG V8.5 2026-10-11
+  [new] Native DSD (.dsf/.dff) is now analysed by FlacCompagnonCLI.exe instead
+        of AudioFakeDetectorRms.exe, in every engine mode (LAC + FLAD,
+        AudioAuditorCLI + FLAD, FlacCompagnonCLI + FLAD). FLAD, LAC and
+        AudioAuditorCLI are not involved in DSD analysis.
+        AudioFakeDetectorRms.exe is now used for lossy files only.
+  [new] Uncompressed DSD (DSF and plain DFF): the 3 DSD slots are native DSD
+        files in the same container as the source, a DSF slot is a DSF, a DFF
+        slot is a DFF. The DSD bitstream is copied as-is from the original
+        file; FFmpeg is not involved, nothing is decoded or resampled. Slot
+        positions and durations are unchanged (same slot plan as before). DSF
+        slots start on a 4096-byte block boundary of the source.
+  [new] DST-compressed DFF: the container is checked a priori (DST chunk, or
+        compression type other than DSD in the header). Native slots are not
+        possible for it, so its 3 slots are extracted as WAV by FFmpeg
+        (float32, decoder PCM rate, no extra resampling, so no quality is
+        lost) and then analysed by FlacCompagnonCLI like any other slot.
+  [new] FlacCompagnonCLI runs at BelowNormal on DSD slots: 3 parallel
+        ForceRedirect.exe + FlacCompagnonCLI.exe pairs, one per slot, the same
+        worker used by the lossless FlacCompagnonCLI path (checker child kept
+        at BelowNormal and re-applied every 2 seconds, ForceRedirect.exe stays
+        Normal). The per-slot 15 minute ceiling and the R/X and S/X/C prompts
+        behave exactly as for lossless files.
+  [fix] Processes started by FlacCompagnonCLI.exe itself (the ffmpeg.exe
+        instances that decode each DSD slot) ran at Normal priority, because
+        only the direct child of ForceRedirect.exe was lowered. The
+        BelowNormal enforcement (re-applied every 2 seconds) now also covers
+        every descendant of the checker child. The shared slot worker and the
+        full-track path are used by the lossless LAC and FlacCompagnonCLI too,
+        so their descendants, if any, are lowered as well.
+  [new] DSD verdict = slot vote of the 3 FlacCompagnonCLI results, using the
+        same 3-slot table as lossless (Clean / Transcoded? = Suspect /
+        Transcoded = Fake). There is no spectral/RMS fallback: if no slot
+        returns a usable verdict the file is UNKNOWN.
+  [new] CSV: DSD rows now fill FlacCompagnonCLIDetection and
+        FlacCompagnonCLIResult in both the main CSV and the slots CSV, in
+        every engine mode. For DSD the CutoffHz, Wall, Ratio, Slope, RMS and
+        Peak columns are empty; LacResult, the FLAD columns and
+        AudioAuditorCLIResult stay empty. Column order is unchanged.
+  [new] The full-track option is now "Full lossless" (it was "Full FLAC/WAV")
+        and applies to every lossless format and to native DSD, in the normal
+        run and in the re-run after a drive/file access error. The saved
+        setting is unchanged.
+  [new] Full-track on lossless formats other than FLAC and WAV (APE, WV,
+        AIFF/AIF, ALAC, TTA, TAK, other lossless codecs): the original file is
+        analysed whenever the selected engine reads the format natively
+        (AudioAuditorCLI: FLAC, WAV, AIFF/AIF, APE, WV, ALAC, TTA, TAK;
+        FlacCompagnonCLI: FLAC, WAV, AIFF/AIF, ALAC, CAF). Only when it cannot
+        (FlacCompagnonCLI on APE, WV, TTA, TAK; LAC on everything but WAV) the
+        source is converted once to a temporary full-length WAV (ffmpeg,
+        BelowNormal), which the engine and FLAD analyse alike and which is
+        then deleted. A failed conversion gives UNKNOWN. For these formats a
+        CLEAN requires both the engine and FLAD to return a verdict, otherwise
+        the file is UNKNOWN; a FAKE or SUSPECT from either stands. FLAC and
+        WAV keep being analysed in their original format (LAC still gets a WAV
+        converted from a FLAC).
+  [new] Full-track on native DSD: FlacCompagnonCLI alone, in every engine
+        mode, directly on the original file (no slots, no FLAD). Only a
+        DST-compressed DFF is first decoded to a temporary full-length WAV by
+        FFmpeg (float32, decoder PCM rate, no extra resampling, RF64 header
+        allowed above 4 GB). The result goes to the main CSV only, with the
+        FlacCompagnonCLI columns filled.
+  [fix] DSD sample rate in the log, CSV and report is now the real DSD rate
+        (2822.4 kHz for DSD64, 5644.8 kHz for DSD128, 11289.6 kHz for DSD256
+        and so on), read from the container header (DSF fmt chunk, DFF FS
+        chunk). ffprobe reports only the decoder rate, one eighth of it (352.8
+        kHz for DSD64), which the program used to replace with a fixed 352.8
+        kHz that contradicted the bitrate on DSD128 and above. The correction
+        applies to slot and full-track runs and to the re-run after a
+        drive/file access error.
+  [fix] A saved resume session made from a file selection (specific files) was
+        proposed and applied to a whole-folder run: the saved selection
+        replaced the folder scan, so only those files were analysed and every
+        other audio file in the folder was left out. A saved file-selection
+        session is no longer proposed for a whole-folder run; the folder is
+        scanned in full.
+  [msg] DSD log lines: "Engine: FlacCompagnonCLI (DSD slots)" ("(DSD)" in
+        full-track) and one "slotN @Ns -> FlacCompagnonCLI: <verdict>" line
+        per slot. The final verdict reason reads "FlacCompagnonCLI
+        <C>C/<S>S/<F>F over <n>/3 DSD slot(s)" ("WAV (DST) slot(s)" for a
+        DST-compressed DFF) and, in full-track, "FlacCompagnonCLI full-track:
+        [<VERDICT>]" (plus " (DST decoded to WAV)" for a DST-compressed DFF).
+        The word native was removed from the reasons: it described how the
+        file was analysed and could be read as a verdict on the content.
+  [msg] The FlacCompagnonCLI.exe path and version lines at startup are now
+        shown in every engine mode when the file is found (it is also the DSD
+        analyser). Outside FlacCompagnonCLI mode a missing
+        FlacCompagnonCLI.exe does not stop the run: only DSD files get no
+        verdict (UNKNOWN). The DSD line of the WinForms engine panel was
+        updated.
+ [note] The DSD-specific spectral rules (35-44.1 kHz DSD-to-PCM safe zone,
+        Ultra-Hi-Res branch) are no longer reached by any file type: DSD no
+        longer goes through the spectrogram classifier.
+
+CHANGELOG v8.5 2026-10-05
   [new] Updated custom FlacCompagnonCLI to version 0.9.6.
 
 CHANGELOG V8.5 2026-10-01

@@ -49,7 +49,7 @@ Self explained
 
 * Detection of fake 320 kbps MP3 files
 * Detection of fake lossless audio (FLAC, WAV, APE, AIFF, WV)
-* Hi-Res / Ultra-Hi-Res PCM analysis (up to 384 kHz and beyond) and native DSD support (.dsf, .dff), with DSD-to-PCM noise-shaping recognition to avoid false positives on genuine SACD/DSD-derived content
+* Hi-Res / Ultra-Hi-Res PCM analysis (up to 384 kHz and beyond) and native DSD support (.dsf, .dff), analyzed on native DSD slots by FlacCompagnonCLI
 * Spectral cutoff and compression artifact detection
 * Multi-segment frequency analysis
 * Joint stereo anomaly detection
@@ -71,7 +71,7 @@ Audio Fake Detector PRO uses a hybrid analysis engine:
 * **Statistical Validation**: verifies lossless authenticity using the selected lossless engine. LAC + FLAD, AudioAuditorCLI + FLAD, and FlacCompagnonCLI + FLAD use FLAD as a second-opinion check.
 * **Segment-Based Voting System**: improves accuracy by analyzing multiple independent audio segments
 
-This approach reduces false positives and improves detection reliability across different audio formats, including Hi-Res/Ultra-Hi-Res PCM and native DSD, where a dedicated noise-shaping signature check tells a genuine SACD/DSD-derived source apart from an upsampled fake.
+This approach reduces false positives and improves detection reliability across different audio formats, including Hi-Res/Ultra-Hi-Res PCM and native DSD.
 
 ---
 
@@ -87,7 +87,7 @@ LAC performs the primary command-line analysis. FLAD is used as a second-opinion
 If LAC identifies a file as "Fake", no FLAD second-opinion verdict is required to reject the file as genuine lossless.
 
 For slot analysis, FLAC files are temporarily converted to WAV segments (slots) for LAC. LAC and FLAD then analyse the same corresponding temporary WAV segment for each slot.  
-For full-track analysis, LAC analyses the temporary full-track WAV converted from the original FLAC, while FLAD analyses the original FLAC file directly.  
+For full-track analysis, LAC (which reads only WAV) analyses the original WAV directly, or a temporary full-track WAV converted from the original FLAC or any other non-WAV lossless format, while FLAD analyses the original file directly.  
 Therefore, the temporary FLAC-to-WAV conversion is required only for the LAC analysis path.
 
 Both command-line analyzers run through a unified 3-slot processing pipeline. The LAC/FLAD verification pipeline applies exclusively to lossless PCM audio.  
@@ -106,14 +106,14 @@ AudioAuditorCLI is the Windows x64 command-line client from the AudioAuditor pro
 For the 3-slot processing architecture, AudioAuditorCLI and FLAD analyse corresponding native-format slot files. A FLAC source remains FLAC for both analyzers; a WAV source remains WAV. No FLAC-to-WAV conversion is performed for the AudioAuditorCLI + FLAD path.  
 For full-track analysis, AudioAuditorCLI and FLAD both analyse the original source file directly, in its original format.
 
-AudioAuditorCLI + FLAD applies exclusively to lossless PCM audio. Native DSD files are not passed to either command-line analyzer and continue to use Audio Fake Detector PRO's native DSD analysis path.
+AudioAuditorCLI + FLAD applies exclusively to lossless PCM audio. Native DSD files are not passed to either command-line analyzer; they are analyzed by FlacCompagnonCLI (see the DSD section).
 
 The AudioAuditorCLI executable is not included in the base distribution when absent; when this engine is selected, Audio Fake Detector PRO can download `AudioAuditorCLI-win-x64.exe` automatically from the project's official GitHub release after the user has selected the corresponding mode.
 
 #### FlacCompagnonCLI + FLAD mode
 
 FlacCompagnonCLI is used as the primary lossless verification engine, with FLAD as an independent second-opinion check.  
-FlacCompagnonCLI is used exclusively for lossless PCM audio; native DSD files are not passed to, or analyzed by, FlacCompagnonCLI.  
+For lossless PCM audio FlacCompagnonCLI is paired with FLAD; native DSD files are analyzed by FlacCompagnonCLI alone, in every engine mode (see the DSD section).  
 No FLAC-to-WAV conversion is performed in either slot or full-track analysis. For slot analysis, FlacCompagnonCLI and FLAD analyze the same corresponding native-format slot: FLAC remains FLAC and WAV remains WAV. For full-track analysis, both analyzers analyze the original source file directly in its original format.  
 FlacCompagnonCLI is a custom command-line frontend based on the open-source FlacCompagnon project.
 
@@ -121,8 +121,11 @@ FlacCompagnonCLI is a custom command-line frontend based on the open-source Flac
 
 ### 🎧 DSD
 
-Audio Fake Detector PRO provides native DSD support (.dsf / .dff) independently of LAC, FLAD, AudioAuditorCLI, and FlacCompagnonCLI. Native DSD files are analyzed by the application's own DSD processing and are not processed through any of the selectable lossless verification pipelines.  
-The application also provides SACD/DSD-to-PCM noise-shaping detection, allowing DSD-derived characteristics to be identified when analyzing PCM material. This functionality is part of Audio Fake Detector PRO and is not performed by LAC, FLAD, AudioAuditorCLI, or FlacCompagnonCLI.
+Native DSD files (.dsf / .dff) are analyzed by FlacCompagnonCLI, in every engine mode (LAC + FLAD, AudioAuditorCLI + FLAD and FlacCompagnonCLI + FLAD). LAC, FLAD and AudioAuditorCLI are not used for DSD.  
+The 3 analysis slots are native DSD files in the same container as the source: a DSF slot is a DSF file and a DFF slot is a DFF file. The DSD bitstream is copied as-is from the original file; FFmpeg is not involved and nothing is decoded or resampled.  
+The 3 slots are analyzed in parallel, each by its own `ForceRedirect.exe` + `FlacCompagnonCLI.exe` pair, with FlacCompagnonCLI, and every process it spawns (such as ffmpeg), running at BelowNormal priority. The final verdict is the vote of the 3 slot results, using the same table as lossless audio; if no slot returns a usable verdict, the file is reported as UNKNOWN.  
+The container is checked a priori: for a DST-compressed DFF, native slots are not possible, so its 3 slots are extracted as WAV by FFmpeg (float32, decoder PCM rate, no extra resampling) and analyzed by FlacCompagnonCLI. DSF and uncompressed DFF always use native DSD slots.  
+`FlacCompagnonCLI.exe` must be present for DSD analysis in every engine mode.
 
 ---
 
@@ -137,9 +140,23 @@ The combination of a primary lossless analyzer and FLAD provides complementary v
 LAC is useful for detecting sample-rate upscaling (e.g. 44.1 → 48 kHz).  
 FLAD helps identify lossy-to-lossless transcodes (e.g. MP3/AAC → WAV/FLAC).  
 AudioAuditorCLI provides an additional independent lossless analysis path, returning explicit REAL / FAKE / UNKNOWN classifications.  
-Neither LAC, FLAD, AudioAuditorCLI, nor FlacCompagnonCLI is responsible for native DSD analysis; DSD processing is handled independently by Audio Fake Detector PRO since version 8.4.
+LAC, FLAD and AudioAuditorCLI are not used for native DSD analysis, which is handled by FlacCompagnonCLI alone (see the DSD section).
 
 These complementary analysis paths can expose different types of suspicious lossless material that may be missed by one analyzer alone.
+
+---
+
+### 🎯 Full Lossless Analysis
+
+The **Full lossless** toggle in the selection window analyzes the entire file instead of 3 slots, for every lossless format and for native DSD.  
+Lossless files are analyzed in their original format whenever the selected engine reads it natively. A temporary full-length WAV is made only when it does not, and the engine and FLAD then analyze that same WAV:  
+* **AudioAuditorCLI** reads FLAC, WAV, AIFF/AIF, APE, WV, ALAC, TTA, TAK and AU/SND natively.  
+* **FlacCompagnonCLI** reads FLAC, WAV, AIFF/AIF, ALAC and CAF natively; APE, WV, TTA, TAK and AU/SND are converted.  
+* **LAC** reads only WAV: a FLAC, and any other non-WAV source, is converted.  
+For formats other than FLAC and WAV, CLEAN is reported only when both the engine and FLAD return a verdict: if one of them cannot analyze the file, or a needed conversion fails, the result is UNKNOWN. A FAKE or SUSPECT from either stands.  
+In the per-slot analysis the second engine is always FLAD, whose supported input formats are not documented: slots stay in their native format only for FLAC and WAV, and every other format is cut as WAV.  
+Native DSD is always analyzed by FlacCompagnonCLI alone, whatever engine combination is selected, directly on the original file. Only a DST-compressed DFF is first decoded to a temporary full-length WAV by FFmpeg.  
+Full-track results are written to the main CSV only.
 
 ---
 
@@ -161,13 +178,14 @@ Shorter analysis segments provide faster analysis, while longer segments may pro
 ## 📦 Supported Formats
 
 **Lossy:**
-MP3, AAC, M4A, OGG, OPUS, WMA
+MP3, MP2, AAC, M4A, M4B, M4R, MP4, 3GP, 3G2, OGG, OPUS, WMA, Musepack (MPC, MP+), AC3, WEBM
 
 **Lossless:**
-FLAC, WAV, APE, AIFF, AIF, WV (up to Ultra-Hi-Res, e.g. 352.8/384 kHz and beyond)
+FLAC, WAV, AIFF, AIF, APE, WV, ALAC, TTA, TAK, CAF, AU, SND (up to Ultra-Hi-Res, e.g. 352.8/384 kHz and beyond)  
+ALAC is recognized by its codec inside M4A/MP4 files and analyzed as lossless.
 
 **Native DSD:**
-DSF, DFF (DSD64/128/256/512 - decimated to DXD 352.8 kHz/24-bit PCM for analysis; requires ffmpeg.exe/ffprobe.exe, always available with v8.x's bundled or auto-installed FFmpeg)
+DSF, DFF (DSD64/128/256/512 - analyzed on native DSD slots by FlacCompagnonCLI; ffprobe.exe is used to read duration and metadata)
 
 **Matroska:**
 MKV, MKA, MKS, MK3D
@@ -180,6 +198,7 @@ MKV, MKA, MKS, MK3D
 - .NET 8 Runtime (automated download and silent install provided)  
 - PowerShell: 5.1 (pre-installed on Windows 10/11)  
 - Network: Internet connection required on first run (for dependencies download)  
+- FlacCompagnonCLI.exe: required for native DSD analysis in every engine mode, and as the primary engine in FlacCompagnonCLI + FLAD mode  
 
 ---
 
@@ -256,6 +275,8 @@ For the 3-slot lossless analysis pipeline (AudioAuditorCLI + FLAD), each slot us
 
 For FlacCompagnonCLI + FLAD mode, each slot uses its own physical copy of `ForceRedirect.exe`, `flad_cli.exe`, and FLAD's model folder in the same slot-tool infrastructure. `FlacCompagnonCLI.exe` itself is not duplicated per slot; all 3 slots share the single copy in the main tool folder. The slot input remains in its original audio format: no FLAC-to-WAV conversion is performed. Full-track analysis uses the original file directly; FLAD reuses slot2's FLAD tool copy instead of requiring a third on-disk FLAD copy.
 
+Native DSD analysis (all engine modes) uses the same per-slot `ForceRedirect.exe` copies as above; `FlacCompagnonCLI.exe` is shared from the main tool folder. FLAD is not used for DSD.
+
 Temporary analysis files are stored in a temporary working folder created automatically for each analysis session. The folder name contains a unique identifier generated for that session; this identifier is only used to keep the temporary files of different sessions separate. The session folder is removed during cleanup when the corresponding analysis work is finished.
 
 Standard: `%TEMP%\AudioFakeDetector\Session_<unique-ID>\`
@@ -264,6 +285,7 @@ Portable: `.\Data\App\Temp\Session_<unique-ID>\`
 In LAC + FLAD mode, this session directory may contain spectrogram PNGs, temporary WAV segments/full-track WAV data required by the LAC path, and TXT logs.
 In AudioAuditorCLI + FLAD mode, it contains native-format slot data, AudioAuditorCLI/FLAD TXT logs, and analysis intermediates; no FLAC-to-WAV conversion is required by AudioAuditorCLI.
 In FlacCompagnonCLI + FLAD mode, it contains native-format slot data, FLAD TXT logs, and analysis intermediates; no FLAC-to-WAV conversion is performed.
+For native DSD files (all engine modes), it contains the 3 temporary native DSD slot files and the FlacCompagnonCLI TXT logs; the slot files are deleted when the track's analysis ends.
 
 FLAD's own per-slot spectrogram PNGs are stored separately and deleted after each track's FLAD check. They are used only by modes that include FLAD:
 Standard: `%LOCALAPPDATA%\AudioFakeDetector\tmp\`, `...\slot2\tmp\`, `...\slot3\tmp\` | Portable: `.\Data\App\tmp\`, `.\Data\App\slot2\tmp\`, `.\Data\App\slot3\tmp\`
