@@ -1,4 +1,24 @@
-﻿CHANGELOG V8.5 2026-10-12
+﻿CHANGELOG V8.5 2026-10-13
+  [fix] Temp Session_<GUID> folders holding only the TXT output of the
+        analysis workers were left behind when a window was closed during an
+        analysis, and neither the next start nor a later one removed them. Any
+        Session_<GUID> folder that holds no audio file is now removed at
+        startup, again after the orphaned ForceRedirect.exe workers of the
+        closed session are terminated, and at the end of every run. When no
+        other instance of the program is running the session lock is not
+        consulted at all; while another instance is running, only folders
+        whose own session lock is inactive are removed, so a live session is
+        never touched. The folder of the running session is never removed. The
+        Temp root folder is removed as well when nothing else is left in it.
+        Temporary audio files keep being deleted as before.
+  [fix] The messages of the temp session cleanup (Removed stale temp session,
+        WARNING: could not remove ...) were never written to the log: they
+        were added to the list only when the list was already non-empty, so it
+        stayed empty. They are now logged, and the ones collected at startup,
+        which were never flushed, are written once the log is ready, so a
+        folder that cannot be removed shows why.
+
+CHANGELOG V8.5 2026-10-12
   [fix] The initial "Scanning N file(s)" count and the collection of files
         from several selected folders ignored .dsf and .dff: the count was too
         low (13 instead of 28 in a folder with 15 DSD files) and, when several
