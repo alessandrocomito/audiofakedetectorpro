@@ -11,6 +11,10 @@
         never touched. The folder of the running session is never removed. The
         Temp root folder is removed as well when nothing else is left in it.
         Temporary audio files keep being deleted as before.
+  [fix] The size-based duration fallback, used only when ffprobe cannot read a
+        lossless file at all (for example a damaged one), did not include the
+        lossless formats added on 2026-10-12 (TTA, TAK, CAF, AU, SND); it now
+        does. Normal files take their duration from ffprobe.
   [fix] The messages of the temp session cleanup (Removed stale temp session,
         WARNING: could not remove ...) were never written to the log: they
         were added to the list only when the list was already non-empty, so it
