@@ -41,7 +41,10 @@ If you want to evaluate detection performance rather than speed alone, you can u
 mp4 192kbps zansei.flac - a FLAC created from an AAC 192 kbps source  
 👁️ <a href="https://bit.ly/4zMVTww">mp4 192kbps zansei.flac</a>  <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive (101 MB)  
 Self explained  
-👁️ <a href="https://bit.ly/3V7apiF">FAKE_LOSSLESS__MP3_294kbps__DSRE__96kHz_24bit.flac</a> <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive (170 MB)
+👁️ <a href="https://bit.ly/3V7apiF">FAKE_LOSSLESS__MP3_294kbps__DSRE__96kHz_24bit.flac</a> <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive (170 MB)  
+👁️ <a href="https://bit.ly/4yWqK8W">FAKE_DSD64_FLAC_880kbps.dsf</a> <sub><img src="https://img.utdstc.com/icon/929/498/929498844d2aa0f6570d10565bd6cd639d2e0765704368f2b51eb87b1b451bcb%3A600" width="18" height="18" alt="MEGA"></sub> MEGA (271 MB)  
+
+---
 
 ---
 
