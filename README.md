@@ -237,7 +237,7 @@ If required tools are not found locally, they will be downloaded automatically w
 Downloaded only when **AudioAuditorCLI + FLAD** is selected and the executable is not already present.
 
 - **.NET 8 Runtime** (27.3 MB, automated download and silent install provided) - source: dotnet.microsoft.com  
-📥 <a href="https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.31/dotnet-runtime-8.0.31-win-x64.exe">Direct EXE Installer</a>  
+📥 <a href="https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.32/dotnet-runtime-8.0.32-win-x64.exe">Direct EXE Installer</a>  
 
 To avoid automatic download of .NET 8 Runtime from dotnet.microsoft.com, install manually via Command Prompt:
    
