@@ -1,4 +1,35 @@
-﻿CHANGELOG V8.5 2026-10-13
+CHANGELOG V8.5 2026-10-17
+  [fix] Standard and Portable now use the same Resume commit rules. The
+        Portable script now commits last_completed only for final CLEAN/OK,
+        SUSPECT or FAKE verdicts; SKIP, UNKNOWN, timeouts and errors remain
+        pending for retry. Its Resume frontier is reconstructed from final
+        verdicts rather than Report.Count alone. Early FAKE results and
+        end-of-run cleanup are aligned, including hardware-recovery paths.
+  [fix] Standard only: the end-of-run Resume cleanup was missing after a
+        0-byte file marked FAKE and after a successful hardware-recovery
+        commit on the last file, so a finished batch could leave its Resume
+        state behind. Both paths now clear it, as the other paths already did.
+ [note] Code cleanup with no change in behaviour, applied to both scripts.
+        Dead code removed: 13 functions that were never called (the old
+        ffmpeg update check and its web helpers, the spectral cutoff finder,
+        the single-slot spectrogram verdict, the LAC WAV extraction and
+        analysis wrappers, the RMS single-slot runner and the worker process
+        killer), the legacy auCDtect and spectrogram branches of Classify that
+        no engine value could reach, the 4-slot tables of the slot vote (the
+        pipeline only produces 3 slots), the DSD, ForcedPlan, PlainSlotLabels
+        and SuppressRms parameters of Get-SpectrumInfo that no caller passed,
+        and the output-file and CPU progress tracking of the LAC and
+        AudioAuditorCLI workers, whose result was never used by the watchdog.
+ [note] Also removed: variables that were only written and never read, the
+        RmsPool placeholder, the unreachable ForceRedirect.exe availability
+        re-check, commented-out code lines, empty else branches and orphan
+        section banners left behind by functions that had been moved.
+ [note] Narrative and history comments were removed and long ones condensed to
+        the current behaviour; a few outdated ones (direct-call fallback,
+        legacy FFmpeg path, 4-slot tables) were corrected or dropped. Both
+        scripts end at the last instruction, with no trailing blank lines.
+
+CHANGELOG V8.5 2026-10-13
   [fix] Temp Session_<GUID> folders holding only the TXT output of the
         analysis workers were left behind when a window was closed during an
         analysis, and neither the next start nor a later one removed them. Any
