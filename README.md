@@ -46,8 +46,6 @@ Self explained
 
 ---
 
----
-
 ## ⚙️ Key Features
 
 * Detection of fake 320 kbps MP3 files
@@ -80,44 +78,46 @@ This approach reduces false positives and improves detection reliability across 
 
 ### 🔎 Lossless
 
-At each startup, a console prompt allows the user to choose the lossless verification mode.  
-**LAC + FLAD mode is selected by default**, while **AudioAuditorCLI + FLAD** and **FlacCompagnonCLI + FLAD** can be selected as alternatives.
+At startup, a selection menu allows the user to choose the lossless verification mode. **LAC + FLAD is selected by default**, while **AudioAuditorCLI + FLAD** and **FlacCompagnonCLI + FLAD** are available as alternatives.
 
 #### LAC + FLAD mode
 
-Lossless audio is verified using Lossless Audio Checker (LAC 2.0.5) and FLAD (Fake Lossless Audio Detector).  
-LAC performs the primary command-line analysis. FLAD is used as a second-opinion check when the LAC vote is not already a conclusive FAKE result.  
-If LAC identifies a file as "Fake", no FLAD second-opinion verdict is required to reject the file as genuine lossless.
+Lossless audio is verified using Lossless Audio Checker (LAC 2.0.5) and FLAD (Fake Lossless Audio Detector).
 
-For slot analysis, FLAC files are temporarily converted to WAV segments (slots) for LAC. LAC and FLAD then analyse the same corresponding temporary WAV segment for each slot.  
-For full-track analysis, LAC (which reads only WAV) analyses the original WAV directly, or a temporary full-track WAV converted from the original FLAC or any other non-WAV lossless format, while FLAD analyses the original file directly.  
+LAC performs the primary command-line analysis. FLAD is used as a second-opinion check when the LAC vote is not already a conclusive FAKE result. If LAC identifies a file as "Fake", no FLAD second-opinion verdict is required to reject the file as genuine lossless.
+
+For slot analysis, FLAC files are temporarily converted to WAV segments (slots) for LAC. LAC and FLAD then analyse the same corresponding temporary WAV segment for each slot.
+
+For full-track analysis, LAC (which reads only WAV) analyses the original WAV directly, or a temporary full-track WAV converted from the original FLAC or any other non-WAV lossless format, while FLAD analyses the original file directly.
+
 Therefore, the temporary FLAC-to-WAV conversion is required only for the LAC analysis path.
 
-Both command-line analyzers run through a unified 3-slot processing pipeline. The LAC/FLAD verification pipeline applies exclusively to lossless PCM audio.  
-Native DSD files are not passed to, or analyzed by, either command-line analyzer. This dual-verification approach replaces auCDtect.
+Both command-line analyzers run through a unified 3-slot processing pipeline. The LAC + FLAD verification pipeline applies exclusively to lossless PCM audio. Native DSD files are not passed to or analysed by either command-line analyzer. This dual-verification approach replaces auCDtect.
 
 A lossless PCM file is considered genuine only when the combined LAC + FLAD result supports the lossless classification. A negative result from either analyzer is sufficient to reject the file as genuine lossless.
 
-Note: This integration specifically uses the LAC 2.0.5 command-line analyzer and should not be confused with LAC 2.0.7, which launches the graphical user interface (GUI). Like LAC 2.0.5, FLAD is also used as a command-line audio analyzer, providing Hi-Res / Ultra-Hi-Res PCM analysis up to 384 kHz and beyond.
+**Note:** This integration specifically uses the LAC 2.0.5 command-line analyzer and should not be confused with LAC 2.0.7, which launches the graphical user interface (GUI). Like LAC 2.0.5, FLAD is also used as a command-line audio analyzer, providing Hi-Res / Ultra-Hi-Res PCM analysis up to 384 kHz and beyond.
 
 #### AudioAuditorCLI + FLAD mode
 
-AudioAuditorCLI can be selected as an alternative primary lossless command-line analyzer, with FLAD used as the second-opinion engine in the same processing model as LAC + FLAD.
+AudioAuditorCLI V2.0.0 is the Windows x64 command-line client from the AudioAuditor project. It can be selected as an alternative primary lossless command-line analyzer, with FLAD used as the second-opinion engine in the same processing model as LAC + FLAD.
 
-AudioAuditorCLI is the Windows x64 command-line client from the AudioAuditor project.
+For the 3-slot processing architecture, AudioAuditorCLI and FLAD analyse corresponding native-format slot files. A FLAC source remains FLAC for both analyzers; a WAV source remains WAV. No FLAC-to-WAV conversion is performed for the AudioAuditorCLI + FLAD path.
 
-For the 3-slot processing architecture, AudioAuditorCLI and FLAD analyse corresponding native-format slot files. A FLAC source remains FLAC for both analyzers; a WAV source remains WAV. No FLAC-to-WAV conversion is performed for the AudioAuditorCLI + FLAD path.  
 For full-track analysis, AudioAuditorCLI and FLAD both analyse the original source file directly, in its original format.
 
-AudioAuditorCLI + FLAD applies exclusively to lossless PCM audio. Native DSD files are not passed to either command-line analyzer; they are analyzed by FlacCompagnonCLI (see the DSD section).
+AudioAuditorCLI + FLAD applies exclusively to lossless PCM audio. Native DSD files are not passed to either command-line analyzer; they are analysed by FlacCompagnonCLI instead (see the DSD section).
 
-The AudioAuditorCLI executable is not included in the base distribution when absent; when this engine is selected, Audio Fake Detector PRO can download `AudioAuditorCLI-win-x64.exe` automatically from the project's official GitHub release after the user has selected the corresponding mode.
+For distribution and automatic download details, see **Automatic Dependencies**.
 
 #### FlacCompagnonCLI + FLAD mode
 
-FlacCompagnonCLI is used as the primary lossless verification engine, with FLAD as an independent second-opinion check.  
-For lossless PCM audio FlacCompagnonCLI is paired with FLAD; native DSD files are analyzed by FlacCompagnonCLI alone, in every engine mode (see the DSD section).  
-No FLAC-to-WAV conversion is performed in either slot or full-track analysis. For slot analysis, FlacCompagnonCLI and FLAD analyze the same corresponding native-format slot: FLAC remains FLAC and WAV remains WAV. For full-track analysis, both analyzers analyze the original source file directly in its original format.  
+FlacCompagnonCLI is used as the primary lossless verification engine, with FLAD as an independent second-opinion check.
+
+For lossless PCM audio, FlacCompagnonCLI is paired with FLAD. Native DSD files are analysed by FlacCompagnonCLI alone, in every engine mode (see the DSD section).
+
+No FLAC-to-WAV conversion is performed in either slot or full-track analysis. For slot analysis, FlacCompagnonCLI and FLAD analyse the same corresponding native-format slot: FLAC remains FLAC and WAV remains WAV. For full-track analysis, both analyzers analyse the original source file directly in its original format.
+
 FlacCompagnonCLI is a custom command-line frontend based on the open-source FlacCompagnon project.
 
 ---
@@ -217,27 +217,35 @@ Re-encoding a 192 kbps (or higher) lossy file into a higher-bitrate lossy format
 
 ### 🔗 Automatic Dependencies
 
-If required tools are not found locally, they will be downloaded automatically when Start is clicked in the window selection:
+When **Start** is clicked in the PowerShell script-selection window, Audio Fake Detector PRO checks whether the required tools are available locally. Missing dependencies are downloaded automatically when a download source is configured for them.
+
+**Already included in the distribution archive AudioFakeDetector8.7z/zip:**
+- FFmpeg
+- Lossless Audio Checker (LAC) 2.0.5
+- 7-Zip Console Executable (`7zr.exe`)
+- FlacCompagnonCLI
+
+The following links provide download sources for the corresponding tools if they need to be obtained separately.
 
 - **FFmpeg** - source: BtbN/FFmpeg-Builds (77 MB) / Gyan (104 MB)  
-📥 <a href="https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip">v8.1.2 LGPL Zip</a> / 📥 <a href="https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-8.1.2-essentials_build.zip">v8.1.2 Essentials Zip</a> 
+  📥 [v8.1.2 LGPL Zip](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip) / 📥 [v8.1.2 Essentials Zip](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-8.1.2-essentials_build.zip)
 
-- **Lossless Audio Checker (LAC) 2.0.5** - source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub>
- / V1REU (105 KB)  
-📥 <a href="https://bit.ly/4wVDdc6">Google Drive Mirror</a> / <a href="https://www.v1r.eu/files/audio_tools/Lossless_Audio_Checker/[Windows]%20[CLI]%202.0.5/LAC-Windows-64bit.zip">LAC-Windows-64bit.zip</a> 
+- **Lossless Audio Checker (LAC) 2.0.5** - source:  <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_icon-icons.com_75713.png" width="18" height="18" alt="Google Drive"></sub> Google Drive / V1REU (105 KB)  
+  📥 [Google Drive Mirror](https://bit.ly/4wVDdc6) / [LAC-Windows-64bit.zip](https://www.v1r.eu/files/audio_tools/Lossless_Audio_Checker/%5BWindows%5D%20%5BCLI%5D%202.0.5/LAC-Windows-64bit.zip)
 
 - **7-Zip Console Executable** - source: 7-Zip (588 KB)  
-📥 <a href="https://github.com/ip7z/7zip/releases/download/26.03/7zr.exe">EXE (GitHub)</a>
-   
-- **FLAD** - source: Sg4Dylan/FLAD (27 MB)  
-📥 <a href="https://github.com/Sg4Dylan/FLAD/releases/download/v0.2/FLAD-0.2-x86_64-windows.7z">7-Zip (GitHub)</a>
+  📥 [EXE (GitHub)](https://github.com/ip7z/7zip/releases/download/26.04/7zr.exe)
 
-- **AudioAuditorCLI** - source: Angel2mp3/AudioAuditor (43.5 MB)  
-📥 <a href="https://github.com/Angel2mp3/AudioAuditor/releases/download/V2.0.0/AudioAuditorCLI-win-x64.exe">Direct EXE (GitHub)</a>  
-Downloaded only when **AudioAuditorCLI + FLAD** is selected and the executable is not already present.
+**Not included in the distribution archive:**
 
-- **.NET 8 Runtime** (27.3 MB, automated download and silent install provided) - source: dotnet.microsoft.com  
-📥 <a href="https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.32/dotnet-runtime-8.0.32-win-x64.exe">Direct EXE Installer</a>  
+- **FLAD** - source: Sg4Dylan/FLAD (27 MB). Downloaded automatically when required by the selected engine and not already present locally.  
+  📥 [7-Zip (GitHub)](https://github.com/Sg4Dylan/FLAD/releases/download/v0.2/FLAD-0.2-x86_64-windows.7z)
+
+- **AudioAuditorCLI V2.0.0** - source: Angel2mp3/AudioAuditor (43.5 MB). Downloaded only when **AudioAuditorCLI + FLAD** is selected, **Start** is clicked, and the executable is not already present locally. The downloaded executable is retained locally for subsequent use.  
+  📥 [Direct EXE (Official GitHub Release)](https://github.com/Angel2mp3/AudioAuditor/releases/download/V2.0.0/AudioAuditorCLI-win-x64.exe)
+
+- **.NET 8 Runtime** (27.3 MB) - source: dotnet.microsoft.com. Automatic download and silent installation are provided when required.  
+  📥 [Direct EXE Installer](https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.32/dotnet-runtime-8.0.32-win-x64.exe)
 
 To avoid automatic download of .NET 8 Runtime from dotnet.microsoft.com, install manually via Command Prompt:
    
@@ -266,11 +274,14 @@ Source: <sub><img src="https://images.icon-icons.com/1011/PNG/512/Google_Drive_i
 ### 📁 Files and Folders
 
 Executables, DLL, JSON, state/stamp files
-Standard: `%LOCALAPPDATA%\AudioFakeDetector\` | Portable: `.\Data\App\`
+
+Standard: `%LOCALAPPDATA%\AudioFakeDetector\`  
+Portable: `.\Data\App\`
 
 For the 3-slot lossless analysis pipeline (LAC + FLAD), each of the 3 parallel slots runs its own instance of `flad_cli.exe` against a physical per-slot copy of `ForceRedirect.exe`, `flad_cli.exe`, and FLAD's model folder. `lac.exe` itself is not duplicated per slot; all 3 slots share the single copy in the main tool folder. Slot 1 uses the main tool folder's FLAD copy directly; slots 2 and 3 use their own FLAD-related copies, verified and repaired by file size on startup and again before every full-track file:
 
-Standard: `%LOCALAPPDATA%\AudioFakeDetector\slot2\`, `%LOCALAPPDATA%\AudioFakeDetector\slot3\` | Portable: `.\Data\App\slot2\`, `.\Data\App\slot3\`
+Standard: `%LOCALAPPDATA%\AudioFakeDetector\slot2\`, `%LOCALAPPDATA%\AudioFakeDetector\slot3\`  
+Portable: `.\Data\App\slot2\`, `.\Data\App\slot3\`
 
 Full-track analysis uses the main tool folder's `lac.exe`; FLAD reuses slot2's `flad_cli.exe` / `ForceRedirect.exe` and model folder instead of requiring a third on-disk FLAD copy, since full-track and the 3-slot pipeline never run at the same time.
 
@@ -280,7 +291,7 @@ For FlacCompagnonCLI + FLAD mode, each slot uses its own physical copy of `Force
 
 Native DSD analysis (all engine modes) uses the same per-slot `ForceRedirect.exe` copies as above; `FlacCompagnonCLI.exe` is shared from the main tool folder. FLAD is not used for DSD.
 
-Temporary analysis files are stored in a temporary working folder created automatically for each analysis session. The folder name contains a unique identifier generated for that session; this identifier is only used to keep the temporary files of different sessions separate. The session folder is removed during cleanup when the corresponding analysis work is finished. Any session folder that holds no audio file, only the TXT output of the analysis workers, for example one left by a window closed during an analysis, is removed at the next startup and at the end of every run; while another instance of the program is running, only folders whose own session lock is inactive are removed. The Temp root folder is removed with them when nothing else is left in it.
+Temporary analysis files are stored in a temporary working folder created automatically for each analysis session. The folder name contains a unique identifier generated for that session; this identifier is only used to keep the temporary files of different sessions separate. The session folder is removed during cleanup when the corresponding analysis work is finished. Any session folder that holds no audio file, only the TXT output of the analysis workers, for example one left by a window closed during an analysis, is removed at the next startup and at the end of every run; while another instance of the program is running, only folders whose own session lock is inactive are removed. The Temp root folder is removed with them when nothing else is left in it:
 
 Standard: `%TEMP%\AudioFakeDetector\Session_<unique-ID>\`
 Portable: `.\Data\App\Temp\Session_<unique-ID>\`
@@ -291,7 +302,9 @@ In FlacCompagnonCLI + FLAD mode, it contains native-format slot data, FLAD TXT l
 For native DSD files (all engine modes), it contains the 3 temporary native DSD slot files and the FlacCompagnonCLI TXT logs; the slot files are deleted when the track's analysis ends.
 
 FLAD's own per-slot spectrogram PNGs are stored separately and deleted after each track's FLAD check. They are used only by modes that include FLAD:
-Standard: `%LOCALAPPDATA%\AudioFakeDetector\tmp\`, `...\slot2\tmp\`, `...\slot3\tmp\` | Portable: `.\Data\App\tmp\`, `.\Data\App\slot2\tmp\`, `.\Data\App\slot3\tmp\`
+
+Standard: `%LOCALAPPDATA%\AudioFakeDetector\tmp\`, `...\slot2\tmp\`, `...\slot3\tmp\`  
+Portable: `.\Data\App\tmp\`, `.\Data\App\slot2\tmp\`, `.\Data\App\slot3\tmp\`
 
 ---
 

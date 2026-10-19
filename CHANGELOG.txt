@@ -1,3 +1,31 @@
+﻿CHANGELOG V8.5 2026-10-19
+  [fix] Resume: corrected interrupted-session detection and eliminated false
+        file/folder selection warnings when the saved and current file sets match.
+  [fix] Temporary cleanup: aborted Session_<GUID> folders are removed
+        recursively, including temporary audio files. When no other session is
+        active, leftover files and folders under Temp are also removed.
+  [fix] Worker cleanup: processes belonging to aborted sessions are terminated
+        without indiscriminately stopping workers belonging to active sessions.
+  [fix] Worker cleanup: the tool-directory prefix used to recognise this
+        variant's worker processes ended in two backslashes, so no process
+        ever matched and the cleanup terminated nothing. It now ends in a
+        single backslash.
+  [new] Fallback download for the worker tools: if ffmpeg/ffprobe cannot be
+        downloaded from BtbN or gyan.dev, they are taken from
+        AudioFakeDetector.7z, extracted with 7zr.exe. The same archive now
+        also restores a missing lac.exe, FlacCompagnonCLI.exe,
+        ForceRedirect.exe or AudioFakeDetectorRms.exe (with its .json and
+        .dll files); only missing files are written and
+        AudioAuditorCLI-win-x64.exe and flad_cli.exe are never taken from it.
+  [msg] Removed the startup WARNING lines shown around the selection window
+        (another active session, session ownership mutex, saved checkpoints
+        not matching the selected folder or not loadable). Startup cleanup
+        messages (previous session workers, stale temp sessions) now go to
+        the log file only, as INFO instead of WARNING. The final cleanup
+        messages are listed on the console, without blank lines, before
+        "Press Enter to close".
+ [note] 7zr.exe is now downloaded from release 26.04.
+
 CHANGELOG V8.5 2026-10-17
   [fix] Standard and Portable now use the same Resume commit rules. The
         Portable script now commits last_completed only for final CLEAN/OK,
