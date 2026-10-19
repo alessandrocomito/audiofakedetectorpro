@@ -293,7 +293,7 @@ Native DSD analysis (all engine modes) uses the same per-slot `ForceRedirect.exe
 
 Temporary analysis files are stored in a temporary working folder created automatically for each analysis session. The folder name contains a unique identifier generated for that session; this identifier is only used to keep the temporary files of different sessions separate. The session folder is removed during cleanup when the corresponding analysis work is finished. Any session folder that holds no audio file, only the TXT output of the analysis workers, for example one left by a window closed during an analysis, is removed at the next startup and at the end of every run; while another instance of the program is running, only folders whose own session lock is inactive are removed. The Temp root folder is removed with them when nothing else is left in it:
 
-Standard: `%TEMP%\AudioFakeDetector\Session_<unique-ID>\`
+Standard: `%TEMP%\AudioFakeDetector\Session_<unique-ID>\`  
 Portable: `.\Data\App\Temp\Session_<unique-ID>\`
 
 In LAC + FLAD mode, this session directory may contain spectrogram PNGs, temporary WAV segments/full-track WAV data required by the LAC path, and TXT logs.
