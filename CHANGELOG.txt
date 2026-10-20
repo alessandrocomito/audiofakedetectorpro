@@ -1,4 +1,10 @@
-﻿CHANGELOG V8.5 2026-10-19
+﻿CHANGELOG V8.5 2026-10-20
+  [fix] Duration display: the hours were rounded instead of truncated, so
+        every duration with 30 minutes or more past the hour was shown one
+        hour too long (0:35:00 as 01:35:00, 1:30:46 as 02:30:46), on screen,
+        in the log and in the DurationHMS column of the CSV.
+
+CHANGELOG V8.5 2026-10-19
   [fix] Resume: corrected interrupted-session detection and eliminated false
         file/folder selection warnings when the saved and current file sets match.
   [fix] Temporary cleanup: aborted Session_<GUID> folders are removed
