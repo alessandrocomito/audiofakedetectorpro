@@ -1,4 +1,42 @@
-﻿CHANGELOG V8.5 2026-10-20
+﻿CHANGELOG V8.5 2026-10-23
+  [msg] The REASON of the other wall rules (16000 Hz walls, single slot,
+        hard ceiling, long mix, 17500 Hz threshold, majority and minority
+        wall) no longer repeats the cutoffs, already shown in the slot lines
+        and saved in the per-slot CSV, and writes "<= 160 kbps" (or
+        "<= 192 kbps" for the single-slot rule) instead of "128/160 kbps".
+
+CHANGELOG V8.5 2026-10-22
+  [fix] WinForms "Paste" button: paths copied as plain text lines (without
+        quotes) were silently discarded, because they were stored in the
+        wrong variable. A line without quotes is now one path, even with
+        spaces, as in the text box.
+  [msg] The wall vote message no longer repeats the cutoffs, which are
+        already shown in the slot lines and saved in the per-slot CSV. The
+        REASON of the high bitrate wall rule is shortened ("wall at" instead
+        of "spectral wall at", "<= 160 kbps ceiling" instead of "128/160").
+  [fix] WinForms information panel: with -FlacCompagnonCLI the lossless line
+        named LAC 2.0.5 instead of FlacCompagnonCLI, because the engine name
+        did not match.
+  [msg] Removed "LAC verdict used" and "LAC verdict kept" from the FLAD
+        interrupted and inconclusive messages and from REASON: they appeared
+        also when LAC was not the selected engine. The REASON of an
+        interrupted full-track FLAD pass is shortened to two lines. The
+        engine name in the "track too short", "no valid slot offsets",
+        "TIMEOUT" and "HW ERROR" messages now follows the selected engine.
+
+CHANGELOG V8.5 2026-10-21
+  [fix] Full-track FLAD watchdog: after 120 seconds without regular startup
+        output flad_cli.exe is always terminated, also when its process could
+        not be identified as a child of ForceRedirect.exe (it is then found
+        by the WAV path in its command line). If that ForceRedirect.exe is
+        still running afterwards it is closed too, with its process tree.
+        The interrupted pass is not relaunched. Per-slot FLAD analyses are
+        not affected: they keep the 15 minute limit.
+  [new] Per-slot CSV: added DurationSec and DurationHMS (duration of the
+        file) after NewFullPath, and SlotSec (seconds analysed from Offset)
+        after Offset.
+
+CHANGELOG V8.5 2026-10-20
   [fix] Duration display: the hours were rounded instead of truncated, so
         every duration with 30 minutes or more past the hour was shown one
         hour too long (0:35:00 as 01:35:00, 1:30:46 as 02:30:46), on screen,
