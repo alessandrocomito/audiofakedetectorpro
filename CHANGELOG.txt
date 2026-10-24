@@ -1,4 +1,41 @@
-﻿CHANGELOG V8.5 2026-10-23
+﻿CHANGELOG V8.5 2026-10-24
+  [fix] REASON of the SUSPECT wall verdict ("Wall at ~N Hz"): it quoted the
+        cutoff and ratio of the best non-end slot, which is the least walled
+        one and does not justify the verdict. It now quotes the lowest-cutoff
+        walled non-end slot with its ratio, as shown in the slot lines, and
+        says so with "(lowest walled slot)", because the CutoffHz and
+        Ratio columns of the main CSV keep the values of the best slot.
+  [fix] REASON of the abrupt-end SUSPECT verdict: the cutoff of the best slot
+        and the "[abrupt-end]" tag were appended, but that cutoff plays no
+        part in the verdict. The REASON is now only "Abrupt HF drop near
+        track end".
+  [msg] Full-track REASON: when the primary engine returned no verdict and
+        FLAD was interrupted, it still ended with "<engine> verdict kept",
+        although there was no verdict to keep. The phrase now appears only
+        when the primary engine did give a verdict.
+  [fix] CSV: when moving a FAKE file failed (error already logged), the
+        NewFullPath column was written as "False" and NewFolder was
+        empty. Both now keep the original location of the file, which
+        has not been moved.
+  [msg] REASON of the SUSPECT verdicts no longer ends with "manual check
+        recommended" (wall, minority wall, single-slot wall, long mix,
+        quiet-passage and breakdown artefacts, spectrogram engine wall):
+        the SUSPECT verdict already means that. The notes that explain
+        why a verdict is not FAKE are unchanged.
+  [new] Startup: 7zr.exe is now the first dependency checked, before lac.exe
+        and the other tools, without a line of its own in the list. If it
+        is missing from the tool folder it is downloaded at once. The
+        download message now says "downloaded" instead of "extracted".
+  [new] AudioFakeDetector.exe, the launcher of Start_script.cmd, updated
+        from version 8.0 to 8.5. The source of version 8.0 was no longer
+        available, so the launcher was rebuilt with csc.exe instead of
+        dotnet.exe.
+
+CHANGELOG V8.5 2026-10-23 2° Update
+  [new] Added AudioFakeDetector_no_move.exe version 8.5, the launcher of
+        Start_script_no_move.cmd, built with csc.exe.
+
+CHANGELOG V8.5 2026-10-23
   [msg] The REASON of the other wall rules (16000 Hz walls, single slot,
         hard ceiling, long mix, 17500 Hz threshold, majority and minority
         wall) no longer repeats the cutoffs, already shown in the slot lines
